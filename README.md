@@ -72,7 +72,7 @@ values ( 'Ejemplo2', '63', '45.7', '2022-06-22', '1' );
 
 Como resultado la tabla deberia de quedar asi:
 
-```
+``` sql
 +----+-----------+--------+---------+------------+----------+
 | id |   texto   | entero | decimal |   fecha    | booleano |
 +----+-----------+--------+---------+------------+----------+
