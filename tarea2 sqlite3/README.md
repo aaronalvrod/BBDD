@@ -2,13 +2,13 @@
 
 ![SQLite3 logo](https://github.com/aaronalvrod/BBDD./assets/147527842/66e6aecb-6d3f-4a2c-b845-6059ccd59596)
 
-### Objetivo
+## Objetivo
 
 Practicar la creación y manipulación de una base de datos SQLite3 desde la línea de comandos.
 
-### Pasos
+## Pasos
 
-#### Paso 1: Crear una tabla con un campo de cada tipo.
+## Paso 1: Crear una tabla con un campo de cada tipo.
 
 1. Utilizamos la terminal o línea de comandos, abrimos SQLite3 y creamos una base de datos llamada ``tarea2.db``
 
@@ -38,7 +38,7 @@ CREATE TABLE Vehiculos (
     FOREIGN KEY (id_propietario) REFERENCES Propietarios(id) );
 ```
 
-#### Paso 2: Insertar las entradas de las tablas.
+## Paso 2: Insertar las entradas de las tablas.
 
 A continuación realizaremos las inserciones de las entradas de ambas tablas, la de propietario y la de vehiculos.
 
@@ -94,7 +94,7 @@ INSERT INTO Vehiculos (marca, modelo, anio, id_propietario) VALUES
     ('Nissan', 'Murano', 2019, 20);
 ```
 
-#### Paso 3: Realizar las siguientes 10 consultas de datos.
+## Paso 3: Realizar las siguientes 10 consultas de datos.
 
 - **Seleccionar todos los propietarios.**
 
@@ -323,7 +323,7 @@ Al darle enter a este comando nos aparecera la siguiente tabla
 +----+-------+--------+------+----------------+
 ```
 
-#### Paso 4: Realizar los siguientes updates:
+## Paso 4: Realizar los siguientes updates:
 
 - Actualizar el nombre de un propietario con DNI "12345678A"
 
