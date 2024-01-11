@@ -1,6 +1,6 @@
 # Creación de la Base de Datos
 
-![Alt text](image.png)
+![SQLite3 logo](https://github.com/aaronalvrod/BBDD./assets/147527842/66e6aecb-6d3f-4a2c-b845-6059ccd59596)
 
 ### Objetivo
 
@@ -14,9 +14,9 @@ Practicar la creación y manipulación de una base de datos SQLite3 desde la lí
 
 ```sqlite3 tarea2.db```
 
-2. Dentro de SQLite3, creamos las siguientes tablas:
+2.**Dentro de SQLite3, creamos las siguientes tablas:**
 
-Tabla Propietarios:
+**Tabla Propietarios:**
 
 ```
 CREATE TABLE propietarios (
@@ -26,7 +26,7 @@ CREATE TABLE propietarios (
     dni TEXT UNIQUE NOT NULL );
 ```
 
-Tabla Vehiculos:
+**Tabla Vehiculos:**
 
 ```
 CREATE TABLE Vehiculos (
@@ -96,12 +96,13 @@ INSERT INTO Vehiculos (marca, modelo, anio, id_propietario) VALUES
 
 #### Paso 3: Realizar las siguientes 10 consultas de datos.
 
-- Seleccionar todos los propietarios.
+- **Seleccionar todos los propietarios.**
 
 `SELECT * FROM propietarios;`
 
 Al darle enter a este comando nos aparecera la siguiente tabla
 
+`
 +----+----------+-----------+-----------+
 | id |  nombre  | apellido  |    dni    |
 +----+----------+-----------+-----------+
@@ -126,13 +127,15 @@ Al darle enter a este comando nos aparecera la siguiente tabla
 | 19 | Sergio   | Mendoza   | 17171717S |
 | 20 | Patricia | Navarro   | 18181818T |
 +----+----------+-----------+-----------+
+`
 
-- Listar todos los vehículos.
+- **Listar todos los vehículos.**
 
 `SELECT * FROM vehiculos;`
 
 Al darle entar a este comando nos aparecera la siguiente tabla
 
+`
 +----+------------+------------+------+----------------+
 | id |   marca    |   modelo   | anio | id_propietario |
 +----+------------+------------+------+----------------+
@@ -157,13 +160,15 @@ Al darle entar a este comando nos aparecera la siguiente tabla
 | 19 | Honda      | Odyssey    | 2016 | 19             |
 | 20 | Nissan     | Murano     | 2019 | 20             |
 +----+------------+------------+------+----------------+
+`
 
-- Seleccionar solo los nombres y apellidos de los propietarios.
+- **Seleccionar solo los nombres y apellidos de los propietarios.**
 
 `SELECT nombre, apellido FROM propietarios;`
 
 Al darle enter a este comando nos aparecera la siguiente tabla
 
+`
 +----------+-----------+
 |  nombre  | apellido  |
 +----------+-----------+
@@ -188,13 +193,15 @@ Al darle enter a este comando nos aparecera la siguiente tabla
 | Sergio   | Mendoza   |
 | Patricia | Navarro   |
 +----------+-----------+
+`
 
-- Listar todas las marcas y modelos de los vehículos.
+- **Listar todas las marcas y modelos de los vehículos.**
 
 `SELECT marca. modelo FROM vehiculos`
 
 Al darle enter a este comando nos aparecera la siguiente tabla
 
+`
 +------------+------------+
 |   marca    |   modelo   |
 +------------+------------+
@@ -219,25 +226,29 @@ Al darle enter a este comando nos aparecera la siguiente tabla
 | Honda      | Odyssey    |
 | Nissan     | Murano     |
 +------------+------------+
+`
 
-- Seleccionar solo los propietarios con apellido "Perez".
+- **Seleccionar solo los propietarios con apellido "Perez".**
 
 `SELECT * FROM vehiculos WHERE apellido = "Perez";`
 
 Al darle enter a este comando nos aparecera la siguiente tabla
 
+`
 +----+--------+----------+-----------+
 | id | nombre | apellido |    dni    |
 +----+--------+----------+-----------+
 | 1  | Juan   | Perez    | 12345678A |
 +----+--------+----------+-----------+
+`
 
-- Listar todos los vehículos con año 2019.
+- **Listar todos los vehículos con año 2019.**
 
 `SELECT * FROM vehiculos where anio = 2019;`
 
 Al darle enter a este comando nos aparecera la siguiente tabla
 
+`
 +----+------------+--------+------+----------------+
 | id |   marca    | modelo | anio | id_propietario |
 +----+------------+--------+------+----------------+
@@ -247,8 +258,9 @@ Al darle enter a este comando nos aparecera la siguiente tabla
 | 16 | Volkswagen | Jetta  | 2019 | 16             |
 | 20 | Nissan     | Murano | 2019 | 20             |
 +----+------------+--------+------+----------------+
+`
 
-- Seleccionar propietarios que tienen vehículos de la marca "Toyota":
+- **Seleccionar propietarios que tienen vehículos de la marca "Toyota":**
 
 `
 SELECT Propietarios.* FROM Propietarios
@@ -258,6 +270,7 @@ WHERE Vehiculos.marca = 'Toyota';
 
 Al darle enter a este comando nos aparecera la siguiente tabla
 
+`
 +----+--------+----------+-----------+
 | id | nombre | apellido |    dni    |
 +----+--------+----------+-----------+
@@ -266,44 +279,49 @@ Al darle enter a este comando nos aparecera la siguiente tabla
 | 12 | Marta  | Diaz     | 10101010L |
 | 18 | Clara  | Soto     | 16161616R |
 +----+--------+----------+-----------+
-
-- Listar vehículos con marca "Ford" y modelo "Fiesta":
-
 `
-SELECT * FROM Vehiculos WHERE marca = 'Ford' AND modelo = 'Fiesta';
-`
+
+- **Listar vehículos con marca "Ford" y modelo "Fiesta":**
+
+`SELECT * FROM Vehiculos WHERE marca = 'Ford' AND modelo = 'Fiesta';`
 
 Al darle enter a este comando nos aparecera la siguiente tabla
 
+`
 +----+-------+--------+------+----------------+
 | id | marca | modelo | anio | id_propietario |
 +----+-------+--------+------+----------------+
 | 1  | Ford  | Fiesta | 2019 | 1              |
 +----+-------+--------+------+----------------+
+`
 
-- Seleccionar propietarios con DNI"12345678A".
+- **Seleccionar propietarios con DNI"12345678A".**
 
 `SELECT * FROM Propietarios WHERE dni = '12345678A';`
 
 Al darle enter a este comando nos aparecera la siguiente tabla
 
+`
 +----+--------+----------+-----------+
 | id | nombre | apellido |    dni    |
 +----+--------+----------+-----------+
 | 1  | Juan   | Perez    | 12345678A |
 +----+--------+----------+-----------+
+`
 
-- Listar vehículos que pertenecen al propietario con ID 5.
+- **Listar vehículos que pertenecen al propietario con ID 5.**
 
 `SELECT * FROM Vehiculos WHERE id_propietario = 5;`
  
 Al darle enter a este comando nos aparecera la siguiente tabla
 
+`
 +----+-------+--------+------+----------------+
 | id | marca | modelo | anio | id_propietario |
 +----+-------+--------+------+----------------+
 | 5  | Honda | Civic  | 2016 | 5              |
 +----+-------+--------+------+----------------+
+`
 
 #### Paso 4: Realizar los siguientes updates:
 
