@@ -349,6 +349,7 @@ El resultado de realizar estos updates es.
 
 Tabla Propietarios: 
 
+``` sql
 +----+-------------+-----------+-----------+
 | id |   nombre    | apellido  |    dni    |
 +----+-------------+-----------+-----------+
@@ -373,9 +374,10 @@ Tabla Propietarios:
 | 19 | Sergio      | Mendoza   | 17171717S |
 | 20 | Patricia    | Navarro   | 18181818T |
 +----+-------------+-----------+-----------+
+```
 
 Tabla Vehiculos: 
-
+``` sql
 +----+------------+------------+------+----------------+
 | id |   marca    |   modelo   | anio | id_propietario |
 +----+------------+------------+------+----------------+
@@ -400,6 +402,6 @@ Tabla Vehiculos:
 | 19 | Honda      | Odyssey    | 2016 | 19             |
 | 20 | Nissan     | Micra      | 2019 | 20             |
 +----+------------+------------+------+----------------+
-
+```
 
 
