@@ -10,11 +10,11 @@ Practicar la creación y manipulación de una base de datos SQLite3 desde la lí
 
 ## Paso 1: Crear una tabla con un campo de cada tipo.
 
-1. Utilizamos la terminal o línea de comandos, abrimos SQLite3 y creamos una base de datos llamada ``tarea2.db``
+1. **Utilizamos la terminal o línea de comandos, abrimos SQLite3 y creamos una base de datos llamada ``tarea2.db``**
 
 ```sqlite3 tarea2.db```
 
-2.**Dentro de SQLite3, creamos las siguientes tablas:**
+2. **Dentro de SQLite3, creamos las siguientes tablas:**
 
 **Tabla Propietarios:**
 
