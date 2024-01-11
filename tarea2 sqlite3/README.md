@@ -102,7 +102,7 @@ INSERT INTO Vehiculos (marca, modelo, anio, id_propietario) VALUES
 
 Al darle enter a este comando nos aparecera la siguiente tabla
 
-`
+``` sql
 +----+----------+-----------+-----------+
 | id |  nombre  | apellido  |    dni    |
 +----+----------+-----------+-----------+
@@ -127,7 +127,7 @@ Al darle enter a este comando nos aparecera la siguiente tabla
 | 19 | Sergio   | Mendoza   | 17171717S |
 | 20 | Patricia | Navarro   | 18181818T |
 +----+----------+-----------+-----------+
-`
+```
 
 - **Listar todos los vehículos.**
 
@@ -135,7 +135,7 @@ Al darle enter a este comando nos aparecera la siguiente tabla
 
 Al darle entar a este comando nos aparecera la siguiente tabla
 
-`
+``` sql
 +----+------------+------------+------+----------------+
 | id |   marca    |   modelo   | anio | id_propietario |
 +----+------------+------------+------+----------------+
@@ -160,7 +160,7 @@ Al darle entar a este comando nos aparecera la siguiente tabla
 | 19 | Honda      | Odyssey    | 2016 | 19             |
 | 20 | Nissan     | Murano     | 2019 | 20             |
 +----+------------+------------+------+----------------+
-`
+``` 
 
 - **Seleccionar solo los nombres y apellidos de los propietarios.**
 
@@ -168,7 +168,7 @@ Al darle entar a este comando nos aparecera la siguiente tabla
 
 Al darle enter a este comando nos aparecera la siguiente tabla
 
-`
+``` sql
 +----------+-----------+
 |  nombre  | apellido  |
 +----------+-----------+
@@ -193,7 +193,7 @@ Al darle enter a este comando nos aparecera la siguiente tabla
 | Sergio   | Mendoza   |
 | Patricia | Navarro   |
 +----------+-----------+
-`
+```
 
 - **Listar todas las marcas y modelos de los vehículos.**
 
@@ -201,7 +201,7 @@ Al darle enter a este comando nos aparecera la siguiente tabla
 
 Al darle enter a este comando nos aparecera la siguiente tabla
 
-`
+``` sql
 +------------+------------+
 |   marca    |   modelo   |
 +------------+------------+
@@ -226,7 +226,7 @@ Al darle enter a este comando nos aparecera la siguiente tabla
 | Honda      | Odyssey    |
 | Nissan     | Murano     |
 +------------+------------+
-`
+```
 
 - **Seleccionar solo los propietarios con apellido "Perez".**
 
@@ -234,13 +234,13 @@ Al darle enter a este comando nos aparecera la siguiente tabla
 
 Al darle enter a este comando nos aparecera la siguiente tabla
 
-`
+``` sql
 +----+--------+----------+-----------+
 | id | nombre | apellido |    dni    |
 +----+--------+----------+-----------+
 | 1  | Juan   | Perez    | 12345678A |
 +----+--------+----------+-----------+
-`
+```
 
 - **Listar todos los vehículos con año 2019.**
 
@@ -248,7 +248,7 @@ Al darle enter a este comando nos aparecera la siguiente tabla
 
 Al darle enter a este comando nos aparecera la siguiente tabla
 
-`
+``` sql
 +----+------------+--------+------+----------------+
 | id |   marca    | modelo | anio | id_propietario |
 +----+------------+--------+------+----------------+
@@ -258,7 +258,7 @@ Al darle enter a este comando nos aparecera la siguiente tabla
 | 16 | Volkswagen | Jetta  | 2019 | 16             |
 | 20 | Nissan     | Murano | 2019 | 20             |
 +----+------------+--------+------+----------------+
-`
+```
 
 - **Seleccionar propietarios que tienen vehículos de la marca "Toyota":**
 
@@ -270,7 +270,7 @@ WHERE Vehiculos.marca = 'Toyota';
 
 Al darle enter a este comando nos aparecera la siguiente tabla
 
-`
+``` sql
 +----+--------+----------+-----------+
 | id | nombre | apellido |    dni    |
 +----+--------+----------+-----------+
@@ -279,7 +279,7 @@ Al darle enter a este comando nos aparecera la siguiente tabla
 | 12 | Marta  | Diaz     | 10101010L |
 | 18 | Clara  | Soto     | 16161616R |
 +----+--------+----------+-----------+
-`
+```
 
 - **Listar vehículos con marca "Ford" y modelo "Fiesta":**
 
@@ -287,13 +287,13 @@ Al darle enter a este comando nos aparecera la siguiente tabla
 
 Al darle enter a este comando nos aparecera la siguiente tabla
 
-`
+``` sql
 +----+-------+--------+------+----------------+
 | id | marca | modelo | anio | id_propietario |
 +----+-------+--------+------+----------------+
 | 1  | Ford  | Fiesta | 2019 | 1              |
 +----+-------+--------+------+----------------+
-`
+```
 
 - **Seleccionar propietarios con DNI"12345678A".**
 
@@ -301,13 +301,13 @@ Al darle enter a este comando nos aparecera la siguiente tabla
 
 Al darle enter a este comando nos aparecera la siguiente tabla
 
-`
+``` sql
 +----+--------+----------+-----------+
 | id | nombre | apellido |    dni    |
 +----+--------+----------+-----------+
 | 1  | Juan   | Perez    | 12345678A |
 +----+--------+----------+-----------+
-`
+```
 
 - **Listar vehículos que pertenecen al propietario con ID 5.**
 
@@ -315,13 +315,13 @@ Al darle enter a este comando nos aparecera la siguiente tabla
  
 Al darle enter a este comando nos aparecera la siguiente tabla
 
-`
+``` sql
 +----+-------+--------+------+----------------+
 | id | marca | modelo | anio | id_propietario |
 +----+-------+--------+------+----------------+
 | 5  | Honda | Civic  | 2016 | 5              |
 +----+-------+--------+------+----------------+
-`
+```
 
 #### Paso 4: Realizar los siguientes updates:
 
