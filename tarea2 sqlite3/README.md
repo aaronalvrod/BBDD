@@ -1,4 +1,4 @@
-# Creación de la Base de Datos
+# Creación de la Base de Datos - Tarea 2 
 
 ![SQLite3 logo](https://github.com/aaronalvrod/BBDD./assets/147527842/66e6aecb-6d3f-4a2c-b845-6059ccd59596)
 
@@ -10,7 +10,7 @@ Practicar la creación y manipulación de una base de datos SQLite3 desde la lí
 
 ## Paso 1: Crear una tabla con un campo de cada tipo.
 
-1. **Utilizamos la terminal o línea de comandos, abrimos SQLite3 y creamos una base de datos llamada** ``tarea2.db``
+1. **Primero utilizamos la terminal o línea de comandos, segundo abrimos SQLite3 y creamos una base de datos llamada** ``tarea2.db``
 
 ``` sqlite3 tarea2.db ```
 
