@@ -198,4 +198,19 @@ SELECT CURRENT_DATE AS fecha_actual FROM empleados LIMIT 1;
     - Calcula el promedio de salarios de todos los empleados.
     - Convierte la cadena '123' a un valor entero.
 
+``` sql
+SELECT AVG(salario) AS salario_promedio FROM empleados;
+```
+
+**Resultado calcular el promedio**
+
+``` sql
+┌──────────────────┐
+│ salario_promedio │
+├──────────────────┤
+│ 57000.0          │
+└──────────────────┘
+```
+
+
 
