@@ -14,11 +14,9 @@
 
 Primero creamos el fichero `empleados-dump.sql`
 
-``` sql
-sqlite3 empleados-dump.sql
-```
+``` vi empleados-dump.sql```
 
-Seguidamente creamos la tabla empleados e introducimos los atributos y posteriormente los insert de la tabla.
+Una vez dentro del fichero copiaremos el siguiente CREATE TABLE y los INSERT de la tabla empleados
 
 ``` sql
 CREATE TABLE empleados (
@@ -49,6 +47,12 @@ INSERT INTO empleados (nombre, salario, departamento) VALUES ('Natalia', 54000, 
 INSERT INTO empleados (nombre, salario, departamento) VALUES ('Roberto', 49000, 'Recursos Humanos');
 INSERT INTO empleados (nombre, salario, departamento) VALUES ('Beatriz', 63000, 'TI');
 ```
+
+Seguidamente de este paso crearemos el fichero de la base de datos
+
+```sqlite3 tarea3.db```
+
+
 
 Una vez creada la tabla y realizados los insert, haremos un `select * from empleados;` para verificar que todos los datos son correctos
 
