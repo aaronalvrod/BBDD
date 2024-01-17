@@ -110,6 +110,34 @@ En este paso realizaremos las siguientes consultas.
 ```sql
  SELECT UPPER(nombre) AS nombre_mayusculas, LOWER(nombre) AS nombre_minusculas FROM empleados;
   ```
+**Resultado**
+
+``` sql
+┌───────────────────┬───────────────────┐
+│ nombre_mayusculas │ nombre_minusculas │
+├───────────────────┼───────────────────┤
+│ JUAN              │ juan              │
+│ MARíA             │ maría             │
+│ CARLOS            │ carlos            │
+│ ANA               │ ana               │
+│ PEDRO             │ pedro             │
+│ LAURA             │ laura             │
+│ JAVIER            │ javier            │
+│ CARMEN            │ carmen            │
+│ MIGUEL            │ miguel            │
+│ ELENA             │ elena             │
+│ DIEGO             │ diego             │
+│ SOFíA             │ sofía             │
+│ ANDRéS            │ andrés            │
+│ ISABEL            │ isabel            │
+│ RAúL              │ raúl              │
+│ PATRICIA          │ patricia          │
+│ ALEJANDRO         │ alejandro         │
+│ NATALIA           │ natalia           │
+│ ROBERTO           │ roberto           │
+│ BEATRIZ           │ beatriz           │
+└───────────────────┴───────────────────┘
+```
 
 - Funciones Numéricas:
 
