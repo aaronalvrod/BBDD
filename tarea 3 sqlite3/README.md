@@ -68,7 +68,7 @@ Despues de realizar este paso veremos a ver si nos a leido la tabla correctament
 
 Para ver si tenemos la tabla - `.tables` 
 
-Para verificar que todos los datos han sido leidos - `select * from empleados;`
+Para verificar que todos los datos han sido leidos - `SELECT * FROM empleados;`
 
 Una vez realizados estos pasos podremos observar la siguiente tabla
 
