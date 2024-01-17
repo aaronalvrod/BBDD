@@ -58,7 +58,9 @@ Seguidamente de este paso crearemos el fichero de la base de datos
 
 Una vez creado el fichero de la base de datos accederemos a el y leeremos el archivo en el cual insertamos el CREATE TABLE y los INSERT de la tabla empleados.
 
-```.read empleados-dump.sql```
+``` sql
+.read empleados-dump.sql
+```
 
 Despues de realizar este paso veremos a ver si nos a leido la tabla correctamente.
 
@@ -106,7 +108,7 @@ En este paso realizaremos las siguientes consultas.
 ```sql
  SELECT UPPER(nombre) AS nombre_mayusculas, LOWER(nombre) AS nombre_minusculas FROM empleados;
   ```
-  
+
 - Funciones Numéricas:
 
     - Calcular el valor absoluto del salario de todos los empleados.
