@@ -103,7 +103,7 @@ Una vez realizados estos pasos podremos observar la siguiente tabla
 
 En este paso realizaremos las siguientes consultas.
 
-- Funciones UPPER y LOWER:
+- **Funciones UPPER y LOWER:**
 
     - Mostrar el nombre de todos los empleados en mayúscula.
 
@@ -139,7 +139,7 @@ En este paso realizaremos las siguientes consultas.
 └───────────────────┴───────────────────┘
 ```
 
-- Funciones Numéricas:
+- **Funciones Numéricas:**
 
     - Calcular el valor absoluto del salario de todos los empleados.
 
@@ -175,9 +175,27 @@ SELECT salario, ABS(salario) AS valor_absoluto_salario FROM empleados;
 └─────────┴────────────────────────┘
 ```
 
-- Funciones de Fecha y Hora:
+- **Funciones de Fecha y Hora:**
 
     - Muestra la fecha actual.
 
+``` sql
+SELECT CURRENT_DATE AS fecha_actual FROM empleados LIMIT 1;
+```
+
+**Resultado**
+
+``` sql
+┌──────────────┐
+│ fecha_actual │
+├──────────────┤
+│ 2024-01-17   │
+└──────────────┘
+```
+
+- **Funciones de Agragación:**
+
+    - Calcula el promedio de salarios de todos los empleados.
+    - Convierte la cadena '123' a un valor entero.
 
 
