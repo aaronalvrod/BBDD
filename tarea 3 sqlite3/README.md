@@ -52,11 +52,17 @@ Seguidamente de este paso crearemos el fichero de la base de datos
 
 ```sqlite3 tarea3.db```
 
+Una vez creado el fichero de la base de datos accederemos a el y leeremos el archivo en el cual insertamos el CREATE TABLE y los INSERT de la tabla empleados.
 
+```.read empleados-dump.sql```
 
-Una vez creada la tabla y realizados los insert, haremos un `select * from empleados;` para verificar que todos los datos son correctos
+Despues de realizar este paso veremos a ver si nos a leido la tabla correctamente.
 
-El resultado es:
+Para ver si tenemos la tabla - `.tables` 
+
+Para verificar que todos los datos han sido leidos - `select * from empleados;`
+
+Una vez realizados estos pasos podremos observar la siguiente tabla
 
 ``` sql
 ┌────┬───────────┬─────────┬──────────────────┐
