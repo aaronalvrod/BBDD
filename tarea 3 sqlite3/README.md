@@ -14,7 +14,7 @@
 
 Primero creamos el fichero `empleados-dump.sql`
 
-``` vi empleados-dump.sql```
+```vi empleados-dump.sql```
 
 Una vez dentro del fichero copiaremos el siguiente CREATE TABLE y los INSERT de la tabla empleados
 
