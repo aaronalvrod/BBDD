@@ -143,3 +143,41 @@ En este paso realizaremos las siguientes consultas.
 
     - Calcular el valor absoluto del salario de todos los empleados.
 
+``` sql
+SELECT salario, ABS(salario) AS valor_absoluto_salario FROM empleados;
+```
+**Resultado**
+
+``` sql
+┌─────────┬────────────────────────┐
+│ salario │ valor_absoluto_salario │
+├─────────┼────────────────────────┤
+│ 50000.0 │ 50000.0                │
+│ 60000.0 │ 60000.0                │
+│ 55000.0 │ 55000.0                │
+│ 48000.0 │ 48000.0                │
+│ 70000.0 │ 70000.0                │
+│ 52000.0 │ 52000.0                │
+│ 48000.0 │ 48000.0                │
+│ 65000.0 │ 65000.0                │
+│ 51000.0 │ 51000.0                │
+│ 55000.0 │ 55000.0                │
+│ 72000.0 │ 72000.0                │
+│ 49000.0 │ 49000.0                │
+│ 60000.0 │ 60000.0                │
+│ 53000.0 │ 53000.0                │
+│ 68000.0 │ 68000.0                │
+│ 47000.0 │ 47000.0                │
+│ 71000.0 │ 71000.0                │
+│ 54000.0 │ 54000.0                │
+│ 49000.0 │ 49000.0                │
+│ 63000.0 │ 63000.0                │
+└─────────┴────────────────────────┘
+```
+
+- Funciones de Fecha y Hora:
+
+    - Muestra la fecha actual.
+
+
+
