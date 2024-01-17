@@ -54,7 +54,9 @@ INSERT INTO empleados (nombre, salario, departamento) VALUES ('Beatriz', 63000, 
 
 Seguidamente de este paso crearemos el fichero de la base de datos
 
-```sqlite3 tarea3.db```
+``` sql
+sqlite3 tarea3.db
+```
 
 Una vez creado el fichero de la base de datos accederemos a el y leeremos el archivo en el cual insertamos el CREATE TABLE y los INSERT de la tabla empleados.
 
