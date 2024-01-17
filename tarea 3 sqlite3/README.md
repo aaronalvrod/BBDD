@@ -10,13 +10,15 @@
 
 # Pasos
 
-# Paso 1: Creación de la BBDD
+### Paso 1: Creación de la BBDD
 
 Primero creamos el fichero `empleados-dump.sql`
 
 ``` sql
 vi empleados-dump.sql
 ```
+
+### Paso 2: Lectura del fichero sql.
 
 Una vez dentro del fichero copiaremos el siguiente CREATE TABLE y los INSERT de la tabla empleados
 
@@ -93,4 +95,19 @@ Una vez realizados estos pasos podremos observar la siguiente tabla
 └────┴───────────┴─────────┴──────────────────┘
 ```
 
-### Paso 2: Lectura del fichero
+### Paso 3: Realización de consultas
+
+En este paso realizaremos las siguientes consultas.
+
+- Funciones UPPER y LOWER:
+
+    - Mostrar el nombre de todos los empleados en mayúscula.
+
+```sql
+ SELECT UPPER(nombre) AS nombre_mayusculas, LOWER(nombre) AS nombre_minusculas FROM empleados;
+  ```
+  
+- Funciones Numéricas:
+
+    - Calcular el valor absoluto del salario de todos los empleados.
+
