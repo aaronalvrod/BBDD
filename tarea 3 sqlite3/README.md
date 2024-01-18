@@ -211,6 +211,29 @@ SELECT AVG(salario) AS salario_promedio FROM empleados;
 │ 57000.0          │
 └──────────────────┘
 ```
+**Resultado convertir cadena '123' a valor entero**
 
+- **Funciones de Manipulación de Cadenas:**
 
+    - Concatena el nombre y el departamento de cada empleado.
+
+- **Funciones de Manipulación de Cadenas (CONCAT_WS):**
+
+    - Concatena el nombre y el departamento de cada empleado con un guion como separador.
+
+- **Funciones de control de Flujo (CASE):**
+
+    - Categoriza a los empleados según sus salarios.
+
+- **Funciones de Agragación (SUM):**
+
+    - Calcula la suma total de salarios de todos los empleados.
+
+- **Funciones Numéricas (ROUND):**
+
+    - Redondea el salario de todos los empleados a dos decimales.
+
+- **Funciones de Manipulación de Cadenas (LENGTH)**
+
+    - Muestra la longitud de cada nombre de empleado.
 
