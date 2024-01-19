@@ -542,7 +542,7 @@ SELECT CAST('123' AS INTEGER);
 
 - **Order By and Like**
 
-    - Empleados en el departamento de 'Ventas' con salarios superiores a 52000
+    - **Empleados en el departamento de 'Ventas' con salarios superiores a 52000**
 
     ``` sql
     SELECT * FROM empleados WHERE departamento = 'Ventas' AND salario > 52000 ORDER BY salario DESC;
@@ -560,7 +560,7 @@ SELECT CAST('123' AS INTEGER);
     └────┴─────────┴─────────┴──────────────┘
     ```
 
-    - Empleados cuyos nombres contienen la letra 'a' y tienen salarios ordenados de manera ascendente.
+    - **Empleados cuyos nombres contienen la letra 'a' y tienen salarios ordenados de manera ascendente.**
 
     ``` sql
     SELECT * FROM empleados WHERE nombre LIKE '%a%' ORDER BY salario ASC;
@@ -591,7 +591,7 @@ SELECT CAST('123' AS INTEGER);
     └────┴───────────┴─────────┴──────────────────┘
     ```
 
-    - Empleados en el departamento 'Recursos Humanos' con salarios entre 45000 y 55000.
+    - **Empleados en el departamento 'Recursos Humanos' con salarios entre 45000 y 55000.**
 
     ``` sql
     SELECT * FROM empleados WHERE departamento = 'Recursos Humanos' AND salario BETWEEN 45000 AND 55000;
@@ -610,7 +610,7 @@ SELECT CAST('123' AS INTEGER);
     │ 19 │ Roberto  │ 49000.0 │ Recursos Humanos │
     └────┴──────────┴─────────┴──────────────────┘
     ```
-    - Empleados con salarios en orden descendente, limitando a los primeros 5 resultados.
+    - **Empleados con salarios en orden descendente, limitando a los primeros 5 resultados.**
 
     ``` sql
     SELECT * FROM empleados ORDER BY salario DESC LIMIT 5;
@@ -630,7 +630,7 @@ SELECT CAST('123' AS INTEGER);
     └────┴───────────┴─────────┴──────────────┘
     ```
 
-    - Empleados cuyos nombres comienzan con 'M' o 'N' y tienen salarios superiores a 50000.
+    - **Empleados cuyos nombres comienzan con 'M' o 'N' y tienen salarios superiores a 50000.**
 
     ``` sql
     SELECT * FROM empleados WHERE (nombre LIKE 'M%' OR nombre LIKE 'N%') AND salario > 50000;
@@ -648,7 +648,7 @@ SELECT CAST('123' AS INTEGER);
     └────┴─────────┴─────────┴──────────────┘
     ```
 
-    - Empleados en el departamento 'TI' o 'Ventas' ordenados alfabéticamente por nombre.
+    - **Empleados en el departamento 'TI' o 'Ventas' ordenados alfabéticamente por nombre.**
 
     ``` sql
     SELECT * FROM empleados WHERE departamento IN ('TI', 'Ventas') ORDER BY nombre ASC;
@@ -677,7 +677,7 @@ SELECT CAST('123' AS INTEGER);
     └────┴───────────┴─────────┴──────────────┘
     ```
 
-    - Empleados con salarios únicos (eliminando duplicados) en orden ascendente.
+    - **Empleados con salarios únicos (eliminando duplicados) en orden ascendente.**
 
     ``` sql
     SELECT DISTINCT nombre, salario, departamento FROM empleados ORDER BY salario ASC;
@@ -711,7 +711,7 @@ SELECT CAST('123' AS INTEGER);
     │ Diego     │ 72000.0 │ TI               │
     └───────────┴─────────┴──────────────────┘
     ```
-    - Empleados cuyos nombres terminan con 'o' o 'a' y están en el departamento 'Ventas'.
+    - **Empleados cuyos nombres terminan con 'o' o 'a' y están en el departamento 'Ventas'.**
 
     ``` sql
     SELECT * FROM empleados WHERE (nombre LIKE '%o' OR nombre LIKE '%a') AND departamento = 'Ventas';
@@ -729,7 +729,7 @@ SELECT CAST('123' AS INTEGER);
     └────┴─────────┴─────────┴──────────────┘
     ```
 
-    - Empleados con salarios fuera del rango de 55000 a 70000, ordenados por departamento.
+    - **Empleados con salarios fuera del rango de 55000 a 70000, ordenados por departamento.**
 
     ``` sql
     SELECT * FROM empleados WHERE salario < 55000 OR salario > 70000 ORDER BY departamento;
@@ -756,7 +756,7 @@ SELECT CAST('123' AS INTEGER);
     └────┴───────────┴─────────┴──────────────────┘
     ```
 
-    - Empleados en el departamento 'Recursos Humanos' con nombres que no contienen la letra 'e'.
+    - **Empleados en el departamento 'Recursos Humanos' con nombres que no contienen la letra 'e'.**
 
     ``` sql
     SELECT * FROM empleados WHERE departamento = 'Recursos Humanos' AND nombre NOT LIKE '%e%';
