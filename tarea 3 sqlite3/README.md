@@ -211,29 +211,162 @@ SELECT AVG(salario) AS salario_promedio FROM empleados;
 │ 57000.0          │
 └──────────────────┘
 ```
+``` sql
+SELECT CAST('123' AS INTEGER);
+```
+
 **Resultado convertir cadena '123' a valor entero**
+
+
 
 - **Funciones de Manipulación de Cadenas:**
 
     - Concatena el nombre y el departamento de cada empleado.
 
+    ``` sql
+    SELECT nombre || ' - ' || departamento AS nombre_departamento FROM empleados;
+    ```
+
 - **Funciones de Manipulación de Cadenas (CONCAT_WS):**
 
     - Concatena el nombre y el departamento de cada empleado con un guion como separador.
+
+    ``` sql
+    SELECT CONCAT_WS(' - ', nombre, departamento) AS nombre_departamento FROM empleados;
+    ```
 
 - **Funciones de control de Flujo (CASE):**
 
     - Categoriza a los empleados según sus salarios.
 
+    ``` sql
+    SELECT nombre CASE WHEN salario < 50000 THEN 'Bajo' WHEN salario >= 50000 AND salario < 60000 THEN 'Medio' ELSE END AS categoria_salario FROM empleados;
+    ```
+
 - **Funciones de Agragación (SUM):**
 
     - Calcula la suma total de salarios de todos los empleados.
+
+    ``` sql
+    SELECT SUM(salario) FROM empleados;
+    ```
 
 - **Funciones Numéricas (ROUND):**
 
     - Redondea el salario de todos los empleados a dos decimales.
 
+    ``` sql
+    SELECT ROUND(salario, 2) FROM empleados;
+    ```
+
 - **Funciones de Manipulación de Cadenas (LENGTH)**
 
     - Muestra la longitud de cada nombre de empleado.
 
+    ``` sql
+    SELECT nombre, LENGHT(nombre) AS longitud_nombre FROM empleados;
+    ```
+
+- **Funciones de Manipulación de Cadenas (LENGHT):**
+
+    - Muestra la longitud de cada nombre de empleado.
+
+    ``` sql
+    SELECT nombre, LENGHT(nombre) AS longitud_nombre FROM empleados;
+    ```
+
+- **Funciones de Agregación (COUNT):**
+
+    - Cuenta el número total de empleados en cada departamento.
+
+    ``` sql
+    SELECT departamento, COUNT(*) AS num_empleados FROM empleados GROUP BY departamento;
+    ```
+
+- **Funciones de Fecha y Hora (CURRENT_TIME):**
+
+    - Muestra la hora actual.
+
+    ``` sql
+    SELECT CURRENT_DATE;
+    ```
+
+- **Funciones de Conversión (CAST):**
+
+    - Convierte el salario a un valor de punto flotante.
+
+    ``` sql
+    SELECT nombre, CAST(salario AS REAL) AS salario_flotante FROM empleados;    
+    ```
+
+- **Funciones de Manipulación de Cadenas (SUBSTR):**
+
+    - Muestra los primeros tres caracteres de cada nombre de empleado.
+
+    ``` sql
+    SELECT nombre, SUBSTR(nombre, 1, 3) AS primeros_tres_caracteres FROM empleados;
+    ```
+
+- **Order By and Like**
+
+    - Empleados en el departamento de 'Ventas' con salarios superiores a 52000
+
+    ``` sql
+    SELECT * FROM empleados WHERE departamento = 'Ventas' AND salario > 52000 ORDER BY salario DESC;
+    ```
+
+    - Empleados cuyos nombres contienen la letra 'a' y tienen salarios ordenados de manera ascendente.
+
+    ``` sql
+    SELECT * FROM empleados WHERE nombre LIKE '%a%' ORDER BY salario ASC;
+    ```
+
+    - Empleados en el departamento 'Recursos Humanos' con salarios entre 45000 y 55000.
+
+    ``` sql
+    SELECT * FROM empleados WHERE departamento = 'Recursos Humanos' AND salario BETWEEN 45000 AND 55000;
+    ```
+
+    - Empleados con salarios en orden descendente, limitando a los primeros 5 resultados.
+
+    ``` sql
+    SELECT * FROM empleados ORDER BY salario DESC LIMIT 5;
+    ```
+
+    - Empleados cuyos nombres comienzan con 'M' o 'N' y tienen salarios superiores a 50000.
+
+    ``` sql
+    SELECT * FROM empleados WHERE (nombre LIKE 'M%' OR nombre LIKE 'N%') AND salario > 50000;
+    ```
+
+    - Empleados en el departamento 'TI' o 'Ventas' ordenados alfabéticamente por nombre.
+
+    ``` sql
+    SELECT * FROM empleados WHERE departamento IN ('TI', 'Ventas') ORDER BY nombre ASC;
+    ```
+
+    - Empleados con salarios únicos (eliminando duplicados) en orden ascendente.
+
+    ``` sql
+    SELECT DISTINCT nombre, salario, departamento FROM empleados ORDER BY salario ASC;
+    ```
+
+    - Empleados cuyos nombres terminan con 'o' o 'a' y están en el departamento 'Ventas'.
+
+    ``` sql
+    SELECT * FROM empleados WHERE (nombre LIKE '%o' OR nombre LIKE '%a') AND departamento = 'Ventas';
+    ```
+
+    - Empleados con salarios fuera del rango de 55000 a 70000, ordenados por departamento.
+
+    ``` sql
+    SELECT * FROM empleados WHERE salario < 55000 OR salario > 70000 ORDER BY departamento;
+    ```
+
+    - Empleados en el departamento 'Recursos Humanos' con nombres que no contienen la letra 'e'.
+
+    ``` sql
+    SELECT * FROM empleados WHERE departamento = 'Recursos Humanos' AND nombre NOT LIKE '%e%';
+    ```
+
+    
