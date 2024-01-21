@@ -12,9 +12,86 @@
 
 ### Paso 1: Creación de la BBDD
 
+Primeramente creamos el fichero supermercado-dump.sql
+
+Seguidamente copiamos los CREATE TABLE de las tablas productos y ventas y ademas los INSERT de ambas tablas.
+
+``` sql
+CREATE TABLE productos (
+    id INTEGER PRIMARY KEY,
+    nombre TEXT,
+    categoria TEXT,
+    precio REAL
+);
+
+CREATE TABLE ventas (
+    id INTEGER PRIMARY KEY,
+    id_producto INTEGER,
+    cantidad INTEGER,
+    fecha DATE,
+    FOREIGN KEY (id_producto) REFERENCES productos(id)
+);
+
+INSERT INTO productos (id, nombre, categoria, precio) VALUES 
+    (1, 'Arroz', 'Alimentos', 2.5),
+    (2, 'Leche', 'Lácteos', 1.8),
+    (3, 'Pan', 'Panadería', 1.2),
+    (4, 'Manzanas', 'Frutas', 3.0),
+    (5, 'Pollo', 'Carnes', 5.5),
+    (6, 'Huevos', 'Lácteos', 1.0),
+    (7, 'Yogurt', 'Lácteos', 2.0),
+    (8, 'Tomates', 'Verduras', 2.2),
+    (9, 'Queso', 'Lácteos', 4.0),
+    (10, 'Cereal', 'Desayuno', 3.5),
+    (11, 'Papel Higiénico', 'Hogar', 1.5),
+    (12, 'Cepillo de Dientes', 'Higiene', 2.0),
+    (13, 'Detergente', 'Limpieza', 2.8),
+    (14, 'Galletas', 'Snacks', 1.7),
+    (15, 'Aceite de Oliva', 'Cocina', 4.5),
+    (16, 'Café', 'Bebidas', 5.0),
+    (17, 'Sopa enlatada', 'Conservas', 2.3),
+    (18, 'Jabón de Baño', 'Higiene', 1.2),
+    (19, 'Botellas de Agua', 'Bebidas', 1.0),
+    (20, 'Cerveza', 'Bebidas', 3.8);
+
+INSERT INTO ventas (id_producto, cantidad, fecha) VALUES 
+    (1, 5, '2024-01-17'),
+    (2, 3, '2024-01-17'),
+    (4, 2, '2024-01-17'),
+    (5, 1, '2024-01-17'),
+    (6, 10, '2024-01-18'),
+    (8, 4, '2024-01-18'),
+    (10, 2, '2024-01-18'),
+    (14, 7, '2024-01-19'),
+    (16, 3, '2024-01-19'),
+    (18, 6, '2024-01-20');
+```
 ### Paso 2: Lectura del fichero sql.
 
+En este paso crearemos el fichero de la base de datos que se llamara `tarea4.db`
+
+``` sql
+sqlite3 tarea4.db
+```
+
+Una vez tengamos el fichero creado leeremos el archivo en el cual copiamos los CREATE TABLE y los INSERT de ambas tablas.
+
+``` sql
+.read supermercado-dump.sql
+```
 ### Paso 3: Responde a las siguientes cuestiones.
+
+- **Realiza el diagrama ER de la BBDD supermercado**
+
+- **Realiza el diagrama MR de la BBDD supermercado**
+
+- **Indica si la BBDD esta normalizada hasta la 3ª forma normal, justificando la respuesta**
+
+    - 1º F.N.: Cumple la primera forma normal, ya que todas las columnas contienen valores atómicos, y no hay conjuntos ni listas de valores
+
+    - 2º F.N.: Cumple la segunda forma normal, ya que no hay dependencias parciales en ninguna de las tablas. Casa atributo no clave depende completamente de la clave primaria
+
+    - 3º F.N.: Cumple la tercera forma norma, ya que no hay dependencias transitivas, lo que significa que ningún atributo no clave depende de otro atributo no clave.
 
 ### Paso 4: Responde a las siguientes cuestiones.
 
@@ -118,5 +195,333 @@ SELECT * FROM productos WHERE nombre LIKE '%a%';
 - **Obtener la cantidad total de productos vendidos en todas las fechas.**
 
 ``` sql
+SELECT SUM(cantidad) as cantidad_total_productos
+FROM Ventas;
+```
 
+**Resultado**
+
+``` sql
+┌──────────────────────────┐
+│ cantidad_total_productos │
+├──────────────────────────┤
+│ 43                       │
+└──────────────────────────┘
+```
+
+- **Encontrar el producto más caro en cada categoría.**
+
+``` sql
+SELECT
+  categoria,
+  nombre AS producto_mas_caro,
+  precio AS precio_mas_caro
+FROM
+  Productos P
+WHERE
+  precio = (SELECT MAX(precio) FROM Productos WHERE categoria = P.categoria);
+```
+
+**Resultado**
+
+``` sql
+┌───────────┬────────────────────┬─────────────────┐
+│ categoria │ producto_mas_caro  │ precio_mas_caro │
+├───────────┼────────────────────┼─────────────────┤
+│ Alimentos │ Arroz              │ 2.5             │
+│ Panadería │ Pan                │ 1.2             │
+│ Frutas    │ Manzanas           │ 3.0             │
+│ Carnes    │ Pollo              │ 5.5             │
+│ Verduras  │ Tomates            │ 2.2             │
+│ Lácteos   │ Queso              │ 4.0             │
+│ Desayuno  │ Cereal             │ 3.5             │
+│ Hogar     │ Papel Higiénico    │ 1.5             │
+│ Higiene   │ Cepillo de Dientes │ 2.0             │
+│ Limpieza  │ Detergente         │ 2.8             │
+│ Snacks    │ Galletas           │ 1.7             │
+│ Cocina    │ Aceite de Oliva    │ 4.5             │
+│ Bebidas   │ Café               │ 5.0             │
+│ Conservas │ Sopa enlatada      │ 2.3             │
+└───────────┴────────────────────┴─────────────────┘
+```
+
+- **Listar los productos que no han sido vendidos.**
+
+``` sql
+SELECT
+  productos.*
+FROM
+  productos
+LEFT JOIN
+  ventas ON productos.id = ventas.id_producto
+WHERE
+  ventas.id_producto IS NULL;
+```
+
+**Resultado**
+
+``` sql
+┌────┬────────────────────┬───────────┬────────┐
+│ id │       nombre       │ categoria │ precio │
+├────┼────────────────────┼───────────┼────────┤
+│ 3  │ Pan                │ Panadería │ 1.2    │
+│ 7  │ Yogurt             │ Lácteos   │ 2.0    │
+│ 9  │ Queso              │ Lácteos   │ 4.0    │
+│ 11 │ Papel Higiénico    │ Hogar     │ 1.5    │
+│ 12 │ Cepillo de Dientes │ Higiene   │ 2.0    │
+│ 13 │ Detergente         │ Limpieza  │ 2.8    │
+│ 15 │ Aceite de Oliva    │ Cocina    │ 4.5    │
+│ 17 │ Sopa enlatada      │ Conservas │ 2.3    │
+│ 19 │ Botellas de Agua   │ Bebidas   │ 1.0    │
+│ 20 │ Cerveza            │ Bebidas   │ 3.8    │
+└────┴────────────────────┴───────────┴────────┘
+```
+
+- **Calcular el precio promedio de los productos en la categoría "Snacks".**
+
+``` sql
+SELECT AVG(precio) AS precio_promedio_snacks
+FROM productos
+WHERE categoria = 'Snacks';
+```
+
+**Resultado**
+
+``` sql
+┌────────────────────────┐
+│ precio_promedio_snacks │
+├────────────────────────┤
+│ 1.7                    │
+└────────────────────────┘
+```
+
+- **Encontrar los productos que han sido vendidos más de 5 veces.**
+
+``` sql
+
+```
+
+**Resultado**
+
+- **Mostrar la fecha y la cantidad de ventas para cada producto.**
+
+``` sql
+SELECT
+  productos.*,
+  ventas.fecha,
+  COUNT(ventas.id) AS cantidad_ventas
+FROM
+  productos
+JOIN
+  ventas ON productos.id = ventas.id_producto
+GROUP BY
+  productos.id, ventas.fecha;
+```
+
+**Resultado**
+
+``` sql
+┌────┬───────────────┬───────────┬────────┬────────────┬─────────────────┐
+│ id │    nombre     │ categoria │ precio │   fecha    │ cantidad_ventas │
+├────┼───────────────┼───────────┼────────┼────────────┼─────────────────┤
+│ 1  │ Arroz         │ Alimentos │ 2.5    │ 2024-01-17 │ 1               │
+│ 2  │ Leche         │ Lácteos   │ 1.8    │ 2024-01-17 │ 1               │
+│ 4  │ Manzanas      │ Frutas    │ 3.0    │ 2024-01-17 │ 1               │
+│ 5  │ Pollo         │ Carnes    │ 5.5    │ 2024-01-17 │ 1               │
+│ 6  │ Huevos        │ Lácteos   │ 1.0    │ 2024-01-18 │ 1               │
+│ 8  │ Tomates       │ Verduras  │ 2.2    │ 2024-01-18 │ 1               │
+│ 10 │ Cereal        │ Desayuno  │ 3.5    │ 2024-01-18 │ 1               │
+│ 14 │ Galletas      │ Snacks    │ 1.7    │ 2024-01-19 │ 1               │
+│ 16 │ Café          │ Bebidas   │ 5.0    │ 2024-01-19 │ 1               │
+│ 18 │ Jabón de Baño │ Higiene   │ 1.2    │ 2024-01-20 │ 1               │
+└────┴───────────────┴───────────┴────────┴────────────┴─────────────────┘
+```
+
+- **Encontrar los productos que tienen un precio menor o igual a 2.**
+
+``` sql
+SELECT *
+FROM productos
+WHERE precio <= 2;
+```
+
+**Resultado**
+
+``` sql
+┌────┬────────────────────┬───────────┬────────┐
+│ id │       nombre       │ categoria │ precio │
+├────┼────────────────────┼───────────┼────────┤
+│ 2  │ Leche              │ Lácteos   │ 1.8    │
+│ 3  │ Pan                │ Panadería │ 1.2    │
+│ 6  │ Huevos             │ Lácteos   │ 1.0    │
+│ 7  │ Yogurt             │ Lácteos   │ 2.0    │
+│ 11 │ Papel Higiénico    │ Hogar     │ 1.5    │
+│ 12 │ Cepillo de Dientes │ Higiene   │ 2.0    │
+│ 14 │ Galletas           │ Snacks    │ 1.7    │
+│ 18 │ Jabón de Baño      │ Higiene   │ 1.2    │
+│ 19 │ Botellas de Agua   │ Bebidas   │ 1.0    │
+└────┴────────────────────┴───────────┴────────┘
+```
+
+- **Calcular la cantidad total de ventas para cada fecha.**
+
+``` sql
+SELECT
+  fecha,
+  COUNT(id) AS cantidad_total_ventas
+FROM
+  ventas
+GROUP BY
+  fecha;
+```
+
+**Resultado**
+
+``` sql
+┌────────────┬───────────────────────┐
+│   fecha    │ cantidad_total_ventas │
+├────────────┼───────────────────────┤
+│ 2024-01-17 │ 4                     │
+│ 2024-01-18 │ 3                     │
+│ 2024-01-19 │ 2                     │
+│ 2024-01-20 │ 1                     │
+└────────────┴───────────────────────┘
+```
+
+- **Listar los productos cuyo nombre comienza con la letra 'P'.**
+
+``` sql
+SELECT *
+FROM productos
+WHERE nombre LIKE 'P%';
+```
+
+**Resultado**
+
+``` sql
+┌────┬─────────────────┬───────────┬────────┐
+│ id │     nombre      │ categoria │ precio │
+├────┼─────────────────┼───────────┼────────┤
+│ 3  │ Pan             │ Panadería │ 1.2    │
+│ 5  │ Pollo           │ Carnes    │ 5.5    │
+│ 11 │ Papel Higiénico │ Hogar     │ 1.5    │
+└────┴─────────────────┴───────────┴────────┘
+```
+
+- **Obtener el producto más vendido en términos de cantidad.**
+
+``` sql
+SELECT
+  productos.*,
+  SUM(ventas.cantidad) AS cantidad_total_vendida
+FROM
+  productos
+JOIN
+  ventas ON productos.id = ventas.id_producto
+GROUP BY
+  productos.id
+ORDER BY
+  cantidad_total_vendida DESC
+LIMIT 1;
+```
+
+**Resultado**
+
+``` sql
+┌────┬────────┬───────────┬────────┬────────────────────────┐
+│ id │ nombre │ categoria │ precio │ cantidad_total_vendida │
+├────┼────────┼───────────┼────────┼────────────────────────┤
+│ 6  │ Huevos │ Lácteos   │ 1.0    │ 10                     │
+└────┴────────┴───────────┴────────┴────────────────────────┘
+```
+
+- **Mostrar los productos que fueron vendidos en la fecha '2024-01-18'.**
+
+``` sql
+SELECT
+  productos.*,
+  ventas.fecha,
+  ventas.cantidad
+FROM
+  productos
+JOIN
+  ventas ON productos.id = ventas.id_producto
+WHERE
+  ventas.fecha = '2024-01-18';
+```
+
+**Resultado**
+
+``` sql
+┌────┬─────────┬───────────┬────────┬────────────┬──────────┐
+│ id │ nombre  │ categoria │ precio │   fecha    │ cantidad │
+├────┼─────────┼───────────┼────────┼────────────┼──────────┤
+│ 6  │ Huevos  │ Lácteos   │ 1.0    │ 2024-01-18 │ 10       │
+│ 8  │ Tomates │ Verduras  │ 2.2    │ 2024-01-18 │ 4        │
+│ 10 │ Cereal  │ Desayuno  │ 3.5    │ 2024-01-18 │ 2        │
+└────┴─────────┴───────────┴────────┴────────────┴──────────┘
+```
+
+- **Calcular el total de ventas para cada producto.**
+
+``` sql
+SELECT
+  productos.*,
+  SUM(ventas.cantidad) AS total_ventas
+FROM
+  productos
+LEFT JOIN
+  ventas ON productos.id = ventas.id_producto
+GROUP BY
+  productos.id;
+```
+
+**Resultado**
+
+``` sql
+┌────┬────────────────────┬───────────┬────────┬──────────────┐
+│ id │       nombre       │ categoria │ precio │ total_ventas │
+├────┼────────────────────┼───────────┼────────┼──────────────┤
+│ 1  │ Arroz              │ Alimentos │ 2.5    │ 5            │
+│ 2  │ Leche              │ Lácteos   │ 1.8    │ 3            │
+│ 3  │ Pan                │ Panadería │ 1.2    │              │
+│ 4  │ Manzanas           │ Frutas    │ 3.0    │ 2            │
+│ 5  │ Pollo              │ Carnes    │ 5.5    │ 1            │
+│ 6  │ Huevos             │ Lácteos   │ 1.0    │ 10           │
+│ 7  │ Yogurt             │ Lácteos   │ 2.0    │              │
+│ 8  │ Tomates            │ Verduras  │ 2.2    │ 4            │
+│ 9  │ Queso              │ Lácteos   │ 4.0    │              │
+│ 10 │ Cereal             │ Desayuno  │ 3.5    │ 2            │
+│ 11 │ Papel Higiénico    │ Hogar     │ 1.5    │              │
+│ 12 │ Cepillo de Dientes │ Higiene   │ 2.0    │              │
+│ 13 │ Detergente         │ Limpieza  │ 2.8    │              │
+│ 14 │ Galletas           │ Snacks    │ 1.7    │ 7            │
+│ 15 │ Aceite de Oliva    │ Cocina    │ 4.5    │              │
+│ 16 │ Café               │ Bebidas   │ 5.0    │ 3            │
+│ 17 │ Sopa enlatada      │ Conservas │ 2.3    │              │
+│ 18 │ Jabón de Baño      │ Higiene   │ 1.2    │ 6            │
+│ 19 │ Botellas de Agua   │ Bebidas   │ 1.0    │              │
+│ 20 │ Cerveza            │ Bebidas   │ 3.8    │              │
+└────┴────────────────────┴───────────┴────────┴──────────────┘
+```
+
+- **Encontrar los productos con un precio entre 3 y 4.**
+
+``` sql
+SELECT *
+FROM productos
+WHERE precio BETWEEN 3 AND 4;
+```
+
+**Resultado**
+
+``` sql
+┌────┬──────────┬───────────┬────────┐
+│ id │  nombre  │ categoria │ precio │
+├────┼──────────┼───────────┼────────┤
+│ 4  │ Manzanas │ Frutas    │ 3.0    │
+│ 9  │ Queso    │ Lácteos   │ 4.0    │
+│ 10 │ Cereal   │ Desayuno  │ 3.5    │
+│ 20 │ Cerveza  │ Bebidas   │ 3.8    │
+└────┴──────────┴───────────┴────────┘
 ```
