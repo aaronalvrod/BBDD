@@ -83,7 +83,11 @@ Una vez tengamos el fichero creado leeremos el archivo en el cual copiamos los C
 
 - **Realiza el diagrama ER de la BBDD supermercado**
 
+  ![Alt text](ER.drawio.png)
+
 - **Realiza el diagrama MR de la BBDD supermercado**
+
+  ![Alt text](mr.drawio.png)
 
 - **Indica si la BBDD esta normalizada hasta la 3ª forma normal, justificando la respuesta**
 
