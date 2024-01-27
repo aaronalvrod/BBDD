@@ -69,7 +69,7 @@ Resultado
 └────┴───────────┴─────────┴───────┘
 ```
 
-- Cambiar el tipo de Pikachu a 'Eléctrico/Rojo'.
+- **Cambiar el tipo de Pikachu a 'Eléctrico/Rojo'.**
 
 Consulta:
 
