@@ -457,3 +457,151 @@ Resultado:
 └────┴──────────┴─────────┴───────┘
 ```
 
+- **Eliminar todos los Pokémon de nivel 40.**
+
+Consulta:
+
+```sql
+DELETE FROM pokemon WHERE nivel = 40;
+```
+
+Resultado:
+
+```sql
+┌────┬─────────────────┬─────────┬───────┐
+│ id │     nombre      │ id_tipo │ nivel │
+├────┼─────────────────┼─────────┼───────┤
+│ 1  │ Bulbasaur Nv.15 │ 3       │ 20    │
+│ 2  │ Charmander      │ 2       │ 17    │
+│ 3  │ Squirtle        │ 1       │ 13    │
+│ 4  │ Pikachu         │         │ 15    │
+│ 5  │ Geodude         │ 5       │ 16    │
+│ 6  │ Vaporeon        │ 1       │ 30    │
+│ 7  │ Flareon         │ 2       │ 32    │
+│ 8  │ Ivysaur         │ 3       │ 23    │
+│ 9  │ Jolteon         │ 4       │ 27    │
+│ 10 │ Cubone          │ 5       │ 19    │
+│ 11 │ Gyarados        │ 1       │ 35    │
+│ 13 │ Exeggutor       │ 3       │ 45    │
+│ 14 │ Raichu          │ 4       │ 43    │
+│ 15 │ Sandslash       │ 5       │ 38    │
+│ 16 │ Venusaur        │ 3       │ 50    │
+│ 17 │ Charizard       │ 2       │ 55    │
+│ 18 │ Blastoise       │ 1       │ 60    │
+│ 19 │ Electabuzz      │ 4       │ 53    │
+│ 20 │ Rhydon          │ 5       │ 57    │
+│ 21 │ Dragonite       │ 2       │ 65    │
+│ 22 │ Flareon         │ 2       │ 70    │
+│ 23 │ Venusaur        │ 3       │ 75    │
+│ 24 │ Zapdos          │ 4       │ 80    │
+│ 25 │ Rhydon          │ 5       │ 85    │
+└────┴─────────────────┴─────────┴───────┘
+```
+
+- **Obtener los Pokémon de tipo Planta con nivel superior a 20.**
+
+Consulta:
+
+``` sql
+SELECT * FROM pokemon WHERE id_tipo = (SELECT id_tipo FROM tipo WHERE nombre = 'Planta') AND nivel > 20;
+```
+
+Resultado:
+
+```sql
+┌────┬────────────┬─────────┬───────┐
+│ id │   nombre   │ id_tipo │ nivel │
+├────┼────────────┼─────────┼───────┤
+│ 6  │ Vaporeon   │ 1       │ 30    │
+│ 7  │ Flareon    │ 2       │ 32    │
+│ 8  │ Ivysaur    │ 3       │ 23    │
+│ 9  │ Jolteon    │ 4       │ 27    │
+│ 11 │ Gyarados   │ 1       │ 35    │
+│ 13 │ Exeggutor  │ 3       │ 45    │
+│ 14 │ Raichu     │ 4       │ 43    │
+│ 15 │ Sandslash  │ 5       │ 38    │
+│ 16 │ Venusaur   │ 3       │ 50    │
+│ 17 │ Charizard  │ 2       │ 55    │
+│ 18 │ Blastoise  │ 1       │ 60    │
+│ 19 │ Electabuzz │ 4       │ 53    │
+│ 20 │ Rhydon     │ 5       │ 57    │
+│ 21 │ Dragonite  │ 2       │ 65    │
+│ 22 │ Flareon    │ 2       │ 70    │
+│ 23 │ Venusaur   │ 3       │ 75    │
+│ 24 │ Zapdos     │ 4       │ 80    │
+│ 25 │ Rhydon     │ 5       │ 85    │
+└────┴────────────┴─────────┴───────┘
+```
+
+- **Eliminar todos los Pokémon de tipo Planta.**
+
+Consulta:
+
+``` sql
+DELETE FROM pokemon where id_tipo = (SELECT id_tipo FROM tipo WHERE nombre = 'Planta';)
+```
+
+Resultado:
+
+``` sql 
+┌────┬─────────┬─────────┬───────┐
+│ id │ nombre  │ id_tipo │ nivel │
+├────┼─────────┼─────────┼───────┤
+│ 4  │ Pikachu │         │ 15    │
+└────┴─────────┴─────────┴───────┘
+```
+
+- **Obtener todos los Pokémon cuyos nombres contienen las letas 'sa'.**
+
+Consulta:
+
+``` sql
+SELECT * FROM pokemon WHERE nombre like '%sa%';
+```
+
+Resultado:
+
+``` sql
+
+```
+
+- **Encuentra todos los Pokémon cuyo nivel es 40, 50 o 60.**
+
+Consulta:
+
+``` sql
+SELECT * FROM pokemon WHERE nivel IN (40, 50, 60);
+```
+
+Resultado:
+
+``` sql
+
+```
+
+- **Obtén todos los Pokémon de tipo Fuego cuyos nombres comienzan con la letra 'C'.**
+
+Consulta:
+
+``` sql
+SELECT * FROM pokemon WHERE id_tipo = (SELECT id_tipo FROM tipo WHERE nombre = 'Fuego') AND nombre LIKE 'C%';
+```
+
+Resultado:
+
+```sql 
+
+```
+
+- **Encuentra los nombres y tipos de los Pokémon cuyo nivel es mayor que el promedio de todos los Pokémon en la base de datos.**
+
+Consulta:
+
+```sql
+SELECT nombre, tipo.nombre AS Tipo FROM Pokémon INNER JOIN tipo ON pokemon.id_tipo = tipo.id_tipo WHERE nivel > (SELECT AVG(nivel) FROM pokemon);
+```
+Resultado:
+
+``` sql
+
+```
