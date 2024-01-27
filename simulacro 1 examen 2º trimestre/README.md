@@ -53,7 +53,11 @@
 
 - **Actualizar el nivel de Bulbasaur:**
 
-Consulta: ```sql UPDATE pokemon SET nivel = 15 WHERE nombre = 'Bulbasaur'; ```
+Consulta:
+
+``` sql 
+UPDATE pokemon SET nivel = 15 WHERE nombre = 'Bulbasaur';
+```
 
 Resultado
 
@@ -67,6 +71,10 @@ Resultado
 
 - Cambiar el tipo de Pikachu a 'Eléctrico/Rojo'.
 
-Consulta: ``` sql UPDATE pokemon SET id_tipo = (SELECT id_tipo FROM tipo WHERE nombre = 'Eléctrico/Rojo') WHERE nombre = 'Pikachu';'; ```
+Consulta:
+
+``` sql
+UPDATE pokemon SET id_tipo = (SELECT id_tipo FROM tipo WHERE nombre = 'Eléctrico/Rojo') WHERE nombre = 'Pikachu';'; 
+```
 
 Resultado: 
