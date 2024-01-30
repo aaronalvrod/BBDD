@@ -646,27 +646,16 @@ SELECT nombre, tipo.nombre AS Tipo FROM Pokémon INNER JOIN tipo ON pokemon.id_t
 Resultado:
 
 ``` sql
-┌────┬─────────────────┬─────────┬───────┐
-│ id │     nombre      │ id_tipo │ nivel │
-├────┼─────────────────┼─────────┼───────┤
-│ 2  │ Charmander      │ 2       │ 17    │
-│ 3  │ Squirtle        │ 1       │ 13    │
-│ 4  │ Pikachu         │         │ 15    │
-│ 5  │ Geodude         │ 5       │ 16    │
-│ 6  │ Vaporeon        │ 1       │ 30    │
-│ 7  │ Flareon         │ 2       │ 32    │
-│ 9  │ Jolteon         │ 4       │ 27    │
-│ 10 │ Cubone          │ 5       │ 19    │
-│ 11 │ Gyarados        │ 1       │ 35    │
-│ 14 │ Raichu          │ 4       │ 43    │
-│ 15 │ Sandslash       │ 5       │ 38    │
-│ 17 │ Charizard       │ 2       │ 55    │
-│ 18 │ Blastoise       │ 1       │ 60    │
-│ 19 │ Electabuzz      │ 4       │ 53    │
-│ 20 │ Rhydon          │ 5       │ 57    │
-│ 21 │ Dragonite       │ 2       │ 65    │
-│ 22 │ Flareon         │ 2       │ 70    │
-│ 24 │ Zapdos          │ 4       │ 80    │
-│ 25 │ Rhydon          │ 5       │ 85    │
-└────┴─────────────────┴─────────┴───────┘
+┌─────────────────┬─────────┐
+│      nombre     │ id_tipo │
+├─────────────────┼─────────┤
+│ Charizard       │ 2       │
+│ Blastoise       │ 1       │
+│ Electabuzz      │ 4       │
+│ Rhydon          │ 5       │
+│ Dragonite       │ 2       │
+│ Flareon         │ 2       │
+│ Zapdos          │ 4       │
+│ Rhydon          │ 5       │
+└─────────────────┴─────────┘
 ```
