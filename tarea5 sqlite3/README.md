@@ -54,7 +54,24 @@
 └────────┴───────────────────────────────────┴──────────┴─────────────────────────────────────────────┴────────┘
 ```
 
+### Consultas
+
+
 -- **Selección de libros cuyo título comienza con "H".**
+
+Consulta:
+
+``` sql
+SELECT * FROM libro WHERE titulo = 'H%';
+```
+
+Resultado
+
+``` sql
+Ninguno porque ningún titulo comienza por H.
+```
+
+-- **Libros escritos por autores cuyos nombres terminan con "ing".**
 
 Consulta:
 
@@ -62,13 +79,11 @@ Consulta:
 
 ```
 
-Resultado
+Resultado:
 
 ``` sql
 
 ```
-
--- **Libros escritos por autores cuyos nombres terminan con "ing".**
 
 -- **Libros con títulos que contienen la palabra "and" en cualquier posición.**
 
