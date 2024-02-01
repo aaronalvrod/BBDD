@@ -421,13 +421,17 @@ Resultado:
 Consulta:
 
 ``` sql
-
+SELECT * FROM libro WHERE editorial REGEXP '^P';
 ```
 
 Resultado:
 
 ``` sql
-
+┌────────┬───────────────────────────┬──────────┬───────────┬────────┐
+│ codigo │          titulo           │ autor_id │ editorial │ precio │
+├────────┼───────────────────────────┼──────────┼───────────┼────────┤
+│ 16     │ The Count of Monte Cristo │ 18       │ Pétion    │ 27.99  │
+└────────┴───────────────────────────┴──────────┴───────────┴────────┘
 ```
 
 -- **Obtener todos los autores cuyo nombre tiene exactamente 6 caracteres:**
