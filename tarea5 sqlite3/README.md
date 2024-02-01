@@ -183,12 +183,34 @@ Resultado:
 Consulta:
 
 ``` sql
-
+SELECT * FROM libro WHERE titulo LIKE '% % %';
 ```
 
 Resultado:
 
 ``` sql
+┌────────┬───────────────────────────────────┬──────────┬───────────────────────────┬────────┐
+│ codigo │              titulo               │ autor_id │         editorial         │ precio │
+├────────┼───────────────────────────────────┼──────────┼───────────────────────────┼────────┤
+│ 1      │ The Great Gatsby                  │ 6        │ Charles Scribner's Sons   │ 20.99  │
+│ 2      │ To Kill a Mockingbird             │ 7        │ J.B. Lippincott & Co.     │ 15.95  │
+│ 3      │ The Catcher in the Rye            │ 8        │ Little, Brown and Company │ 18.75  │
+│ 4      │ One Hundred Years of Solitude     │ 9        │ Harper & Row              │ 22.5   │
+│ 5      │ Brave New World                   │ 3        │ Chatto & Windus           │ 17.99  │
+│ 7      │ The Lord of the Rings             │ 10       │ George Allen & Unwin      │ 35.5   │
+│ 8      │ The Chronicles of Narnia          │ 11       │ Geoffrey Bles             │ 28.99  │
+│ 13     │ The Grapes of Wrath               │ 15       │ The Viking Press          │ 21.5   │
+│ 15     │ The Old Man and the Sea           │ 17       │ Charles Scribner's Sons   │ 18.95  │
+│ 16     │ The Count of Monte Cristo         │ 18       │ Pétion                    │ 27.99  │
+│ 17     │ The Picture of Dorian Gray        │ 19       │ Ward, Lock, and Company   │ 14.5   │
+│ 18     │ The Adventures of Sherlock Holmes │ 20       │ George Newnes             │ 16.99  │
+│ 20     │ Alice's Adventures in Wonderland  │ 22       │ Macmillan                 │ 11.5   │
+│ 23     │ The Divine Comedy                 │ 25       │ Dante Alighieri           │ 20.5   │
+│ 26     │ The Jungle Book                   │ 28       │ Macmillan Publishers      │ 14.99  │
+│ 27     │ The Wind in the Willows           │ 29       │ Methuen & Co.             │ 17.5   │
+│ 28     │ War and Peace                     │ 26       │ The Russian Messenger     │ 33.25  │
+│ 29     │ Crime and Punishment              │ 30       │ The Russian Messenger     │ 19.99  │
+└────────┴───────────────────────────────────┴──────────┴───────────────────────────┴────────┘
 
 ```
 
