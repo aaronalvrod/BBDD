@@ -219,12 +219,17 @@ Resultado:
 Consulta:
 
 ``` sql
-
+SELECT * FROM autor WHERE nombre LIKE 'A%';
 ```
 
 Resultado:
 
 ``` sql
+┌────┬─────────────────┐
+│ id │     nombre      │
+├────┼─────────────────┤
+│ 5  │ Agatha Christie │
+└────┴─────────────────┘
 
 ```
 
