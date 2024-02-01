@@ -87,60 +87,420 @@ Resultado:
 
 -- **Libros con títulos que contienen la palabra "and" en cualquier posición.**
 
+Consulta:
+
+``` sql
+
+```
+
+Resultado:
+
+``` sql
+
+```
+
 -- **Libros cuyo título comienza con una vocal.**
+
+Consulta:
+
+``` sql
+
+```
+
+Resultado:
+
+``` sql
+
+```
 
 -- **Libros cuyo autor tiene al menos una vocal repetida.**
 
+Consulta:
+
+``` sql
+
+```
+
+Resultado:
+
+``` sql
+
+```
+
 -- **Libros con precios que tienen dos dígitos decimales exactos.**
+
+Consulta:
+
+``` sql
+
+```
+
+Resultado:
+
+``` sql
+
+```
 
 -- **Libros cuyos títulos tienen al menos tres palabras.**
 
+Consulta:
+
+``` sql
+
+```
+
+Resultado:
+
+``` sql
+
+```
+
 -- **Obtener todos los autores cuyo nombre empieza con la letra "A":**
+
+Consulta:
+
+``` sql
+
+```
+
+Resultado:
+
+``` sql
+
+```
 
 -- **Seleccionar los libros cuyo título contiene la palabra "SQL":**
 
+Consulta:
+
+``` sql
+
+```
+
+Resultado:
+
+``` sql
+
+```
+
 -- **Obtener todos los autores cuyo nombre termina con "ez":**
+
+Consulta:
+
+``` sql
+
+```
+
+Resultado:
+
+``` sql
+
+```
 
 -- **Obtener todos los autores cuyo nombre tiene al menos 5 caracteres:**
 
+Consulta:
+
+``` sql
+
+```
+
+Resultado:
+
+``` sql
+
+```
+
 -- **Seleccionar los libros cuya editorial es diferente de "EditorialX":**
+
+Consulta:
+
+``` sql
+
+```
+
+Resultado:
+
+``` sql
+
+```
 
 -- **Obtener todos los autores cuyo nombre contiene al menos una vocal:**
 
+Consulta:
+
+``` sql
+
+```
+
+Resultado:
+
+``` sql
+
+```
+
 -- **Seleccionar los libros cuyo título comienza con una letra mayúscula:**
+
+Consulta:
+
+``` sql
+
+```
+
+Resultado:
+
+``` sql
+
+```
 
 -- **Obtener todos los autores cuyo nombre no contiene la letra "r":**
 
+Consulta:
+
+``` sql
+
+```
+
+Resultado:
+
+``` sql
+
+```
+
 -- **Seleccionar los libros cuya editorial empieza con la letra "P":**
+
+Consulta:
+
+``` sql
+
+```
+
+Resultado:
+
+``` sql
+
+```
 
 -- **Obtener todos los autores cuyo nombre tiene exactamente 6 caracteres:**
 
+Consulta:
+
+``` sql
+
+```
+
+Resultado:
+
+``` sql
+
+```
+
 -- **Seleccionar los libros cuyo título contiene al menos un número:**
+
+Consulta:
+
+``` sql
+
+```
+
+Resultado:
+
+``` sql
+
+```
 
 -- **Obtener todos los autores cuyo nombre inicia con una vocal:**
 
+Consulta:
+
+``` sql
+
+```
+
+Resultado:
+
+``` sql
+
+```
+
 -- **Obtener todos los autores cuyo nombre no contiene espacios en blanco:**
+
+Consulta:
+
+``` sql
+
+```
+
+Resultado:
+
+``` sql
+
+```
 
 -- **Seleccionar los libros cuyo título termina con una vocal:**
 
+Consulta:
+
+``` sql
+
+```
+
+Resultado:
+
+``` sql
+
+```
+
 -- **Obtener todos los autores cuyo nombre contiene la secuencia "er":**
+
+Consulta:
+
+``` sql
+
+```
+
+Resultado:
+
+``` sql
+
+```
 
 -- **Seleccionar los libros cuyo título empieza con la palabra "The":**
 
+Consulta:
+
+``` sql
+
+```
+
+Resultado:
+
+``` sql
+
+```
+
 -- **Obtener todos los autores cuyo nombre tiene al menos una letra mayúscula:**
+
+Consulta:
+
+``` sql
+
+```
+
+Resultado:
+
+``` sql
+
+```
 
 -- **Seleccionar los libros cuyo precio es un número decimal con exactamente dos decimales:**
 
+Consulta:
+
+``` sql
+
+```
+
+Resultado:
+
+``` sql
+
+```
+
 -- **Obtener todos los autores cuyo nombre no contiene números:**
+
+Consulta:
+
+``` sql
+
+```
+
+Resultado:
+
+``` sql
+
+```
 
 -- **Seleccionar los libros cuyo título contiene al menos tres vocales:**
 
+Consulta:
+
+``` sql
+
+```
+
+Resultado:
+
+``` sql
+
+```
+
 -- **Obtener todos los autores cuyo nombre inicia con una consonante:**
+
+Consulta:
+
+``` sql
+
+```
+
+Resultado:
+
+``` sql
+
+```
 
 -- **Seleccionar los libros cuyo título no contiene la palabra "Science":**
 
+Consulta:
+
+``` sql
+
+```
+
+Resultado:
+
+``` sql
+
+```
+
 -- **Obtener todos los autores cuyo nombre tiene al menos una letra repetida consecutivamente:**
+
+Consulta:
+
+``` sql
+
+```
+
+Resultado:
+
+``` sql
+
+```
 
 -- **Obtener todos los autores cuyo nombre empieza con "M" o termina con "n":**
 
+Consulta:
+
+``` sql
+
+```
+
+Resultado:
+
+``` sql
+
+```
+
 -- **Obtener todos los autores cuyo nombre no contiene caracteres especiales:**
+
+Consulta:
+
+``` sql
+
+```
+
+Resultado:
+
+``` sql
+
+```
