@@ -334,7 +334,7 @@ Resultado:
 Consulta:
 
 ``` sql
-
+SELECT * FROM autor WHERE nombre REGEXP '[aeiouAEIOU]';
 ```
 
 Resultado:
