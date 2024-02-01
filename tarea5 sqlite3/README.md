@@ -111,13 +111,18 @@ Resultado:
 Consulta:
 
 ``` sql
-
+SELECT * FROM libro WHERE titulo LIKE 'a%' OR 'e%' OR 'i%' OR 'u%';
 ```
 
 Resultado:
 
 ``` sql
-
+┌────────┬──────────────────────────────────┬──────────┬───────────────────────┬────────┐
+│ codigo │              titulo              │ autor_id │       editorial       │ precio │
+├────────┼──────────────────────────────────┼──────────┼───────────────────────┼────────┤
+│ 20     │ Alice's Adventures in Wonderland │ 22       │ Macmillan             │ 11.5   │
+│ 24     │ Anna Karenina                    │ 26       │ The Russian Messenger │ 23.99  │
+└────────┴──────────────────────────────────┴──────────┴───────────────────────┴────────┘
 ```
 
 -- **Libros cuyo autor tiene al menos una vocal repetida.**
