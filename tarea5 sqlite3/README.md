@@ -76,7 +76,7 @@ Ninguno porque ningún titulo comienza por H.
 Consulta:
 
 ``` sql
-SELECT libro.* FROM libro JOIN autor ON libro.autor_id = autor.id WHERE autor.nombre LIKE '%ing';
+
 ```
 
 Resultado:
@@ -144,7 +144,7 @@ Resultado:
 Consulta:
 
 ``` sql
-
+SELECT * FROM libro WHERE precio REGEXP '\\.[0-9]{2}$';
 ```
 
 Resultado:
