@@ -402,13 +402,18 @@ Resultado:
 Consulta:
 
 ``` sql
-
+SELECT * FROM autor WHERE nombre NOT REGEXP '[rR]';
 ```
 
 Resultado:
 
 ``` sql
-
+┌────┬──────────────┐
+│ id │    nombre    │
+├────┼──────────────┤
+│ 2  │ Stephen King │
+│ 4  │ Jane Austen  │
+└────┴──────────────┘
 ```
 
 -- **Seleccionar los libros cuya editorial empieza con la letra "P":**
