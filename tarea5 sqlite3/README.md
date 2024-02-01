@@ -90,13 +90,20 @@ Resultado:
 Consulta:
 
 ``` sql
-
+SELECT * FROM libro WHERE titulo LIKE '%and%';
 ```
 
 Resultado:
 
 ``` sql
-
+┌────────┬──────────────────────────────────┬──────────┬─────────────────────────┬────────┐
+│ codigo │              titulo              │ autor_id │        editorial        │ precio │
+├────────┼──────────────────────────────────┼──────────┼─────────────────────────┼────────┤
+│ 15     │ The Old Man and the Sea          │ 17       │ Charles Scribner's Sons │ 18.95  │
+│ 20     │ Alice's Adventures in Wonderland │ 22       │ Macmillan               │ 11.5   │
+│ 28     │ War and Peace                    │ 26       │ The Russian Messenger   │ 33.25  │
+│ 29     │ Crime and Punishment             │ 30       │ The Russian Messenger   │ 19.99  │
+└────────┴──────────────────────────────────┴──────────┴─────────────────────────┴────────┘
 ```
 
 -- **Libros cuyo título comienza con una vocal.**
