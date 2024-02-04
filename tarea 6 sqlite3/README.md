@@ -119,13 +119,13 @@
 
 -- **Obtener todos los clientes.**
 
-Consulta:
+*Consulta:*
 
 ``` sql
 SELECT * FROM Clientes;
 ```
 
-Resultado:
+*Resultado:*
 
 ``` sql
 ┌────┬─────────────────┬───────────────────────────┐
@@ -165,13 +165,13 @@ Resultado:
 
 -- **Obtener la cantidad total de productos en todos los pedidos**
 
-Consulta:
+*Consulta:*
 
 ``` sql
 SELECT SUM(cantidad) AS cantidad_total FROM pedidos;
 ```
 
-Resultado:
+*Resultado:*
 
 ``` sql
 ┌────────────────┐
@@ -183,13 +183,13 @@ Resultado:
 
 -- **Obtener el precio promedio de los productos:**
 
-Consulta:
+*Consulta:*
 
 ``` sql
 SELECT AVG(precio) AS precio_promedio FROM productos WHERE precio IS NOT NULL;
 ```
 
-Resultado:
+*Resultado:*
 
 ``` sql
 ┌──────────────────┐
@@ -201,13 +201,13 @@ Resultado:
 
 -- **Obtener los clientes que tienen un email válido (contiene '@'):**
 
-Consulta:
+*Consulta:*
 
 ``` sql
 SELECT * FROM clientes WHERE email LIKE '%@%';
 ```
 
-Resultado:
+*Resultado:*
 
 ``` sql
 ┌────┬─────────────────┬───────────────────────────┐
@@ -247,13 +247,13 @@ Resultado:
 
 -- **Obtener el producto más caro.**
 
-Consulta:
+*Consulta:*
 
 ``` sql
 SELECT * FROM productos ORDER BY precio DESC LIMIT 1;
 ```
 
-Resultado:
+*Resultado:*
 
 ``` sql
 ┌────┬────────┬────────┐
@@ -265,13 +265,13 @@ Resultado:
 
 -- **Obtener los pedidos realizados en febrero de 2024.**
 
-Consulta:
+*Consulta:*
 
 ``` sql
 SELECT * FROM pedidos WHERE fecha_pedido BETWEEN '2024-02-01' AND '2024-02-29';
 ```
 
-Resultado:
+*Resultado:*
 
 ``` sql
 ┌───────────┬────────────┬─────────────┬──────────┬──────────────┐
@@ -311,13 +311,13 @@ Resultado:
 
 -- **Obtener la cantidad total de productos en todos los pedidos por producto.**
 
-Consulta:
+*Consulta:*
 
 ``` sql
 SELECT id_producto, SUM(cantidad) AS cantidad_total FROM pedidos GROUP BY id_producto;
 ```
 
-Resultado:
+*Resultado:*
 
 ``` sql
 ┌─────────────┬────────────────┐
@@ -358,13 +358,13 @@ Resultado:
 
 -- **Obtener los clientes que han realizado más de un pedido.**
 
-Consulta:
+*Consulta:*
 
 ``` sql
 SELECT id_cliente, COUNT(*) AS cantidad_pedidos FROM pedidos GROUP BY id_cliente HAVING COUNT(*) > 1;
 ```
 
-Resultado:
+*Resultado:*
 
 ``` sql
 
@@ -372,13 +372,13 @@ Resultado:
 
 -- **Obtener los productos que tienen un precio registrado.**
 
-Consulta:
+*Consulta:*
 
 ``` sql
 SELECT * FROM productos WHERE precio IS NOT NULL;
 ```
 
-Resultado:
+*Resultado:*
 
 ``` sql
 ┌────┬───────────────────────────────────┬────────┐
@@ -417,13 +417,13 @@ Resultado:
 
 -- **Obtener la fecha del primer pedido realizado:**
 
-Consulta:
+*Consulta:*
 
 ``` sql
 SELECT MIN(fecha_pedido) AS primera_fecha_pedido FROM pedidos;
 ```
 
-Resultado:
+*Resultado:*
 
 ``` sql
 ┌──────────────────────┐
@@ -435,13 +435,13 @@ Resultado:
 
 -- **Obtener los productos cuyos nombres comienzan con 'A' o 'B':**
 
-Consulta:
+*Consulta:*
 
 ``` sql
 SELECT * FROM productos WHERE nombre LIKE 'A%' OR nombre LIKE 'B%';
 ```
 
-Resultado:
+*Resultado:*
 
 ``` sql
 ┌────┬────────────────────────┬────────┐
@@ -456,13 +456,13 @@ Resultado:
 
 -- **Obtener la cantidad total de productos en todos los pedidos por cliente ordenado por cliente.**
 
-Consulta:
+*Consulta:*
 
 ``` sql
 SELECT id_cliente, SUM(cantidad) AS cantidad_total FROM pedidos GROUP BY id_cliente ORDER BY id_cliente;
 ```
 
-Resultado:
+*Resultado:*
 
 ``` sql
 ┌────────────┬────────────────┐
@@ -503,13 +503,13 @@ Resultado:
 
 -- **Obtener los clientes que han realizado más de un pedido en febrero de 2024.**
 
-Consulta:
+*Consulta:*
 
 ``` sql
 SELECT id_cliente, COUNT(*) AS cantidad_pedidos FROM pedidos WHERE fecha_pedido BETWEEN '2024-02-01' AND '2024-02-29' GROUP BY id_cliente HAVING COUNT(*) > 1;
 ```
 
-Resultado:
+*Resultado:*
 
 ``` sql
 
@@ -517,13 +517,13 @@ Resultado:
 
 -- **Obtener los productos con precio entre 100 y 500.**
 
-Consulta:
+*Consulta:*
 
 ``` sql
 SELECT * FROM productos WHERE precio BETWEEN 100 AND 500;
 ```
 
-Resultado:
+*Resultado:*
 
 ``` sql
 ┌────┬────────────────────────┬────────┐
@@ -541,13 +541,13 @@ Resultado:
 
 -- **Obtener la cantidad total de productos en todos los pedidos por cliente ordenado por cantidad descendente.**
 
-Consulta:
+*Consulta:*
 
 ``` sql
 SELECT id_cliente, SUM(cantidad) AS cantidad_total FROM pedidos GROUP BY id_cliente ORDER BY cantidad_total DESC;
 ```
 
-Resultado:
+*Resultado:*
 
 ``` sql
 ┌────────────┬────────────────┐
@@ -588,13 +588,13 @@ Resultado:
 
 -- **Obtener los clientes que tienen una 'a' en cualquier posición de su nombre.**
 
-Consulta:
+*Consulta:*
 
 ``` sql
 SELECT * FROM clientes WHERE nombre LIKE '%a%';
 ```
 
-Resultado:
+*Resultado:*
 
 ``` sql
 ┌────┬─────────────────┬───────────────────────────┐
@@ -632,13 +632,13 @@ Resultado:
 
 -- **Obtener el precio máximo de los productos.**
 
-Consulta:
+*Consulta:*
 
 ``` sql
 SELECT MAX(precio) AS precio_maximo FROM productos;
 ```
 
-Resultado:
+*Resultado:*
 
 ``` sql
 ┌───────────────┐
@@ -650,13 +650,13 @@ Resultado:
 
 -- **Obtener los pedidos realizados por el cliente con ID 1 en febrero de 2024.**
 
-Consulta:
+*Consulta:*
 
 ``` sql
 SELECT * FROM pedidos WHERE id_cliente = 1 AND fecha_pedido BETWEEN '2024-02-01' AND '2024-02-29';
 ```
 
-Resultado:
+*Resultado:*
 
 ``` sql
 ┌───────────┬────────────┬─────────────┬──────────┬──────────────┐
@@ -668,13 +668,13 @@ Resultado:
 
 -- **Obtener la cantidad total de productos en todos los pedidos por producto ordenado por total de productos descendente.**
 
-Consulta:
+*Consulta:*
 
 ``` sql
 SELECT id_producto, SUM(cantidad) AS cantidad_total FROM pedidos GROUP BY id_producto ORDER BY cantidad_total DESC;
 ```
 
-Resultado:
+*Resultado:*
 
 ``` sql
 ┌─────────────┬────────────────┐
@@ -715,13 +715,13 @@ Resultado:
 
 -- **Obtener los productos que no tienen un precio registrado.**
 
-Consulta:
+*Consulta:*
 
 ``` sql
 SELECT * FROM productos WHERE precio IS NULL;
 ```
 
-Resultado:
+*Resultado:*
 
 ``` sql
 No hay resultado porque todos los precios están registrados
@@ -729,13 +729,13 @@ No hay resultado porque todos los precios están registrados
 
 -- **Obtener la fecha del último pedido realizado.**
 
-Consulta:
+*Consulta:*
 
 ``` sql
 SELECT MAX(fecha_pedido) AS ultima_fecha_pedido FROM pedidos;
 ```
 
-Resultado:
+*Resultado:*
 
 ``` sql
 ┌─────────────────────┐
@@ -747,13 +747,13 @@ Resultado:
 
 -- **Obtener los clientes cuyo nombre tiene al menos 5 caracteres.**
 
-Consulta:
+*Consulta:*
 
 ``` sql
 SELECT * FROM clientes WHERE LENGTH(nombre) >= 5;
 ```
 
-Resultado:
+*Resultado:*
 
 ``` sql
 ┌────┬─────────────────┬───────────────────────────┐
@@ -793,13 +793,13 @@ Resultado:
 
 -- **Obtener los productos que tienen la letra 'o' en cualquier posición del nombre.**
 
-Consulta:
+*Consulta:*
 
 ``` sql
 SELECT * FROM productos WHERE nombre LIKE '%o%';
 ```
 
-Resultado:
+*Resultado:*
 
 ``` sql
 ┌────┬───────────────────────────────────┬────────┐
@@ -829,13 +829,13 @@ Resultado:
 
 -- **Obtener la cantidad total de productos en todos los pedidos por cliente ordenado por cliente.**
 
-Consulta:
+*Consulta:*
 
 ``` sql
 SELECT id_cliente, SUM(cantidad) AS cantidad_total FROM pedidos GROUP BY id_cliente ORDER BY id_cliente;
 ```
 
-Resultado:
+*Resultado:*
 
 ``` sql
 ┌────────────┬────────────────┐
@@ -876,13 +876,13 @@ Resultado:
 
 -- **Obtener los clientes cuyos nombres no contienen la letra 'i':**
 
-Consulta:
+*Consulta:*
 
 ``` sql
 SELECT * FROM clientes WHERE nombre NOT LIKE '%i%';
 ```
 
-Resultado:
+*Resultado:*
 
 ``` sql
 ┌────┬─────────────────┬───────────────────────────┐
@@ -908,13 +908,13 @@ Resultado:
 
 -- **Obtener los pedidos realizados por el cliente con ID 2 en febrero de 2024.**
 
-Consulta:
+*Consulta:*
 
 ``` sql
 SELECT * FROM pedidos WHERE id_cliente = 2 AND fecha_pedido BETWEEN '2024-02-01' AND '2024-02-29';
 ```
 
-Resultado:
+*Resultado:*
 
 ``` sql
 ┌───────────┬────────────┬─────────────┬──────────┬──────────────┐
@@ -926,13 +926,13 @@ Resultado:
 
 -- **Obtener el precio mínimo de los productos.**
 
-Consulta:
+*Consulta:*
 
 ``` sql
 SELECT MIN(precio) AS precio_minimo FROM productos;
 ```
 
-Resultado:
+*Resultado:*
 
 ``` sql
 ┌───────────────┐
@@ -944,13 +944,13 @@ Resultado:
 
 -- **Obtener los clientes que han realizado al menos un pedido en febrero de 2024.**
 
-Consulta:
+*Consulta:*
 
 ``` sql
 SELECT DISTINCT c.* FROM clientes c INNER JOIN pedidos p ON c.id = p.id_cliente WHERE p.fecha_pedido BETWEEN '2024-02-01' AND '2024-02-29';
 ```
 
-Resultado:
+*Resultado:*
 
 ``` sql
 ┌────┬─────────────────┬───────────────────────────┐
@@ -990,13 +990,13 @@ Resultado:
 
 -- **Obtener la fecha del último pedido realizado por el cliente con ID 3.**
 
-Consulta:
+*Consulta:*
 
 ``` sql
 SELECT MAX(fecha_pedido) AS ultima_fecha_pedido FROM pedidos WHERE id_cliente = 3;
 ```
 
-Resultado:
+*Resultado:*
 
 ``` sql
 ┌─────────────────────┐
@@ -1008,13 +1008,13 @@ Resultado:
 
 -- **Obtener los productos que tienen una 'a' al final del nombre.**
 
-Consulta:
+*Consulta:*
 
 ``` sql
 SELECT * FROM productos WHERE nombre LIKE '%a';
 ```
 
-Resultado:
+*Resultado:*
 
 ``` sql
 ┌────┬────────────────────┬────────┐
@@ -1028,13 +1028,13 @@ Resultado:
 
 -- **Obtener los clientes cuyos nombres tienen al menos 4 vocales (mayúsculas|minúsculas).**
 
-Consulta:
+*Consulta:*
 
 ``` sql
 SELECT * FROM clientes WHERE LENGTH(nombre) - LENGTH(REPLACE(LOWER(nombre), 'a', '')) >= 4;
 ```
 
-Resultado:
+*Resultado:*
 
 ``` sql
 ┌────┬──────────────┬───────────────────┐
@@ -1046,13 +1046,13 @@ Resultado:
 
 -- **Obtener los productos cuyo precio tenga al menos 4 números sin contrar los decimales.**
 
-Consulta:
+*Consulta:*
 
 ``` sql
 SELECT * FROM productos WHERE precio REGEXP '[0-9]{4,}';
 ```
 
-Resultado:
+*Resultado:*
 
 ``` sql
 ┌────┬────────┬────────┐
