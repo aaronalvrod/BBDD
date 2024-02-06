@@ -375,27 +375,11 @@ WHERE edad < 30)));
 *Consulta*
 
 ``` sql
-SELECT marca, COUNT(id_venta) AS total_ventas
-FROM Coches
-JOIN Ventas ON Coches.id_coche = Ventas.id_coche
-GROUP BY marca
-ORDER BY total_ventas DESC;
+
 ```
 
 *Resultado*
 
 ``` sql
-┌────────────┬──────────────┐
-│   marca    │ total_ventas │
-├────────────┼──────────────┤
-│ Volkswagen │ 1            │
-│ Toyota     │ 1            │
-│ Tesla      │ 1            │
-│ Nissan     │ 1            │
-│ Mazda      │ 1            │
-│ Hyundai    │ 1            │
-│ Honda      │ 1            │
-│ Ford       │ 1            │
-│ Chevrolet  │ 1            │
-└────────────┴──────────────┘
+
 ```
