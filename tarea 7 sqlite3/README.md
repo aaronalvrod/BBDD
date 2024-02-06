@@ -59,7 +59,7 @@
 ```
 # Consultas
 
-- **Listar los coches vendidos con sus modelos y precios, junto con los nombres de los clientes que los compraron.**
+1.**Listar los coches vendidos con sus modelos y precios, junto con los nombres de los clientes que los compraron.**
   - *Cosas que debo de tener en cuenta:*
   - *¿Qué me están pidiendo?. ¿Qué es lo que no me han pedido?*
 
@@ -91,7 +91,7 @@ FROM Ventas V;
 ```
 
 
-- **Encontrar los clientes que han comprado coches con precios superiores al promedio de todos los coches vendidos.**
+2.**Encontrar los clientes que han comprado coches con precios superiores al promedio de todos los coches vendidos.**
   - *Cosas que debo de tener en cuenta:*
     - *Precios superiores.*
     - *Obtener la media. AVG(precio)*
@@ -118,7 +118,7 @@ WHERE (SELECT precio FROM Coches WHERE id_coche = Ventas.id_coche) >
 └────────────┴────────────┘
 ```
 
-- **Mostrar los modelos de coches y sus precios que no han sido vendidos aún:**
+3.**Mostrar los modelos de coches y sus precios que no han sido vendidos aún:**
   - *Cosas que debo de tener en cuenta:*
     - *Coches que han sido vendidos.*
     - *Quiero los coches que no han sido vendidos. NOT id_coche IN ventas*
@@ -141,7 +141,7 @@ WHERE id_coche NOT IN (SELECT id_coche FROM Ventas);
 └─────────────┴─────────┘
 ```
 
-- **Calcular el total gastado por todos los clientes en coches:**
+4.**Calcular el total gastado por todos los clientes en coches:**
   - *Cosas que debo de tener en cuenta:*
     - *Me estan pidiendo la suma total de todos los coches vendidos, NO de aquellos que aún no se han vendido.*
 
@@ -162,7 +162,7 @@ FROM Ventas;
 └───────────────┘
 ```
 
-- **Listar los coches vendidos junto con la fecha de venta y el nombre del cliente, ordenados por fecha de venta de forma descendente:**
+5.**Listar los coches vendidos junto con la fecha de venta y el nombre del cliente, ordenados por fecha de venta de forma descendente:**
   - *Cosas que debo de tener en cuenta:*
     - *¿Qué me están pidiendo?. ¿Por qué campo tengo que ordenadar. Es uno o más campos?*
 
@@ -195,7 +195,7 @@ ORDER BY fecha_venta DESC;
 └──────────┴────────────────┴─────────────┴─────────────────┘
 ```
 
-- **Encontrar el modelo de coche más caro.**
+6.**Encontrar el modelo de coche más caro.**
   - *Cosas que debo de tener en cuenta:*
     - *¿Qué me están pidiendo?. MAX*
 
@@ -217,7 +217,7 @@ WHERE precio = (SELECT MAX(precio) FROM Coches);
 └────────────────┘
 ```
 
-- **Mostrar los clientes que han comprado al menos un coche (un coche o más) y la cantidad de coches comprados.**
+7.**Mostrar los clientes que han comprado al menos un coche (un coche o más) y la cantidad de coches comprados.**
   - *Cosas que debo de tener en cuenta:*
     - *¿Qué me están pidiendo?. COUNT*
 
@@ -249,7 +249,7 @@ HAVING COUNT(id_coche) >= 1;
 └────────────┴─────────────────┴───────────────────────────┘
 ```
 
-- **Encontrar los clientes que han comprado coches de la marca 'Toyota':**
+8.**Encontrar los clientes que han comprado coches de la marca 'Toyota':**
   - *Cosas que debo de tener en cuenta:*
     - *¿Qué me están pidiendo?. Like | regexp | =. Tabla normalizada ?.*
 
@@ -272,7 +272,7 @@ WHERE id_coche IN (SELECT id_coche FROM Coches WHERE marca = 'Toyota');
 └────────────┴────────────┘
 ```
 
-- **Calcular el promedio de edad de los clientes que han comprado coches de más de 25,000.**
+9.**Calcular el promedio de edad de los clientes que han comprado coches de más de 25,000.**
   - *Cosas que debo de tener en cuenta:*
     - *¿Qué me están pidiendo?.*
 
@@ -294,7 +294,7 @@ WHERE id_cliente IN (SELECT id_cliente FROM Ventas WHERE id_coche IN (SELECT id_
 └──────────────────┘
 ```
 
-- **Mostrar los modelos de coches y sus precios que fueron comprados por clientes mayores de 30 años.**
+10.**Mostrar los modelos de coches y sus precios que fueron comprados por clientes mayores de 30 años.**
   - *Cosas que debo de tener en cuenta:*
     - *¿Qué me están pidiendo?.*
 
@@ -320,7 +320,7 @@ WHERE id_coche IN (SELECT id_coche FROM Ventas WHERE id_cliente IN (SELECT id_cl
 └────────────────┴─────────┘
 ```
 
-- **Encontrar los coches vendidos en el año 2022 junto con la cantidad total de ventas en ese año.**
+11.**Encontrar los coches vendidos en el año 2022 junto con la cantidad total de ventas en ese año.**
   - *Cosas que debo de tener en cuenta:*
     - *¿Qué me están pidiendo?.*
 
@@ -337,7 +337,7 @@ WHERE id_coche IN (SELECT id_coche FROM Ventas WHERE id_cliente IN (SELECT id_cl
 
 ```
 
--- **Listar los coches cuyos precios son mayores que el precio promedio de coches vendidos a clientes menores de 30 años.**
+12.**Listar los coches cuyos precios son mayores que el precio promedio de coches vendidos a clientes menores de 30 años.**
   -- *Cosas que debo de tener en cuenta:*
     -- *¿Qué me están pidiendo?. AVG*
 
@@ -369,7 +369,7 @@ WHERE edad < 30)));
 └────────────────┴─────────┘
 ```
 
-- **Calcular el total de ventas por marca de coche, ordenado de forma descendente por el total de ventas:**
+13.**Calcular el total de ventas por marca de coche, ordenado de forma descendente por el total de ventas:**
   - *Cosas que debo de tener en cuenta:*
     - *¿Qué me están pidiendo?. COUNT| DESC|ASC precio*
 
