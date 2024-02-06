@@ -59,7 +59,6 @@
 ```
 # Consultas
 
-`
 1º **Listar los coches vendidos con sus modelos y precios, junto con los nombres de los clientes que los compraron.**
   - *Cosas que debo de tener en cuenta:*
   - *¿Qué me están pidiendo?. ¿Qué es lo que no me han pedido?*
@@ -90,7 +89,6 @@ FROM Ventas V;
 │ 9        │ Eléctrico 2021 │ 40000.0 │ Elena Torres    │
 └──────────┴────────────────┴─────────┴─────────────────┘
 ```
-`
 
 2º **Encontrar los clientes que han comprado coches con precios superiores al promedio de todos los coches vendidos.**
   - *Cosas que debo de tener en cuenta:*
