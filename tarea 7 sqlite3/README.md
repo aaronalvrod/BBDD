@@ -257,7 +257,7 @@ WHERE id_coche NOT IN (SELECT id_coche FROM Ventas);
 └─────────────┴─────────┘
 ```
 
--- **Calcu*lar el total gastado por todos los clientes en coches:**
+-- **Calcular el total gastado por todos los clientes en coches:**
   -- *Cosas que debo de tener en cuenta:*
     -- *Me estan pidiendo la suma total de todos los coches vendidos, NO de aquellos que aún no se han vendido.*
 
