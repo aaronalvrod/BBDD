@@ -61,7 +61,7 @@
 
 # Consultas
 
-- Obtener el nombre del alumno y el nombre de la clase en la que está inscrito.
+- **Obtener el nombre del alumno y el nombre de la clase en la que está inscrito.**
 
 *Consulta*
 
