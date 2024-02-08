@@ -94,13 +94,28 @@
 *Consulta*
 
 ``` sql
-
+SELECT nombre, edad 
+FROM clientes
+WHERE id_cliente IN (SELECT id_cliente FROM coches WHERE marca = 'Toyota');
 ```
 
 *Resultado*
 
 ``` sql
-
+┌─────────────────┬──────┐
+│     nombre      │ edad │
+├─────────────────┼──────┤
+│ Juan Pérez      │ 30   │
+│ María Gómez     │ 25   │
+│ Carlos López    │ 35   │
+│ Ana Martínez    │ 28   │
+│ Pedro Rodríguez │ 40   │
+│ Laura Sánchez   │ 32   │
+│ Miguel González │ 27   │
+│ Isabel Díaz     │ 38   │
+│ Francisco Ruiz  │ 33   │
+│ Elena Torres    │ 29   │
+└─────────────────┴──────┘
 ```
 
 - **Consulta para calcular el precio promedio de los coches vendidos.**
@@ -108,13 +123,18 @@
 *Consulta*
 
 ``` sql
-
+SELECT AVG(precio) AS precio_promedio 
+FROM coches;
 ```
 
 *Resultado*
 
 ``` sql
-
+┌─────────────────┐
+│ precio_promedio │
+├─────────────────┤
+│ 29000.0         │
+└─────────────────┘
 ```
 
 - **Consulta para obtener el modelo y la marca de los coches vendidos a clientes menores de 30 años.**
@@ -122,13 +142,24 @@
 *Consulta*
 
 ``` sql
-
+SELECT modelo, marca 
+FROM coches 
+WHERE id_coche IN (SELECT id_coche FROM reparacion WHERE id_cliente IN (SELECT id_cliente FROM clientes WHERE edad < 30));
 ```
 
 *Resultado*
 
 ``` sql
-
+┌────────────────┬────────────┐
+│     modelo     │   marca    │
+├────────────────┼────────────┤
+│ Hatchback 2021 │ Honda      │
+│ SUV 2023       │ Ford       │
+│ Coupé 2022     │ Chevrolet  │
+│ Camioneta 2023 │ Nissan     │
+│ Compacto 2021  │ Volkswagen │
+│ Eléctrico 2021 │ Tesla      │
+└────────────────┴────────────┘
 ```
 
 - **Consulta para contar el número de coches vendidos de cada marca.**
@@ -136,13 +167,28 @@
 *Consulta*
 
 ``` sql
-
+SELECT marca, COUNT(*) AS num_coches_vendidos 
+FROM coches 
+GROUP BY marca;
 ```
 
 *Resultado*
 
 ``` sql
-
+┌────────────┬─────────────────────┐
+│   marca    │ num_coches_vendidos │
+├────────────┼─────────────────────┤
+│ Chevrolet  │ 1                   │
+│ Ford       │ 1                   │
+│ Honda      │ 1                   │
+│ Hyundai    │ 1                   │
+│ Mazda      │ 1                   │
+│ Nissan     │ 1                   │
+│ Ram        │ 1                   │
+│ Tesla      │ 1                   │
+│ Toyota     │ 1                   │
+│ Volkswagen │ 1                   │
+└────────────┴─────────────────────┘
 ```
 
 - **Consulta para obtener el nombre y la dirección de los clientes que han llevado a reparar sus coches en 2024.**
@@ -150,7 +196,9 @@
 *Consulta*
 
 ``` sql
-
+SELECT nombre, direccion 
+FROM clientes
+WHERE id_cliente IN (SELECT id_cliente FROM reparacion WHERE YEAR(fecha_reparacion) = 2024);
 ```
 
 *Resultado*
@@ -164,7 +212,9 @@
 *Consulta*
 
 ``` sql
-
+SELECT nombre, 
+    (SELECT SUM(precio) FROM reparacion WHERE cliente.id_cliente = reparacion.id_cliente) AS total_gastado 
+FROM clientes;
 ```
 
 *Resultado*
@@ -178,7 +228,9 @@
 *Consulta*
 
 ``` sql
-
+SELECT nombre, edad 
+FROM clientes
+WHERE id_cliente IN (SELECT id_cliente FROM coches WHERE precio > 30000);
 ```
 
 *Resultado*
@@ -192,7 +244,9 @@
 *Consulta*
 
 ``` sql
-
+SELECT AVG(precio) AS precio_medio 
+FROM coches 
+WHERE año = 2023;
 ```
 
 *Resultado*
@@ -206,7 +260,9 @@
 *Consulta*
 
 ``` sql
-
+SELECT nombre, direccion 
+FROM clientes 
+WHERE id_cliente IN (SELECT id_cliente FROM coches WHERE marca = 'Ford');
 ```
 
 *Resultado*
@@ -220,7 +276,9 @@
 *Consulta*
 
 ``` sql
-
+SELECT año, COUNT(*) AS num_coches_vendidos 
+FROM coches 
+GROUP BY año;
 ```
 
 *Resultado*
@@ -234,7 +292,10 @@
 *Consulta*
 
 ``` sql
-
+SELECT nombre, edad 
+FROM clientes 
+WHERE id_cliente IN (SELECT id_cliente FROM coches WHERE precio > 30000) 
+AND id_cliente IN (SELECT id_cliente FROM reparacion);
 ```
 
 *Resultado*
@@ -248,7 +309,9 @@
 *Consulta*
 
 ``` sql
-
+SELECT SUM(precio) AS precio_total 
+FROM coches 
+WHERE id_coche IN (SELECT id_coche FROM reparacion WHERE id_cliente IN (SELECT id_cliente FROM cliente WHERE edad < 30));
 ```
 
 *Resultado*
@@ -262,7 +325,9 @@
 *Consulta*
 
 ``` sql
-
+SELECT modelo, año 
+FROM coches 
+WHERE id_coche IN (SELECT id_coche FROM reparacion WHERE YEAR(fecha_reparacion) = 2023);
 ```
 
 *Resultado*
@@ -276,7 +341,9 @@
 *Consulta*
 
 ``` sql
-
+SELECT id_cliente, COUNT(*) AS num_coches_vendidos 
+FROM coches 
+GROUP BY id_cliente;
 ```
 
 *Resultado*
@@ -290,7 +357,10 @@
 *Consulta*
 
 ``` sql
-
+SELECT nombre, precio 
+FROM clientes 
+INNER JOIN coches ON cliente.id_cliente = coches.id_cliente 
+WHERE edad > 35;
 ```
 
 *Resultado*
@@ -304,7 +374,9 @@
 *Consulta*
 
 ``` sql
-
+SELECT SUM(precio) AS precio_total 
+FROM coches 
+WHERE id_cliente IN (SELECT id_cliente FROM cliente WHERE direccion LIKE '%Calle%');
 ```
 
 *Resultado*
@@ -318,7 +390,10 @@
 *Consulta*
 
 ``` sql
-
+SELECT nombre, direccion 
+FROM clientes 
+WHERE id_cliente IN (SELECT id_cliente FROM coches WHERE precio > 30000) 
+AND id_cliente IN (SELECT id_cliente FROM reparacion WHERE YEAR(fecha_reparacion) = 2024);
 ```
 
 *Resultado*
@@ -332,7 +407,10 @@
 *Consulta*
 
 ``` sql
-
+SELECT AVG(precio) AS precio_medio 
+FROM coches 
+WHERE id_coche IN (SELECT id_coche FROM reparacion WHERE id_cliente IN (SELECT id_cliente FROM cliente WHERE edad < 30)) 
+AND año = 2023;
 ```
 
 *Resultado*
@@ -346,7 +424,9 @@
 *Consulta*
 
 ``` sql
-
+SELECT modelo, año 
+FROM coches 
+WHERE id_cliente IN (SELECT id_cliente FROM cliente WHERE direccion LIKE '%Avenida%');
 ```
 
 *Resultado*
@@ -360,7 +440,10 @@
 *Consulta*
 
 ``` sql
-
+SELECT id_cliente, COUNT(*) AS num_reparaciones 
+FROM reparacion 
+WHERE YEAR(fecha_reparacion) = 2024 
+GROUP BY id_cliente;
 ```
 
 *Resultado*
