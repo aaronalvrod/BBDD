@@ -66,7 +66,10 @@
 *Consulta*
 
 ``` sql
-
+SELECT alumnos.nombre, clases.nombre AS clase
+FROM alumnos
+JOIN inscripciones ON alumnos.id = inscripciones.id_alumno
+JOIN clases ON clases.id = inscripciones.id_clase;
 ```
 
 *Resultado*
@@ -80,7 +83,10 @@
 *Consulta*
 
 ``` sql
-
+SELECT alumnos.nombre, clases.materia
+FROM alumnos
+JOIN inscripciones ON alumnos.id = inscripciones.id_alumno
+JOIN clases ON clases.id = inscripciones.id_clase;
 ```
 
 *Resultado*
@@ -94,7 +100,10 @@
 *Consulta*
 
 ``` sql
-
+SELECT alumnos.nombre, alumnos.edad, clases.profesor
+FROM alumnos
+JOIN inscripciones ON alumnos.id = inscripciones.id_alumno
+JOIN clases ON clases.id = inscripciones.id_clase;
 ```
 
 *Resultado*
@@ -108,7 +117,9 @@
 *Consulta*
 
 ``` sql
-
+SELECT alumnos.nombre, alumnos.direccion
+FROM alumnos
+JOIN inscripciones ON alumnos.id = inscripciones.id_alumno;
 ```
 
 *Resultado*
@@ -122,7 +133,10 @@
 *Consulta*
 
 ``` sql
-
+SELECT alumnos.nombre, clases.nombre AS clase, clases.profesor
+FROM alumnos
+JOIN inscripciones ON alumnos.id = inscripciones.id_alumno
+JOIN clases ON clases.id = inscripciones.id_clase;
 ```
 
 *Resultado*
@@ -136,7 +150,10 @@
 *Consulta*
 
 ``` sql
-
+SELECT alumnos.nombre, clases.materia, clases.profesor
+FROM alumnos
+JOIN inscripciones ON alumnos.id = inscripciones.id_alumno
+JOIN clases ON clases.id = inscripciones.id_clase;
 ```
 
 *Resultado*
@@ -150,7 +167,10 @@
 *Consulta*
 
 ``` sql
-
+SELECT alumnos.nombre, alumnos.edad, clases.materia
+FROM alumnos
+JOIN inscripciones ON alumnos.id = inscripciones.id_alumno
+JOIN clases ON clases.id = inscripciones.id_clase;
 ```
 
 *Resultado*
@@ -164,7 +184,10 @@
 *Consulta*
 
 ``` sql
-
+SELECT alumnos.nombre, alumnos.direccion, clases.profesor
+FROM alumnos
+JOIN inscripciones ON alumnos.id = inscripciones.id_alumno
+JOIN clases ON clases.id = inscripciones.id_clase;
 ```
 
 *Resultado*
@@ -178,7 +201,11 @@
 *Consulta*
 
 ``` sql
-
+SELECT alumnos.nombre, clases.materia
+FROM alumnos
+JOIN inscripciones ON alumnos.id = inscripciones.id_alumno
+JOIN clases ON clases.id = inscripciones.id_clase
+ORDER BY alumnos.nombre;
 ```
 
 *Resultado*
@@ -192,7 +219,10 @@
 *Consulta*
 
 ``` sql
-
+SELECT clases.nombre AS clase, COUNT(inscripciones.id_alumno) AS num_alumnos_inscritos
+FROM clases
+JOIN inscripciones ON clases.id = inscripciones.id_clase
+GROUP BY clases.nombre;s
 ```
 
 *Resultado*
