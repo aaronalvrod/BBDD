@@ -1175,6 +1175,8 @@
 
 ``` 
 
+**Tabla Employe
+
 
 
 
@@ -1186,13 +1188,21 @@
 *Consulta*
 
 ``` sql
-
+SELECT * FROM customers WHERE Country = "Brazil";
 ```
 
 *Resultado*
 
 ``` sql
-
+┌────────────┬───────────┬───────────┬──────────────────────────────────────────────────┬─────────────────────────────────┬─────────────────────┬───────┬─────────┬────────────┬────────────────────┬────────────────────┬───────────────────────────────┬──────────────┐
+│ CustomerId │ FirstName │ LastName  │                     Company                      │             Address             │        City         │ State │ Country │ PostalCode │       Phone        │        Fax         │             Email             │ SupportRepId │
+├────────────┼───────────┼───────────┼──────────────────────────────────────────────────┼─────────────────────────────────┼─────────────────────┼───────┼─────────┼────────────┼────────────────────┼────────────────────┼───────────────────────────────┼──────────────┤
+│ 1          │ Luís      │ Gonçalves │ Embraer - Empresa Brasileira de Aeronáutica S.A. │ Av. Brigadeiro Faria Lima, 2170 │ São José dos Campos │ SP    │ Brazil  │ 12227-000  │ +55 (12) 3923-5555 │ +55 (12) 3923-5566 │ luisg@embraer.com.br          │ 3            │
+│ 10         │ Eduardo   │ Martins   │ Woodstock Discos                                 │ Rua Dr. Falcão Filho, 155       │ São Paulo           │ SP    │ Brazil  │ 01007-010  │ +55 (11) 3033-5446 │ +55 (11) 3033-4564 │ eduardo@woodstock.com.br      │ 4            │
+│ 11         │ Alexandre │ Rocha     │ Banco do Brasil S.A.                             │ Av. Paulista, 2022              │ São Paulo           │ SP    │ Brazil  │ 01310-200  │ +55 (11) 3055-3278 │ +55 (11) 3055-8131 │ alero@uol.com.br              │ 5            │
+│ 12         │ Roberto   │ Almeida   │ Riotur                                           │ Praça Pio X, 119                │ Rio de Janeiro      │ RJ    │ Brazil  │ 20040-020  │ +55 (21) 2271-7000 │ +55 (21) 2271-7070 │ roberto.almeida@riotur.gov.br │ 3            │
+│ 13         │ Fernanda  │ Ramos     │                                                  │ Qe 7 Bloco G                    │ Brasília            │ DF    │ Brazil  │ 71020-677  │ +55 (61) 3363-5547 │ +55 (61) 3363-7855 │ fernadaramos4@uol.com.br      │ 4            │
+└────────────┴───────────┴───────────┴──────────────────────────────────────────────────┴─────────────────────────────────┴─────────────────────┴───────┴─────────┴────────────┴────────────────────┴────────────────────┴───────────────────────────────┴──────────────┘
 ```
 
 **Proporciona una consulta que muestre las facturas de clientes que son de Brasil. La tabla resultante debe mostrar el nombre completo del cliente, ID de factura, fecha de la factura y país de facturación.**
@@ -1214,13 +1224,19 @@
 *Consulta*
 
 ``` sql
-
+SELECT * FROM employees WHERE title = "Sales Support Agent";
 ```
 
 *Resultado*
 
 ``` sql
-
+┌────────────┬──────────┬───────────┬─────────────────────┬───────────┬─────────────────────┬─────────────────────┬──────────────────┬─────────┬───────┬─────────┬────────────┬───────────────────┬───────────────────┬──────────────────────────┐
+│ EmployeeId │ LastName │ FirstName │        Title        │ ReportsTo │      BirthDate      │      HireDate       │     Address      │  City   │ State │ Country │ PostalCode │       Phone       │        Fax        │          Email           │
+├────────────┼──────────┼───────────┼─────────────────────┼───────────┼─────────────────────┼─────────────────────┼──────────────────┼─────────┼───────┼─────────┼────────────┼───────────────────┼───────────────────┼──────────────────────────┤
+│ 3          │ Peacock  │ Jane      │ Sales Support Agent │ 2         │ 1973-08-29 00:00:00 │ 2002-04-01 00:00:00 │ 1111 6 Ave SW    │ Calgary │ AB    │ Canada  │ T2P 5M5    │ +1 (403) 262-3443 │ +1 (403) 262-6712 │ jane@chinookcorp.com     │
+│ 4          │ Park     │ Margaret  │ Sales Support Agent │ 2         │ 1947-09-19 00:00:00 │ 2003-05-03 00:00:00 │ 683 10 Street SW │ Calgary │ AB    │ Canada  │ T2P 5G3    │ +1 (403) 263-4423 │ +1 (403) 263-4289 │ margaret@chinookcorp.com │
+│ 5          │ Johnson  │ Steve     │ Sales Support Agent │ 2         │ 1965-03-03 00:00:00 │ 2003-10-17 00:00:00 │ 7727B 41 Ave     │ Calgary │ AB    │ Canada  │ T3B 1Y7    │ 1 (780) 836-9987  │ 1 (780) 836-9543  │ steve@chinookcorp.com    │
+└────────────┴──────────┴───────────┴─────────────────────┴───────────┴─────────────────────┴─────────────────────┴──────────────────┴─────────┴───────┴─────────┴────────────┴───────────────────┴───────────────────┴──────────────────────────┘
 ```
 
 **Proporciona una consulta que muestre una lista única de países de facturación de la tabla de Facturas.**
@@ -1228,13 +1244,69 @@
 *Consulta*
 
 ``` sql
-
+SELECT DISTINCT BillingCity FROM invoices;
 ```
 
 *Resultado*
 
 ``` sql
-
+┌─────────────────────┐
+│     BillingCity     │
+├─────────────────────┤
+│ Stuttgart           │
+│ Oslo                │
+│ Brussels            │
+│ Edmonton            │
+│ Boston              │
+│ Frankfurt           │
+│ Berlin              │
+│ Paris               │
+│ Bordeaux            │
+│ Dublin              │
+│ London              │
+│ Mountain View       │
+│ Redmond             │
+│ Cupertino           │
+│ Reno                │
+│ Madison             │
+│ Halifax             │
+│ Edinburgh           │
+│ Sidney              │
+│ Santiago            │
+│ Bangalore           │
+│ São Paulo           │
+│ Yellowknife         │
+│ Lisbon              │
+│ Amsterdam           │
+│ Rio de Janeiro      │
+│ Brasília            │
+│ Vancouver           │
+│ Tucson              │
+│ Madrid              │
+│ Stockholm           │
+│ Prague              │
+│ Toronto             │
+│ Ottawa              │
+│ Winnipeg            │
+│ Helsinki            │
+│ Copenhagen          │
+│ Rome                │
+│ Warsaw              │
+│ Fort Worth          │
+│ Salt Lake City      │
+│ Vienne              │
+│ Dijon               │
+│ Budapest            │
+│ Orlando             │
+│ Chicago             │
+│ São José dos Campos │
+│ Montréal            │
+│ Lyon                │
+│ New York            │
+│ Buenos Aires        │
+│ Delhi               │
+│ Porto               │
+└─────────────────────┘
 ```
 
 **Proporciona una consulta que muestre las facturas de clientes que son de Brasil.**
