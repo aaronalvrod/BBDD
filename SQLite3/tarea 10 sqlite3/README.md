@@ -1394,13 +1394,17 @@ SELECT * FROM invoices WHERE BillingCountry = "Brazil";
 *Consulta*
 
 ``` sql
-
+SELECT COUNT(*) as Ventas_totales FROM invoices WHERE InvoiceDate BETWEEN '2009%' and '2011%';
 ```
 
 *Resultado*
 
 ``` sql
-
+┌────────────────┐
+│ Ventas_totales │
+├────────────────┤
+│ 166            │
+└────────────────┘
 ```
 
 **Mirando la tabla de InvoiceLine, proporciona una consulta que CUENTE el número de ítems de línea para el ID de factura 37.**
