@@ -212,8 +212,7 @@ WHERE id_cliente IN (SELECT id_cliente FROM reparacion WHERE YEAR(fecha_reparaci
 *Consulta*
 
 ``` sql
-SELECT nombre, 
-    (SELECT SUM(precio) FROM reparacion WHERE cliente.id_cliente = reparacion.id_cliente) AS total_gastado 
+SELECT nombre,(SELECT SUM(precio) FROM coches WHERE cliente.id_cliente = reparacion.id_cliente) AS total_gastado 
 FROM clientes;
 ```
 
