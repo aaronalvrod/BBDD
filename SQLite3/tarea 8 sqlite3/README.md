@@ -196,15 +196,31 @@ GROUP BY marca;
 *Consulta*
 
 ``` sql
-SELECT nombre, direccion 
-FROM clientes
-WHERE id_cliente IN (SELECT id_cliente FROM reparacion WHERE YEAR(fecha_reparacion) = 2024);
+SELECT clientes.nombre, clientes.direccion
+FROM clientes, reparacion
+WHERE clientes.id_cliente = reparacion.id_cliente
+AND reparacion.fecha_reparación BETWEEN '2024-01-01' AND '2024-12-31';
 ```
 
 *Resultado*
 
 ``` sql
-
+┌─────────────────┬────────────────┐
+│     nombre      │   direccion    │
+├─────────────────┼────────────────┤
+│ Francisco Ruiz  │ Calle I #222   │
+│ Elena Torres    │ Avenida J #333 │
+│ Juan Pérez      │ Calle A #123   │
+│ María Gómez     │ Avenida B #456 │
+│ Carlos López    │ Calle C #789   │
+│ Ana Martínez    │ Avenida D #101 │
+│ Pedro Rodríguez │ Calle E #234   │
+│ Laura Sánchez   │ Avenida F #567 │
+│ Miguel González │ Calle G #890   │
+│ Isabel Díaz     │ Avenida H #111 │
+│ Francisco Ruiz  │ Calle I #222   │
+│ Elena Torres    │ Avenida J #333 │
+└─────────────────┴────────────────┘
 ```
 
 - **Consulta para calcular el total gastado en reparaciones por cada cliente.**
@@ -390,15 +406,24 @@ WHERE id_coche IN (SELECT id_coche FROM reparacion WHERE id_cliente IN (SELECT i
 *Consulta*
 
 ``` sql
-SELECT modelo, año 
-FROM coches 
-WHERE id_coche IN (SELECT id_coche FROM reparacion WHERE YEAR(fecha_reparacion) = 2023);
+SELECT coches.modelo, coches.año
+FROM coches, reparacion, ventas
+WHERE reparacion.id_coche = coches.id_coche
+AND reparacion.id_cliente = ventas.id_cliente
+AND reparacion.id_coche = ventas.id_coche
+AND ventas.fecha_venta BETWEEN '2023-01-01' AND '2023-12-31'
+AND reparacion.fecha_reparación BETWEEN '2023-01-01' AND '2023-12-31';
 ```
 
 *Resultado*
 
 ``` sql
-
+┌────────────────┬──────┐
+│     modelo     │ año  │
+├────────────────┼──────┤
+│ Sedán 2022     │ 2022 │
+│ Deportivo 2023 │ 2023 │
+└────────────────┴──────┘
 ```
 
 - **Consulta para contar el número de coches vendidos por cliente.**
@@ -406,15 +431,28 @@ WHERE id_coche IN (SELECT id_coche FROM reparacion WHERE YEAR(fecha_reparacion) 
 *Consulta*
 
 ``` sql
-SELECT id_cliente, COUNT(*) AS num_coches_vendidos 
-FROM coches 
-GROUP BY id_cliente;
+SELECT clientes.nombre, COUNT(ventas.id_coche) AS num_coches_vendidos
+FROM clientes, ventas
+WHERE clientes.id_cliente = ventas.id_cliente
+GROUP BY clientes.id_cliente;
 ```
 
 *Resultado*
 
 ``` sql
-
+┌─────────────────┬─────────────────────┐
+│     nombre      │ num_coches_vendidos │
+├─────────────────┼─────────────────────┤
+│ Juan Pérez      │ 1                   │
+│ María Gómez     │ 1                   │
+│ Carlos López    │ 1                   │
+│ Ana Martínez    │ 1                   │
+│ Pedro Rodríguez │ 1                   │
+│ Laura Sánchez   │ 1                   │
+│ Miguel González │ 1                   │
+│ Isabel Díaz     │ 1                   │
+│ Elena Torres    │ 1                   │
+└─────────────────┴─────────────────────┘
 ```
 
 - **Consulta para obtener el nombre y el precio de los coches vendidos a clientes mayores de 35 años.**
@@ -422,49 +460,22 @@ GROUP BY id_cliente;
 *Consulta*
 
 ``` sql
-SELECT nombre, precio 
-FROM clientes 
-INNER JOIN coches ON clientes.id_cliente = coches.id_cliente 
-WHERE edad > 35;
+SELECT coches.modelo, coches.precio
+FROM coches, ventas, clientes
+WHERE ventas.id_cliente = clientes.id_cliente
+AND ventas.id_coche = coches.id_coche
+AND clientes.edad > 35;
 ```
 
 *Resultado*
 
 ``` sql
-
-```
-
-- **Consulta para calcular el precio total de los coches vendidos a clientes que viven en una calle (en la dirección).**
-
-*Consulta*
-
-``` sql
-SELECT SUM(precio) AS precio_total 
-FROM coches 
-WHERE id_cliente IN (SELECT id_cliente FROM clientes WHERE direccion LIKE '%Calle%');
-```
-
-*Resultado*
-
-``` sql
-
-```
-
-- **Consulta para obtener el nombre y la dirección de los clientes que han comprado coches de más de 30000 euros y llevado a reparar sus coches en 2024.**
-
-*Consulta*
-
-``` sql
-SELECT nombre, direccion 
-FROM clientes 
-WHERE id_cliente IN (SELECT id_cliente FROM coches WHERE precio > 30000) 
-AND id_cliente IN (SELECT id_cliente FROM reparacion WHERE YEAR(fecha_reparacion) = 2024);
-```
-
-*Resultado*
-
-``` sql
-
+┌────────────────┬─────────┐
+│     modelo     │ precio  │
+├────────────────┼─────────┤
+│ Camioneta 2023 │ 32000.0 │
+│ Deportivo 2023 │ 35000.0 │
+└────────────────┴─────────┘
 ```
 
 - **Consulta para calcular el precio medio de los coches vendidos en 2023 y llevados a reparar por clientes menores de 30 años.**
@@ -493,15 +504,30 @@ AND año = 2023;
 *Consulta*
 
 ``` sql
-SELECT modelo, año 
-FROM coches 
-WHERE id_cliente IN (SELECT id_cliente FROM clientes WHERE direccion LIKE '%Avenida%');
+SELECT coches.modelo, coches.año
+FROM coches, clientes, reparacion
+WHERE reparacion.id_cliente = clientes.id_cliente
+  AND reparacion.id_coche = coches.id_coche
+  AND clientes.direccion LIKE '%Avenida%';
 ```
 
 *Resultado*
 
 ``` sql
-
+┌────────────────┬──────┐
+│     modelo     │ año  │
+├────────────────┼──────┤
+│ SUV 2023       │ 2023 │
+│ Hatchback 2021 │ 2021 │
+│ Híbrido 2022   │ 2022 │
+│ Deportivo 2023 │ 2023 │
+│ Eléctrico 2021 │ 2021 │
+│ Hatchback 2021 │ 2021 │
+│ Camioneta 2023 │ 2023 │
+│ Deportivo 2023 │ 2023 │
+│ Sedán 2022     │ 2022 │
+│ Coupé 2022     │ 2022 │
+└────────────────┴──────┘
 ```
 
 - **Consulta para contar el número de reparaciones realizadas en 2024 por cada cliente.**
@@ -509,14 +535,28 @@ WHERE id_cliente IN (SELECT id_cliente FROM clientes WHERE direccion LIKE '%Aven
 *Consulta*
 
 ``` sql
-SELECT id_cliente, COUNT(*) AS num_reparaciones 
-FROM reparacion 
-WHERE YEAR(fecha_reparacion) = 2024 
-GROUP BY id_cliente;
+SELECT coches.modelo, coches.año
+FROM coches, reparacion
+WHERE coches.id_coche = reparacion.id_coche
+AND reparacion.fecha_reparacion >= '2024-01-01' 
+AND reparacion.fecha_reparacion <= '2024-12-31';
 ```
 
 *Resultado*
 
 ``` sql
-
+┌─────────────────┬───────────────────────┐
+│     nombre      │ cantidad_reparaciones │
+├─────────────────┼───────────────────────┤
+│ Ana Martínez    │ 1                     │
+│ Carlos López    │ 1                     │
+│ Elena Torres    │ 2                     │
+│ Francisco Ruiz  │ 2                     │
+│ Isabel Díaz     │ 1                     │
+│ Juan Pérez      │ 1                     │
+│ Laura Sánchez   │ 1                     │
+│ María Gómez     │ 1                     │
+│ Miguel González │ 1                     │
+│ Pedro Rodríguez │ 1                     │
+└─────────────────┴───────────────────────┘
 ```
