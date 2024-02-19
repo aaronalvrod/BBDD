@@ -166,4 +166,106 @@
 
 ---
 
+## Consultas multitabla
+
+1. **Devuelve un listado con el identificador, nombre y los apellidos de todos los clientes que han realizado algún pedido. El listado debe estar ordenado alfabéticamente y se deben eliminar los elementos repetidos.**
+
+*Consulta*
+
+``` sql
+
+```
+
+*Resultado*
+
+``` sql
+
+```
+
+2. **Devuelve un listado que muestre todos los pedidos que ha realizado cada cliente. El resultado debe mostrar todos los datos de los pedidos y del cliente. El listado debe mostrar los datos de los clientes ordenados alfabéticamente.**
+
+*Consulta*
+
+``` sql
+
+```
+
+*Resultado*
+
+``` sql
+
+```
+
+3. **Devuelve un listado que muestre todos los pedidos en los que ha participado un comercial. El resultado debe mostrar todos los datos de los pedidos y de los comerciales. El listado debe mostrar los datos de los comerciales ordenados alfabéticamente.**
+
+
+*Consulta*
+
+``` sql
+
+```
+
+*Resultado*
+
+``` sql
+
+```
+
+4. **Devuelve un listado que muestre todos los clientes, con todos los pedidos que han realizado y con los datos de los comerciales asociados a cada pedido.**
+
+*Consulta*
+
+``` sql
+
+```
+
+*Resultado*
+
+``` sql
+
+```
+
+5. **Devuelve un listado de todos los clientes que realizaron un pedido durante el año 2017, cuya cantidad esté entre 300 € y 1000 €.**
+
+*Consulta*
+
+``` sql
+
+```
+
+*Resultado*
+
+``` sql
+
+```
+
+6. **Devuelve el nombre y los apellidos de todos los comerciales que ha participado en algún pedido realizado por María Santana Moreno.**
+
+*Consulta*
+
+``` sql
+
+```
+
+*Resultado*
+
+``` sql
+
+```
+
+7. **Devuelve el nombre de todos los clientes que han realizado algún pedido con el comercial Daniel Sáez Vega.**
+
+*Consulta*
+
+``` sql
+
+```
+
+*Resultado*
+
+``` sql
+
+```
+
+--- 
 
