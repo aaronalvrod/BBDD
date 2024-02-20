@@ -167,13 +167,19 @@ SELECT * FROM pedido WHERE fecha REGEXP "^2017" and total >= 500;
 *Consulta*
 
 ``` sql
-
+SELECT nombre, apellido1 FROM comercial WHERE categoria BETWEEN 0.05 and 0.11;
 ```
 
 *Resultado*
 
 ``` sql
-
+┌─────────┬───────────┐
+│ NOMBRE  │ apellido1 │
+├─────────┼───────────┤
+│ Diego   │ Flores    │
+│ Antonio │ Vega      │
+│ Alfredo │ Ruiz      │
+└─────────┴───────────┘
 ```
 
 6. **Devuelve el valor de la comisión de mayor valor que existe en la tabla comercial.**
