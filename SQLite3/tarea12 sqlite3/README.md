@@ -103,13 +103,18 @@ SELECT * FROM pedido ORDER BY fecha DESC;
 *Consulta*
 
 ``` sql
-
+SELECT * FROM pedido ORDER BY total DESC LIMIT 2; 
 ```
 
 *Resultado*
 
 ``` sql
-
+┌────┬────────┬────────────┬────────────┬──────────────┐
+│ ID │ total  │   fecha    │ id_cliente │ id_comercial │
+├────┼────────┼────────────┼────────────┼──────────────┤
+│ 7  │ 5760.0 │ 2015-09-10 │ 2          │ 1            │
+│ 12 │ 3045.6 │ 2017-04-25 │ 2          │ 1            │
+└────┴────────┴────────────┴────────────┴──────────────┘
 ```
 
 3. **Devuelve un listado con los identificadores de los clientes que han realizado algún pedido. Tenga en cuenta que no debe mostrar identificadores que estén repetidos.**
@@ -117,13 +122,24 @@ SELECT * FROM pedido ORDER BY fecha DESC;
 *Consulta*
 
 ``` sql
-
+SELECT DISTINCT id_cliente FROM pedido ORDER BY id_cliente ASC;
 ```
 
 *Resultado*
 
 ``` sql
-
+┌────────────┐
+│ id_cliente │
+├────────────┤
+│ 1          │
+│ 2          │
+│ 3          │
+│ 4          │
+│ 5          │
+│ 6          │
+│ 7          │
+│ 8          │
+└────────────┘
 ```
 
 4. **Devuelve un listado de todos los pedidos que se realizaron durante el año 2017, cuya cantidad total sea superior a 500€.**
@@ -131,13 +147,19 @@ SELECT * FROM pedido ORDER BY fecha DESC;
 *Consulta*
 
 ``` sql
-
+SELECT * FROM pedido WHERE fecha REGEXP "^2017" and total >= 500;
 ```
 
 *Resultado*
 
 ``` sql
-
+┌────┬─────────┬────────────┬────────────┬──────────────┐
+│ ID │  total  │   fecha    │ id_cliente │ id_comercial │
+├────┼─────────┼────────────┼────────────┼──────────────┤
+│ 5  │ 948.5   │ 2017-09-10 │ 5          │ 2            │
+│ 8  │ 1983.43 │ 2017-10-10 │ 4          │ 6            │
+│ 12 │ 3045.6  │ 2017-04-25 │ 2          │ 1            │
+└────┴─────────┴────────────┴────────────┴──────────────┘
 ```
 
 5. **Devuelve un listado con el nombre y los apellidos de los comerciales que tienen una comisión entre 0.05 y 0.11.**
