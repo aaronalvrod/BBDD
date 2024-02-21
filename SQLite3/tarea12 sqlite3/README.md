@@ -794,13 +794,7 @@ SELECT c.ID AS "Identificador de Cliente", c.nombre AS "Nombre", c.apellido1 AS 
 *Consulta*
 
 ``` sql
-SELECT *
-FROM pedido
-WHERE id_cliente = (
-    SELECT ID
-    FROM cliente
-    WHERE nombre = 'Adela' AND apellido1 = 'Salas' AND apellido2 = 'Díaz'
-);
+SELECT * FROM pedido WHERE id_cliente = (SELECT ID FROM cliente WHERE nombre = 'Adela' AND apellido1 = 'Salas' AND apellido2 = 'Díaz');
 ```
 
 *Resultado*
@@ -821,13 +815,7 @@ WHERE id_cliente = (
 *Consulta*
 
 ``` sql
-SELECT COUNT(*)
-FROM pedido
-WHERE id_comercial = (
-    SELECT ID
-    FROM comercial
-    WHERE nombre = 'Daniel' AND apellido1 = 'Sáez' AND apellido2 = 'Vega'
-);
+SELECT COUNT(*) FROM pedido WHERE id_comercial = (SELECT ID FROM comercial WHERE nombre = 'Daniel' AND apellido1 = 'Sáez' AND apellido2 = 'Vega');
 ```
 
 *Resultado*
@@ -845,16 +833,7 @@ WHERE id_comercial = (
 *Consulta*
 
 ``` sql
-SELECT c.*
-FROM cliente c
-WHERE c.ID = (
-    SELECT id_cliente
-    FROM pedido
-    WHERE fecha BETWEEN '2019-01-01' AND '2019-12-31'
-    ORDER BY total DESC
-    LIMIT 1
-);
-
+SELECT c.* FROM cliente c WHERE c.ID = (SELECT id_cliente FROM pedido WHERE fecha BETWEEN '2019-01-01' AND '2019-12-31' ORDER BY total DESC LIMIT 1);
 ```
 
 *Resultado*
@@ -872,16 +851,7 @@ WHERE c.ID = (
 *Consulta*
 
 ``` sql
-SELECT fecha, total
-FROM pedido
-WHERE id_cliente = (
-    SELECT ID
-    FROM cliente
-    WHERE nombre = 'Pepe' AND apellido1 = 'Ruiz' AND apellido2 = 'Santana'
-)
-ORDER BY total ASC
-LIMIT 1;
-
+SELECT fecha, total FROM pedido WHERE id_cliente = (SELECT ID FROM cliente WHERE nombre = 'Pepe' AND apellido1 = 'Ruiz' AND apellido2 = 'Santana') ORDER BY total ASC LIMIT 1;
 ```
 
 *Resultado*
@@ -913,13 +883,7 @@ LIMIT 1;
 *Consulta*
 
 ``` sql
-SELECT *
-FROM cliente
-WHERE ID NOT IN (
-    SELECT DISTINCT id_cliente
-    FROM pedido
-);
-
+SELECT * FROM cliente WHERE ID NOT IN (SELECT DISTINCT id_cliente FROM pedido);
 ```
 
 *Resultado*
@@ -938,13 +902,7 @@ WHERE ID NOT IN (
 *Consulta*
 
 ``` sql
-SELECT *
-FROM comercial
-WHERE ID NOT IN (
-    SELECT DISTINCT id_comercial
-    FROM pedido
-);
-
+SELECT * FROM comercial WHERE ID NOT IN (SELECT DISTINCT id_comercial FROM pedido);
 ```
 
 *Resultado*
@@ -963,13 +921,7 @@ WHERE ID NOT IN (
 *Consulta*
 
 ``` sql
-SELECT *
-FROM cliente
-WHERE ID NOT IN (
-    SELECT DISTINCT id_cliente
-    FROM pedido
-);
-
+SELECT * FROM cliente WHERE ID NOT IN (SELECT DISTINCT id_cliente FROM pedido);
 ```
 
 *Resultado*
@@ -988,13 +940,7 @@ WHERE ID NOT IN (
 *Consulta*
 
 ``` sql
-SELECT *
-FROM comercial
-WHERE ID NOT IN (
-    SELECT DISTINCT id_comercial
-    FROM pedido
-);
-
+SELECT * FROM comercial WHERE ID NOT IN (SELECT DISTINCT id_comercial FROM pedido);
 ```
 
 *Resultado*
