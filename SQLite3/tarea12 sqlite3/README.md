@@ -465,7 +465,6 @@ SELECT DISTINCT c.nombre FROM cliente c INNER JOIN pedido p ON c.ID = p.id_clien
 │ María  │
 └────────┘
 ```
-
 --- 
 
 ## Consultas resumen (Funciones)
