@@ -615,36 +615,36 @@ SELECT id_cliente, nombre, apellido1, apellido2, fecha, MAX(total) AS "Máximo V
 ┌────────────┬────────┬───────────┬───────────┬────────────┬─────────────────────┐
 │ id_cliente │ nombre │ apellido1 │ apellido2 │   fecha    │ Máximo Valor Pedido │
 ├────────────┼────────┼───────────┼───────────┼────────────┼─────────────────────┤
-│ 1          │ Aarón  │ Rivero    │ Gómez     │ 2016-09-10 │ 270.65              
-│
-│ 1          │ Aarón  │ Rivero    │ Gómez     │ 2019-03-11 │ 2389.23             
-│
-│ 2          │ Adela  │ Salas     │ Díaz      │ 2015-09-10 │ 5760.0              
-│
-│ 2          │ Adela  │ Salas     │ Díaz      │ 2017-04-25 │ 3045.6              
-│
-│ 2          │ Adela  │ Salas     │ Díaz      │ 2017-10-05 │ 65.26               
-│
-│ 3          │ Adolfo │ Rubio     │ Flores    │ 2016-08-17 │ 75.29               
-│
-│ 4          │ Adrián │ Suárez    │           │ 2017-10-10 │ 1983.43             
-│
-│ 5          │ Marcos │ Loyola    │ Méndez    │ 2017-09-10 │ 948.5               
-│
-│ 5          │ Marcos │ Loyola    │ Méndez    │ 2017-10-05 │ 150.5               
-│
-│ 6          │ María  │ Santana   │ Moreno    │ 2017-02-02 │ 145.82              
-│
-│ 6          │ María  │ Santana   │ Moreno    │ 2019-01-25 │ 545.75              
-│
-│ 7          │ Pilar  │ Ruiz      │           │ 2016-07-27 │ 2400.6              
-│
-│ 8          │ Pepe   │ Ruiz      │ Santana   │ 2015-06-27 │ 250.45              
-│
-│ 8          │ Pepe   │ Ruiz      │ Santana   │ 2016-08-17 │ 110.5               
-│
-│ 8          │ Pepe   │ Ruiz      │ Santana   │ 2016-10-10 │ 2480.4              
-│
+│ 1          │ Aarón  │ Rivero    │ Gómez     │ 2016-09-10 │ 270.65              │
+│                                                                                │
+│ 1          │ Aarón  │ Rivero    │ Gómez     │ 2019-03-11 │ 2389.23             │
+│                                                                                │
+│ 2          │ Adela  │ Salas     │ Díaz      │ 2015-09-10 │ 5760.0              │
+│                                                                                │
+│ 2          │ Adela  │ Salas     │ Díaz      │ 2017-04-25 │ 3045.6              │
+│                                                                                │
+│ 2          │ Adela  │ Salas     │ Díaz      │ 2017-10-05 │ 65.26               │
+│                                                                                │
+│ 3          │ Adolfo │ Rubio     │ Flores    │ 2016-08-17 │ 75.29               │
+│                                                                                │
+│ 4          │ Adrián │ Suárez    │           │ 2017-10-10 │ 1983.43             │
+│                                                                                │
+│ 5          │ Marcos │ Loyola    │ Méndez    │ 2017-09-10 │ 948.5               │
+│                                                                                │
+│ 5          │ Marcos │ Loyola    │ Méndez    │ 2017-10-05 │ 150.5               │
+│                                                                                │
+│ 6          │ María  │ Santana   │ Moreno    │ 2017-02-02 │ 145.82              │
+│                                                                                │
+│ 6          │ María  │ Santana   │ Moreno    │ 2019-01-25 │ 545.75              │
+│                                                                                │
+│ 7          │ Pilar  │ Ruiz      │           │ 2016-07-27 │ 2400.6              │
+│                                                                                │
+│ 8          │ Pepe   │ Ruiz      │ Santana   │ 2015-06-27 │ 250.45              │
+│                                                                                │
+│ 8          │ Pepe   │ Ruiz      │ Santana   │ 2016-08-17 │ 110.5               │
+│                                                                                │
+│ 8          │ Pepe   │ Ruiz      │ Santana   │ 2016-10-10 │ 2480.4              │
+│                                                                                │
 └────────────┴────────┴───────────┴───────────┴────────────┴─────────────────────┘
 ```
 
