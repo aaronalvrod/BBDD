@@ -230,7 +230,7 @@ SELECT ID, nombre, apellido1 FROM cliente WHERE apellido2 IS NOT NULL ORDER BY a
 *Consulta*
 
 ``` sql
-SELECT nombre FROM cliente WHERE (nombre LIKE 'A%n' OR nombre LIKE 'P%') ORDER BY nombre;
+SELECT nombre FROM cliente WHERE REGEXP "^A%n" AND "^P" ORDER BY nombre;
 ```
 
 *Resultado*
@@ -251,7 +251,7 @@ SELECT nombre FROM cliente WHERE (nombre LIKE 'A%n' OR nombre LIKE 'P%') ORDER B
 *Consulta*
 
 ``` sql
-SELECT nombre FROM cliente WHERE nombre NOT LIKE 'A%' ORDER BY nombre;
+SELECT nombre FROM cliente WHERE nombre NOT REGEXP 'A%' ORDER BY nombre;
 ```
 
 *Resultado*
