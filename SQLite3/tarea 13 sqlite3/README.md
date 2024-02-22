@@ -342,7 +342,7 @@ SELECT * FROM persona WHERE fecha_nacimiento REGEXP "^1999";
 *Consulta*
 
 ``` sql
-
+SELECT nombre from asignatura 
 ```
 
 *Respuesta*
