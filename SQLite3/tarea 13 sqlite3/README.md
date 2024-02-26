@@ -328,13 +328,18 @@ SELECT * FROM persona WHERE fecha_nacimiento REGEXP "^1999";
 *Consulta*
 
 ``` sql
-
+SELECT * FROM persona where telefono is null and nif regexp "K$" and tipo = "profesor";
 ```
 
 *Respuesta*
 
 ``` sql
-
+┌────┬───────────┬───────────┬───────────┬───────────┬─────────┬───────────────────────────┬──────────┬──────────────────┬──────┬──────────┐
+│ id │    nif    │  nombre   │ apellido1 │ apellido2 │ ciudad  │         direccion         │ telefono │ fecha_nacimiento │ sexo │   tipo   │
+├────┼───────────┼───────────┼───────────┼───────────┼─────────┼───────────────────────────┼──────────┼──────────────────┼──────┼──────────┤
+│ 16 │ 10485008K │ Antonio   │ Fahey     │ Considine │ Almería │ C/ Sierra de los Filabres │          │ 1982/03/18       │ H    │ profesor │
+│ 17 │ 85869555K │ Guillermo │ Ruecker   │ Upton     │ Almería │ C/ Sierra de Gádor        │          │ 1973/05/05       │ H    │ profesor │
+└────┴───────────┴───────────┴───────────┴───────────┴─────────┴───────────────────────────┴──────────┴──────────────────┴──────┴──────────┘
 ```
 
 5. **Devuelve el listado de las asignaturas que se imparten en el primer cuatrimestre, en el tercer curso del grado que tiene el identificador 7.**
@@ -342,13 +347,22 @@ SELECT * FROM persona WHERE fecha_nacimiento REGEXP "^1999";
 *Consulta*
 
 ``` sql
-SELECT nombre from asignatura 
+SELECT a.nombre FROM asignatura AS a WHERE a.cuatrimestre = 1 AND a.curso = 3 AND a.id_grado = (SELECT g.id FROM grado AS g WHERE g.id = 7);
 ```
 
 *Respuesta*
 
 ``` sql
-
+┌───────────────────────────────────────────┐
+│                  nombre                   │
+├───────────────────────────────────────────┤
+│ Bases moleculares del desarrollo vegetal  │
+│ Fisiología animal                         │
+│ Metabolismo y biosíntesis de biomoléculas │
+│ Operaciones de separación                 │
+│ Patología molecular de plantas            │
+│ Técnicas instrumentales básicas           │
+└───────────────────────────────────────────┘
 ```
 
 ## Consultas multitabla (Join)
@@ -530,13 +544,17 @@ SELECT nombre from asignatura
 *Consulta*
 
 ``` sql
-
+SELECT count(*) as total_alumnas from persona where sexo = "M";
 ```
 
 *Respuesta*
 
 ``` sql
-
+┌───────────────┐
+│ total_alumnas │
+├───────────────┤
+│ 7             │
+└───────────────┘
 ```
 
 2. **Calcula cuántos alumnos nacieron en 1999.**
@@ -544,13 +562,17 @@ SELECT nombre from asignatura
 *Consulta*
 
 ``` sql
-
+SELECT COUNT(*) AS alumnos FROM persona WHERE fecha_nacimiento REGEXP "^1999";
 ```
 
 *Respuesta*
 
 ``` sql
-
+┌─────────┐
+│ alumnos │
+├─────────┤
+│ 2       │
+└─────────┘
 ```
 
 3. **Calcula cuántos profesores hay en cada departamento. El resultado sólo debe mostrar dos columnas, una con el nombre del departamento y otra con el número de profesores que hay en ese departamento. El resultado sólo debe incluir los departamentos que tienen profesores asociados y deberá estar ordenado de mayor a menor por el número de profesores.**
@@ -558,7 +580,7 @@ SELECT nombre from asignatura
 *Consulta*
 
 ``` sql
-
+SELECT d.nombre, COUNT(*) as Profesores_totales
 ```
 
 *Respuesta*
@@ -658,13 +680,17 @@ SELECT nombre from asignatura
 *Consulta*
 
 ``` sql
-
+SELECT p.* FROM persona AS p WHERE p.id IN (SELECT ma.id_alumno FROM alumno_se_matricula_asignatura AS ma) ORDER BY fecha_nacimiento DESC LIMIT 1;
 ```
 
 *Respuesta*
 
 ``` sql
-
+┌────┬───────────┬────────┬───────────┬───────────┬─────────┬───────────────────┬──────────┬──────────────────┬──────┬────────┐
+│ id │    nif    │ nombre │ apellido1 │ apellido2 │ ciudad  │     direccion     │ telefono │ fecha_nacimiento │ sexo │  tipo  │
+├────┼───────────┼────────┼───────────┼───────────┼─────────┼───────────────────┼──────────┼──────────────────┼──────┼────────┤
+│ 4  │ 17105885A │ Pedro  │ Heller    │ Pagac     │ Almería │ C/ Estrella fugaz │          │ 2000/10/05       │ H    │ alumno │
+└────┴───────────┴────────┴───────────┴───────────┴─────────┴───────────────────┴──────────┴──────────────────┴──────┴────────┘
 ```
 
 2. **Devuelve un listado con los profesores que no están asociados a un departamento.**
