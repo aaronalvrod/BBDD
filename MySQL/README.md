@@ -1,0 +1,1 @@
+# Carpeta dedicada a tareas en MySQL
