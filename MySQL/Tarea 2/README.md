@@ -6,6 +6,7 @@
 *Consulta*
 
 ``` sql
+SELECT * FROM clientes;
 ```
 
 *Resultado*
