@@ -273,7 +273,7 @@ SELECT * FROM productos ORDER BY precio DESC;
 
 ## Consultas de ejemplo para practicar joins
 
-- Seleccionar todos los clientes y sus órdenes, incluso si no tienen órdenes
+- **Seleccionar todos los clientes y sus órdenes, incluso si no tienen órdenes**
 
 *Consulta*
 
@@ -289,7 +289,469 @@ ON clientes.id_cliente = ordenes.id_cliente;
 ``` sql
 ```
 
-- Seleccionar todas las órdenes junto con los productos correspondientes
+- **Seleccionar todas las órdenes junto con los productos correspondientes**
+
+*Consulta*
+
+``` sql
+SELECT ord.*, pro.* FROM ordenes ord JOIN productos pro on ord.id_producto = pro.id_producto;
+```
+
+*Resultado*
+
+``` sql
++----------+------------+-------------+----------+-------------+-------------+--------+
+| id_orden | id_cliente | id_producto | cantidad | id_producto | nombre      | precio |
++----------+------------+-------------+----------+-------------+-------------+--------+
+|        1 |          1 |           1 |        2 |           1 | Producto 1  |  10.99 |
+|        2 |          2 |           2 |        1 |           2 | Producto 2  |   20.5 |
+|        3 |          3 |           3 |        3 |           3 | Producto 3  |  30.99 |
+|        4 |          4 |           4 |        2 |           4 | Producto 4  |   40.5 |
+|        5 |          5 |           5 |        1 |           5 | Producto 5  |  50.99 |
+|        6 |          6 |           6 |        2 |           6 | Producto 6  |   60.5 |
+|        7 |          7 |           7 |        3 |           7 | Producto 7  |  70.99 |
+|        8 |          8 |           8 |        2 |           8 | Producto 8  |   80.5 |
+|        9 |          9 |           9 |        1 |           9 | Producto 9  |  90.99 |
+|       10 |         10 |          10 |        2 |          10 | Producto 10 |  100.5 |
+|       11 |         11 |          11 |        3 |          11 | Producto 11 | 110.99 |
+|       12 |         12 |          12 |        2 |          12 | Producto 12 |  120.5 |
+|       13 |         13 |          13 |        1 |          13 | Producto 13 | 130.99 |
+|       14 |         14 |          14 |        2 |          14 | Producto 14 |  140.5 |
+|       15 |         15 |          15 |        3 |          15 | Producto 15 | 150.99 |
+|       16 |         16 |          16 |        2 |          16 | Producto 16 |  160.5 |
+|       17 |         17 |          17 |        1 |          17 | Producto 17 | 170.99 |
+|       18 |         18 |          18 |        2 |          18 | Producto 18 |  180.5 |
+|       19 |         19 |          19 |        3 |          19 | Producto 19 | 190.99 |
+|       20 |         20 |          20 |        2 |          20 | Producto 20 |  200.5 |
++----------+------------+-------------+----------+-------------+-------------+--------+
+
+```
+
+- **Mostrar el nombre de los clientes que han realizado órdenes de productos que cuestan más de 50**
+
+*Consulta*
+
+``` sql
+SELECT clientes.nombre FROM clientes JOIN ordenes ON clientes.id_cliente;
+```
+
+*Resultado*
+
+``` sql
+
+```
+
+- **Obtener el nombre de los productos que no se han ordenado aún.**
+
+*Consulta*
+
+``` sql
+SELECT productos.nombre FROM productos JOIN ordenes ON ordenes.id_producto != productos.id_producto;
+```
+
+*Resultado*
+
+``` sql
++-------------+
+| nombre      |
++-------------+
+| Producto 20 |
+| Producto 19 |
+| Producto 18 |
+| Producto 17 |
+| Producto 16 |
+| Producto 15 |
+| Producto 14 |
+| Producto 13 |
+| Producto 12 |
+| Producto 11 |
+| Producto 10 |
+| Producto 9  |
+| Producto 8  |
+| Producto 7  |
+| Producto 6  |
+| Producto 5  |
+| Producto 4  |
+| Producto 3  |
+| Producto 2  |
+| Producto 20 |
+| Producto 19 |
+| Producto 18 |
+| Producto 17 |
+| Producto 16 |
+| Producto 15 |
+| Producto 14 |
+| Producto 13 |
+| Producto 12 |
+| Producto 11 |
+| Producto 10 |
+| Producto 9  |
+| Producto 8  |
+| Producto 7  |
+| Producto 6  |
+| Producto 5  |
+| Producto 4  |
+| Producto 3  |
+| Producto 1  |
+| Producto 20 |
+| Producto 19 |
+| Producto 18 |
+| Producto 17 |
+| Producto 16 |
+| Producto 15 |
+| Producto 14 |
+| Producto 13 |
+| Producto 12 |
+| Producto 11 |
+| Producto 10 |
+| Producto 9  |
+| Producto 8  |
+| Producto 7  |
+| Producto 6  |
+| Producto 5  |
+| Producto 4  |
+| Producto 2  |
+| Producto 1  |
+| Producto 20 |
+| Producto 19 |
+| Producto 18 |
+| Producto 17 |
+| Producto 16 |
+| Producto 15 |
+| Producto 14 |
+| Producto 13 |
+| Producto 12 |
+| Producto 11 |
+| Producto 10 |
+| Producto 9  |
+| Producto 8  |
+| Producto 7  |
+| Producto 6  |
+| Producto 5  |
+| Producto 3  |
+| Producto 2  |
+| Producto 1  |
+| Producto 20 |
+| Producto 19 |
+| Producto 18 |
+| Producto 17 |
+| Producto 16 |
+| Producto 15 |
+| Producto 14 |
+| Producto 13 |
+| Producto 12 |
+| Producto 11 |
+| Producto 10 |
+| Producto 9  |
+| Producto 8  |
+| Producto 7  |
+| Producto 6  |
+| Producto 4  |
+| Producto 3  |
+| Producto 2  |
+| Producto 1  |
+| Producto 20 |
+| Producto 19 |
+| Producto 18 |
+| Producto 17 |
+| Producto 16 |
+| Producto 15 |
+| Producto 14 |
+| Producto 13 |
+| Producto 12 |
+| Producto 11 |
+| Producto 10 |
+| Producto 9  |
+| Producto 8  |
+| Producto 7  |
+| Producto 5  |
+| Producto 4  |
+| Producto 3  |
+| Producto 2  |
+| Producto 1  |
+| Producto 20 |
+| Producto 19 |
+| Producto 18 |
+| Producto 17 |
+| Producto 16 |
+| Producto 15 |
+| Producto 14 |
+| Producto 13 |
+| Producto 12 |
+| Producto 11 |
+| Producto 10 |
+| Producto 9  |
+| Producto 8  |
+| Producto 6  |
+| Producto 5  |
+| Producto 4  |
+| Producto 3  |
+| Producto 2  |
+| Producto 1  |
+| Producto 20 |
+| Producto 19 |
+| Producto 18 |
+| Producto 17 |
+| Producto 16 |
+| Producto 15 |
+| Producto 14 |
+| Producto 13 |
+| Producto 12 |
+| Producto 11 |
+| Producto 10 |
+| Producto 9  |
+| Producto 7  |
+| Producto 6  |
+| Producto 5  |
+| Producto 4  |
+| Producto 3  |
+| Producto 2  |
+| Producto 1  |
+| Producto 20 |
+| Producto 19 |
+| Producto 18 |
+| Producto 17 |
+| Producto 16 |
+| Producto 15 |
+| Producto 14 |
+| Producto 13 |
+| Producto 12 |
+| Producto 11 |
+| Producto 10 |
+| Producto 8  |
+| Producto 7  |
+| Producto 6  |
+| Producto 5  |
+| Producto 4  |
+| Producto 3  |
+| Producto 2  |
+| Producto 1  |
+| Producto 20 |
+| Producto 19 |
+| Producto 18 |
+| Producto 17 |
+| Producto 16 |
+| Producto 15 |
+| Producto 14 |
+| Producto 13 |
+| Producto 12 |
+| Producto 11 |
+| Producto 9  |
+| Producto 8  |
+| Producto 7  |
+| Producto 6  |
+| Producto 5  |
+| Producto 4  |
+| Producto 3  |
+| Producto 2  |
+| Producto 1  |
+| Producto 20 |
+| Producto 19 |
+| Producto 18 |
+| Producto 17 |
+| Producto 16 |
+| Producto 15 |
+| Producto 14 |
+| Producto 13 |
+| Producto 12 |
+| Producto 10 |
+| Producto 9  |
+| Producto 8  |
+| Producto 7  |
+| Producto 6  |
+| Producto 5  |
+| Producto 4  |
+| Producto 3  |
+| Producto 2  |
+| Producto 1  |
+| Producto 20 |
+| Producto 19 |
+| Producto 18 |
+| Producto 17 |
+| Producto 16 |
+| Producto 15 |
+| Producto 14 |
+| Producto 13 |
+| Producto 11 |
+| Producto 10 |
+| Producto 9  |
+| Producto 8  |
+| Producto 7  |
+| Producto 6  |
+| Producto 5  |
+| Producto 4  |
+| Producto 3  |
+| Producto 2  |
+| Producto 1  |
+| Producto 20 |
+| Producto 19 |
+| Producto 18 |
+| Producto 17 |
+| Producto 16 |
+| Producto 15 |
+| Producto 14 |
+| Producto 12 |
+| Producto 11 |
+| Producto 10 |
+| Producto 9  |
+| Producto 8  |
+| Producto 7  |
+| Producto 6  |
+| Producto 5  |
+| Producto 4  |
+| Producto 3  |
+| Producto 2  |
+| Producto 1  |
+| Producto 20 |
+| Producto 19 |
+| Producto 18 |
+| Producto 17 |
+| Producto 16 |
+| Producto 15 |
+| Producto 13 |
+| Producto 12 |
+| Producto 11 |
+| Producto 10 |
+| Producto 9  |
+| Producto 8  |
+| Producto 7  |
+| Producto 6  |
+| Producto 5  |
+| Producto 4  |
+| Producto 3  |
+| Producto 2  |
+| Producto 1  |
+| Producto 20 |
+| Producto 19 |
+| Producto 18 |
+| Producto 17 |
+| Producto 16 |
+| Producto 14 |
+| Producto 13 |
+| Producto 12 |
+| Producto 11 |
+| Producto 10 |
+| Producto 9  |
+| Producto 8  |
+| Producto 7  |
+| Producto 6  |
+| Producto 5  |
+| Producto 4  |
+| Producto 3  |
+| Producto 2  |
+| Producto 1  |
+| Producto 20 |
+| Producto 19 |
+| Producto 18 |
+| Producto 17 |
+| Producto 15 |
+| Producto 14 |
+| Producto 13 |
+| Producto 12 |
+| Producto 11 |
+| Producto 10 |
+| Producto 9  |
+| Producto 8  |
+| Producto 7  |
+| Producto 6  |
+| Producto 5  |
+| Producto 4  |
+| Producto 3  |
+| Producto 2  |
+| Producto 1  |
+| Producto 20 |
+| Producto 19 |
+| Producto 18 |
+| Producto 16 |
+| Producto 15 |
+| Producto 14 |
+| Producto 13 |
+| Producto 12 |
+| Producto 11 |
+| Producto 10 |
+| Producto 9  |
+| Producto 8  |
+| Producto 7  |
+| Producto 6  |
+| Producto 5  |
+| Producto 4  |
+| Producto 3  |
+| Producto 2  |
+| Producto 1  |
+| Producto 20 |
+| Producto 19 |
+| Producto 17 |
+| Producto 16 |
+| Producto 15 |
+| Producto 14 |
+| Producto 13 |
+| Producto 12 |
+| Producto 11 |
+| Producto 10 |
+| Producto 9  |
+| Producto 8  |
+| Producto 7  |
+| Producto 6  |
+| Producto 5  |
+| Producto 4  |
+| Producto 3  |
+| Producto 2  |
+| Producto 1  |
+| Producto 20 |
+| Producto 18 |
+| Producto 17 |
+| Producto 16 |
+| Producto 15 |
+| Producto 14 |
+| Producto 13 |
+| Producto 12 |
+| Producto 11 |
+| Producto 10 |
+| Producto 9  |
+| Producto 8  |
+| Producto 7  |
+| Producto 6  |
+| Producto 5  |
+| Producto 4  |
+| Producto 3  |
+| Producto 2  |
+| Producto 1  |
+| Producto 19 |
+| Producto 18 |
+| Producto 17 |
+| Producto 16 |
+| Producto 15 |
+| Producto 14 |
+| Producto 13 |
+| Producto 12 |
+| Producto 11 |
+| Producto 10 |
+| Producto 9  |
+| Producto 8  |
+| Producto 7  |
+| Producto 6  |
+| Producto 5  |
+| Producto 4  |
+| Producto 3  |
+| Producto 2  |
+| Producto 1  |
++-------------+
+```
+
+- **Mostrar el nombre del cliente, el producto y la cantidad para todas las órdenes**
+
+*Consulta*
+
+``` sql
+SELECT clientes.nombre, productos.nombre, ordenes.cantidad FROM clientes JOIN productos ON productos.id_producto 
+```
+
+*Resultado*
+
+``` sql
+```
+
+- **Obtener el nombre de los productos junto con los nombres de los clientes que han realizado órdenes de esos productos**
 
 *Consulta*
 
@@ -301,7 +763,7 @@ ON clientes.id_cliente = ordenes.id_cliente;
 ``` sql
 ```
 
-- Mostrar el nombre de los clientes que han realizado órdenes de productos que cuestan más de 50
+- **Mostrar todas las órdenes con sus clientes y productos, incluso si no hay órdenes**
 
 *Consulta*
 
@@ -313,7 +775,7 @@ ON clientes.id_cliente = ordenes.id_cliente;
 ``` sql
 ```
 
-- Obtener el nombre de los productos que no se han ordenado aún
+- **Obtener el nombre de los clientes junto con el número total de órdenes que han realizado**
 
 *Consulta*
 
@@ -325,7 +787,7 @@ ON clientes.id_cliente = ordenes.id_cliente;
 ``` sql
 ```
 
-- Mostrar el nombre del cliente, el producto y la cantidad para todas las órdenes
+- **Mostrar todas las órdenes junto con el nombre del cliente y el nombre del producto**
 
 *Consulta*
 
@@ -337,7 +799,7 @@ ON clientes.id_cliente = ordenes.id_cliente;
 ``` sql
 ```
 
-- Obtener el nombre de los productos junto con los nombres de los clientes que han realizado órdenes de esos productos
+- **Mostrar todas las órdenes con sus productos y clientes, incluso si no hay información de cliente.**
 
 *Consulta*
 
@@ -349,7 +811,7 @@ ON clientes.id_cliente = ordenes.id_cliente;
 ``` sql
 ```
 
-- Mostrar todas las órdenes con sus clientes y productos, incluso si no hay órdenes
+- **Obtener el nombre de los productos junto con el nombre de los clientes que han realizado órdenes de esos productos, incluyendo los productos que no han sido ordenados**
 
 *Consulta*
 
@@ -361,7 +823,7 @@ ON clientes.id_cliente = ordenes.id_cliente;
 ``` sql
 ```
 
-- Obtener el nombre de los clientes junto con el número total de órdenes que han realizado
+- **Mostrar todas las órdenes junto con el nombre del cliente y el nombre del producto, incluyendo las órdenes sin productos**
 
 *Consulta*
 
@@ -373,7 +835,7 @@ ON clientes.id_cliente = ordenes.id_cliente;
 ``` sql
 ```
 
-- Mostrar todas las órdenes junto con el nombre del cliente y el nombre del producto
+- **Obtener el nombre de los clientes junto con el número total de órdenes que han realizado, incluyendo los clientes que no han realizado órdenes.**
 
 *Consulta*
 
@@ -385,55 +847,7 @@ ON clientes.id_cliente = ordenes.id_cliente;
 ``` sql
 ```
 
-- Mostrar todas las órdenes con sus productos y clientes, incluso si no hay información de cliente.
-
-*Consulta*
-
-``` sql
-```
-
-*Resultado*
-
-``` sql
-```
-
-- Obtener el nombre de los productos junto con el nombre de los clientes que han realizado órdenes de esos productos, incluyendo los productos que no han sido ordenados
-
-*Consulta*
-
-``` sql
-```
-
-*Resultado*
-
-``` sql
-```
-
-- Mostrar todas las órdenes junto con el nombre del cliente y el nombre del producto, incluyendo las órdenes sin productos
-
-*Consulta*
-
-``` sql
-```
-
-*Resultado*
-
-``` sql
-```
-
-- Obtener el nombre de los clientes junto con el número total de órdenes que han realizado, incluyendo los clientes que no han realizado órdenes.
-
-*Consulta*
-
-``` sql
-```
-
-*Resultado*
-
-``` sql
-```
-
-- Mostrar todas las órdenes con sus clientes y productos, incluyendo las órdenes y productos que no tienen información.
+- **Mostrar todas las órdenes con sus clientes y productos, incluyendo las órdenes y productos que no tienen información.**
 
 *Consulta*
 
