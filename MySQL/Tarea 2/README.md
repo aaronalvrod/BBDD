@@ -332,7 +332,12 @@ SELECT ord.*, pro.* FROM ordenes ord JOIN productos pro on ord.id_producto = pro
 *Consulta*
 
 ``` sql
-SELECT clientes.nombre FROM clientes JOIN ordenes ON clientes.id_cliente;
+SELECT
+clientes.nombre
+FROM clientes, productos
+WHERE productos.precio > 50 and
+JOIN ordenes
+ON ordenes.id_cliente = clientes.id_cliente;
 ```
 
 *Resultado*
@@ -346,7 +351,7 @@ SELECT clientes.nombre FROM clientes JOIN ordenes ON clientes.id_cliente;
 *Consulta*
 
 ``` sql
-SELECT productos.nombre FROM productos JOIN ordenes ON ordenes.id_producto != productos.id_producto;
+SELECT DISTINCT productos.nombre FROM productos JOIN ordenes ON ordenes.id_producto <> productos.id_producto;
 ```
 
 *Resultado*
@@ -374,366 +379,6 @@ SELECT productos.nombre FROM productos JOIN ordenes ON ordenes.id_producto != pr
 | Producto 4  |
 | Producto 3  |
 | Producto 2  |
-| Producto 20 |
-| Producto 19 |
-| Producto 18 |
-| Producto 17 |
-| Producto 16 |
-| Producto 15 |
-| Producto 14 |
-| Producto 13 |
-| Producto 12 |
-| Producto 11 |
-| Producto 10 |
-| Producto 9  |
-| Producto 8  |
-| Producto 7  |
-| Producto 6  |
-| Producto 5  |
-| Producto 4  |
-| Producto 3  |
-| Producto 1  |
-| Producto 20 |
-| Producto 19 |
-| Producto 18 |
-| Producto 17 |
-| Producto 16 |
-| Producto 15 |
-| Producto 14 |
-| Producto 13 |
-| Producto 12 |
-| Producto 11 |
-| Producto 10 |
-| Producto 9  |
-| Producto 8  |
-| Producto 7  |
-| Producto 6  |
-| Producto 5  |
-| Producto 4  |
-| Producto 2  |
-| Producto 1  |
-| Producto 20 |
-| Producto 19 |
-| Producto 18 |
-| Producto 17 |
-| Producto 16 |
-| Producto 15 |
-| Producto 14 |
-| Producto 13 |
-| Producto 12 |
-| Producto 11 |
-| Producto 10 |
-| Producto 9  |
-| Producto 8  |
-| Producto 7  |
-| Producto 6  |
-| Producto 5  |
-| Producto 3  |
-| Producto 2  |
-| Producto 1  |
-| Producto 20 |
-| Producto 19 |
-| Producto 18 |
-| Producto 17 |
-| Producto 16 |
-| Producto 15 |
-| Producto 14 |
-| Producto 13 |
-| Producto 12 |
-| Producto 11 |
-| Producto 10 |
-| Producto 9  |
-| Producto 8  |
-| Producto 7  |
-| Producto 6  |
-| Producto 4  |
-| Producto 3  |
-| Producto 2  |
-| Producto 1  |
-| Producto 20 |
-| Producto 19 |
-| Producto 18 |
-| Producto 17 |
-| Producto 16 |
-| Producto 15 |
-| Producto 14 |
-| Producto 13 |
-| Producto 12 |
-| Producto 11 |
-| Producto 10 |
-| Producto 9  |
-| Producto 8  |
-| Producto 7  |
-| Producto 5  |
-| Producto 4  |
-| Producto 3  |
-| Producto 2  |
-| Producto 1  |
-| Producto 20 |
-| Producto 19 |
-| Producto 18 |
-| Producto 17 |
-| Producto 16 |
-| Producto 15 |
-| Producto 14 |
-| Producto 13 |
-| Producto 12 |
-| Producto 11 |
-| Producto 10 |
-| Producto 9  |
-| Producto 8  |
-| Producto 6  |
-| Producto 5  |
-| Producto 4  |
-| Producto 3  |
-| Producto 2  |
-| Producto 1  |
-| Producto 20 |
-| Producto 19 |
-| Producto 18 |
-| Producto 17 |
-| Producto 16 |
-| Producto 15 |
-| Producto 14 |
-| Producto 13 |
-| Producto 12 |
-| Producto 11 |
-| Producto 10 |
-| Producto 9  |
-| Producto 7  |
-| Producto 6  |
-| Producto 5  |
-| Producto 4  |
-| Producto 3  |
-| Producto 2  |
-| Producto 1  |
-| Producto 20 |
-| Producto 19 |
-| Producto 18 |
-| Producto 17 |
-| Producto 16 |
-| Producto 15 |
-| Producto 14 |
-| Producto 13 |
-| Producto 12 |
-| Producto 11 |
-| Producto 10 |
-| Producto 8  |
-| Producto 7  |
-| Producto 6  |
-| Producto 5  |
-| Producto 4  |
-| Producto 3  |
-| Producto 2  |
-| Producto 1  |
-| Producto 20 |
-| Producto 19 |
-| Producto 18 |
-| Producto 17 |
-| Producto 16 |
-| Producto 15 |
-| Producto 14 |
-| Producto 13 |
-| Producto 12 |
-| Producto 11 |
-| Producto 9  |
-| Producto 8  |
-| Producto 7  |
-| Producto 6  |
-| Producto 5  |
-| Producto 4  |
-| Producto 3  |
-| Producto 2  |
-| Producto 1  |
-| Producto 20 |
-| Producto 19 |
-| Producto 18 |
-| Producto 17 |
-| Producto 16 |
-| Producto 15 |
-| Producto 14 |
-| Producto 13 |
-| Producto 12 |
-| Producto 10 |
-| Producto 9  |
-| Producto 8  |
-| Producto 7  |
-| Producto 6  |
-| Producto 5  |
-| Producto 4  |
-| Producto 3  |
-| Producto 2  |
-| Producto 1  |
-| Producto 20 |
-| Producto 19 |
-| Producto 18 |
-| Producto 17 |
-| Producto 16 |
-| Producto 15 |
-| Producto 14 |
-| Producto 13 |
-| Producto 11 |
-| Producto 10 |
-| Producto 9  |
-| Producto 8  |
-| Producto 7  |
-| Producto 6  |
-| Producto 5  |
-| Producto 4  |
-| Producto 3  |
-| Producto 2  |
-| Producto 1  |
-| Producto 20 |
-| Producto 19 |
-| Producto 18 |
-| Producto 17 |
-| Producto 16 |
-| Producto 15 |
-| Producto 14 |
-| Producto 12 |
-| Producto 11 |
-| Producto 10 |
-| Producto 9  |
-| Producto 8  |
-| Producto 7  |
-| Producto 6  |
-| Producto 5  |
-| Producto 4  |
-| Producto 3  |
-| Producto 2  |
-| Producto 1  |
-| Producto 20 |
-| Producto 19 |
-| Producto 18 |
-| Producto 17 |
-| Producto 16 |
-| Producto 15 |
-| Producto 13 |
-| Producto 12 |
-| Producto 11 |
-| Producto 10 |
-| Producto 9  |
-| Producto 8  |
-| Producto 7  |
-| Producto 6  |
-| Producto 5  |
-| Producto 4  |
-| Producto 3  |
-| Producto 2  |
-| Producto 1  |
-| Producto 20 |
-| Producto 19 |
-| Producto 18 |
-| Producto 17 |
-| Producto 16 |
-| Producto 14 |
-| Producto 13 |
-| Producto 12 |
-| Producto 11 |
-| Producto 10 |
-| Producto 9  |
-| Producto 8  |
-| Producto 7  |
-| Producto 6  |
-| Producto 5  |
-| Producto 4  |
-| Producto 3  |
-| Producto 2  |
-| Producto 1  |
-| Producto 20 |
-| Producto 19 |
-| Producto 18 |
-| Producto 17 |
-| Producto 15 |
-| Producto 14 |
-| Producto 13 |
-| Producto 12 |
-| Producto 11 |
-| Producto 10 |
-| Producto 9  |
-| Producto 8  |
-| Producto 7  |
-| Producto 6  |
-| Producto 5  |
-| Producto 4  |
-| Producto 3  |
-| Producto 2  |
-| Producto 1  |
-| Producto 20 |
-| Producto 19 |
-| Producto 18 |
-| Producto 16 |
-| Producto 15 |
-| Producto 14 |
-| Producto 13 |
-| Producto 12 |
-| Producto 11 |
-| Producto 10 |
-| Producto 9  |
-| Producto 8  |
-| Producto 7  |
-| Producto 6  |
-| Producto 5  |
-| Producto 4  |
-| Producto 3  |
-| Producto 2  |
-| Producto 1  |
-| Producto 20 |
-| Producto 19 |
-| Producto 17 |
-| Producto 16 |
-| Producto 15 |
-| Producto 14 |
-| Producto 13 |
-| Producto 12 |
-| Producto 11 |
-| Producto 10 |
-| Producto 9  |
-| Producto 8  |
-| Producto 7  |
-| Producto 6  |
-| Producto 5  |
-| Producto 4  |
-| Producto 3  |
-| Producto 2  |
-| Producto 1  |
-| Producto 20 |
-| Producto 18 |
-| Producto 17 |
-| Producto 16 |
-| Producto 15 |
-| Producto 14 |
-| Producto 13 |
-| Producto 12 |
-| Producto 11 |
-| Producto 10 |
-| Producto 9  |
-| Producto 8  |
-| Producto 7  |
-| Producto 6  |
-| Producto 5  |
-| Producto 4  |
-| Producto 3  |
-| Producto 2  |
-| Producto 1  |
-| Producto 19 |
-| Producto 18 |
-| Producto 17 |
-| Producto 16 |
-| Producto 15 |
-| Producto 14 |
-| Producto 13 |
-| Producto 12 |
-| Producto 11 |
-| Producto 10 |
-| Producto 9  |
-| Producto 8  |
-| Producto 7  |
-| Producto 6  |
-| Producto 5  |
-| Producto 4  |
-| Producto 3  |
-| Producto 2  |
 | Producto 1  |
 +-------------+
 ```
@@ -743,12 +388,42 @@ SELECT productos.nombre FROM productos JOIN ordenes ON ordenes.id_producto != pr
 *Consulta*
 
 ``` sql
-SELECT clientes.nombre, productos.nombre, ordenes.cantidad FROM clientes JOIN productos ON productos.id_producto 
+SELECT
+clientes.nombre,
+productos.nombre,
+ordenes.cantidad
+FROM clientes
+INNER JOIN productos ON productos.id_producto =  clientes.id_cliente
+INNER JOIN ordenes ON ordenes.id_cliente = clientes.id_cliente;
 ```
 
 *Resultado*
 
 ``` sql
++------------+-------------+----------+
+| nombre     | nombre      | cantidad |
++------------+-------------+----------+
+| Cliente 1  | Producto 1  |        2 |
+| Cliente 2  | Producto 2  |        1 |
+| Cliente 3  | Producto 3  |        3 |
+| Cliente 4  | Producto 4  |        2 |
+| Cliente 5  | Producto 5  |        1 |
+| Cliente 6  | Producto 6  |        2 |
+| Cliente 7  | Producto 7  |        3 |
+| Cliente 8  | Producto 8  |        2 |
+| Cliente 9  | Producto 9  |        1 |
+| Cliente 10 | Producto 10 |        2 |
+| Cliente 11 | Producto 11 |        3 |
+| Cliente 12 | Producto 12 |        2 |
+| Cliente 13 | Producto 13 |        1 |
+| Cliente 14 | Producto 14 |        2 |
+| Cliente 15 | Producto 15 |        3 |
+| Cliente 16 | Producto 16 |        2 |
+| Cliente 17 | Producto 17 |        1 |
+| Cliente 18 | Producto 18 |        2 |
+| Cliente 19 | Producto 19 |        3 |
+| Cliente 20 | Producto 20 |        2 |
++------------+-------------+----------+
 ```
 
 - **Obtener el nombre de los productos junto con los nombres de los clientes que han realizado órdenes de esos productos**
@@ -756,6 +431,10 @@ SELECT clientes.nombre, productos.nombre, ordenes.cantidad FROM clientes JOIN pr
 *Consulta*
 
 ``` sql
+SELECT
+productos.nombre
+clientes.nombre
+FROM productos
 ```
 
 *Resultado*
