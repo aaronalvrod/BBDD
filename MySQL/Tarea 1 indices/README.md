@@ -7,15 +7,14 @@
 
 ### Un instituto de enseñanza guarda los siguientes datos de sus alumnos:
 
-    número de inscripción, comienza desde 1 cada año,
-    año de inscripción,
-    nombre del alumno,
-    documento del alumno,
-    domicilio,
-    ciudad,
-    provincia,
-    clave primaria: número de inscripto y año de inscripción.
-
+- número de inscripción, comienza desde 1 cada año.
+- año de inscripción.
+- nombre del alumno.
+- documento del alumno.
+- domicilio.
+- ciudad.
+- provincia.
+- clave primaria: número de inscripto y año de inscripción.
 
 **Se pide:**
 
