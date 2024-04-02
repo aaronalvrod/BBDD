@@ -16,6 +16,36 @@
 - provincia.
 - clave primaria: número de inscripto y año de inscripción.
 
+---
+
+- Antes de comenzar debemos ejecutar MySQL.
+
+``` bash
+sudo mysql -u root -p
+```
+
+- Vemos que base de datos hay.
+
+``` sql
+SHOW DATABASES;
+```
+
+- Creamos la base de datos de la tarea:
+
+``` sql
+CREATE DATABASE tarea1index;
+```
+
+- Usamos la base de datos creada.
+
+``` sql
+USE DATABASE tarea1index;
+```
+
+Ya tendremos la base de datos preparada para realizar lo que se pide
+
+----
+
 **Se pide:**
 
 **Elimine la tabla "alumno" si existe.**
