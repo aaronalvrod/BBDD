@@ -89,13 +89,18 @@ Query OK, 0 rows affected (0,03 sec)
 
 - **Un índice único por el campo "documento" y un índice común por ciudad y provincia.**
 
-Nota:Muestra el comando y la salida. Justifica el tipo de indice en un comentario.
+Nota: Muestra el comando y la salida. Justifica el tipo de indice en un comentario.
 
 *Comando*
+
+- UNIQUE: Los valores duplicados no son permitidos.
 
 ``` sql
 CREATE UNIQUE INDEX index_documento ON alumno (documento);
 ```
+
+- Sin UNIQUE: Admite valores duplicados.
+
 ``` sql
 CREATE INDEX index_ciudad_provincia ON alumno (ciudad, provincia);
 ```
@@ -114,7 +119,7 @@ Records: 0  Duplicates: 0  Warnings: 0
 
 - **Vea los índices de la tabla.**
 
-Nota:Muestra el comando y la salida "show index".
+Nota: Muestra el comando y la salida "show index".
 
 *Comando*
 
@@ -139,7 +144,7 @@ SHOW INDEX FROM alumno;
 
 **Intente ingresar un alumno con clave primaria repetida.**
 
-Nota:Muestra el comando y la salida.
+Nota: Muestra el comando y la salida.
 
 
 *Comando*
@@ -157,7 +162,7 @@ Query OK, 1 row affected (0,01 sec)
 
 **Intente ingresar un alumno con documento repetido.**
 
-Nota:Muestra el comando y la salida.
+Nota: Muestra el comando y la salida.
 
 *Comando*
 
@@ -174,7 +179,7 @@ ERROR 1062 (23000): Duplicate entry '12345678' for key 'alumno.idx_documento'
 
 **Ingrese varios alumnos de la misma ciudad y provincia.**
 
-Nota:Muestra el comando y la salida.
+Nota: Muestra el comando y la salida.
 
 *Comando*
 
@@ -192,7 +197,7 @@ Records: 2  Duplicates: 0  Warnings: 0
 
 **Elimina los indices creados, y muestra que ya no se encuentran.**
 
-Nota:Muestra el comando y la salida.
+Nota: Muestra el comando y la salida.
 
 *Comando*
 
