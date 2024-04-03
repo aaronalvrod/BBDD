@@ -93,7 +93,7 @@ Query OK, 0 rows affected (0,03 sec)
 
     *Comando*
 
-        - UNIQUE: Los valores duplicados no son permitidos.s
+    `UNIQUE: Los valores duplicados no son permitidos.`
 
     ``` sql
     CREATE UNIQUE INDEX index_documento ON alumno (documento);
@@ -108,7 +108,7 @@ Query OK, 0 rows affected (0,03 sec)
 
     *Comando*
 
-        - Sin UNIQUE: Admite valores duplicados.
+    `Sin UNIQUE: Admite valores duplicados.`
 
     ``` sql
     CREATE INDEX index_ciudad_provincia ON alumno (ciudad, provincia);
