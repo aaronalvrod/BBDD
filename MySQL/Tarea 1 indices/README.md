@@ -192,7 +192,7 @@ Nota: Muestra el comando y la salida.
 
 ``` sql
 INSERT INTO alumno (numero_inscripcion, anio_inscripcion, nombre, documento, domicilio, ciudad, provincia)
-VALUES (1, 2024, 'Juan Perez', '12345678', 'Calle 123', 'Ciudad A', 'Provincia X'), (1, 2024, 'Pepe Rodriguez', '11233444', 'Calle 123', 'Ciudad A', 'Provincia X');
+VALUES (1, 2024, 'Juan Perez', '12345678', 'Calle 456', 'Ciudad A', 'Provincia A'), (1, 2024, 'Pepe Rodriguez', '11233444', 'Calle 234', 'Ciudad B', 'Provincia B');
 ```
 
 *Salida*
@@ -211,7 +211,7 @@ Nota: Muestra el comando y la salida.
 
 ``` sql
 INSERT INTO alumno (numero_inscripcion, anio_inscripcion, nombre, documento, domicilio, ciudad, provincia)
-VALUES (2, 2024, 'Maria Lopez', '12345678', 'Calle 456', 'Ciudad B', 'Provincia Y');
+VALUES (2, 2024, 'Maria Lopez', '12345678', 'Calle 456', 'Ciudad E', 'Provincia E');
 ```
 
 *Salida*
@@ -230,7 +230,7 @@ Nota: Muestra el comando y la salida.
 
 ``` sql
 INSERT INTO alumno (numero_inscripcion, anio_inscripcion, nombre, documento, domicilio, ciudad, provincia) 
-VALUES (3, 2024, 'Pedro Ramirez', '87654321', 'Calle 789', 'Ciudad A', 'Provincia X'), (4, 2024, 'Ana Martinez', '98765432', 'Calle 012', 'Ciudad A', 'Provincia X');
+VALUES (3, 2024, 'Pedro Ramirez', '87654321', 'Calle 789', 'Ciudad C', 'Provincia C'), (4, 2024, 'Ana Martinez', '98765432', 'Calle 012', 'Ciudad C', 'Provincia C');
 ```
 
 *Salida*
