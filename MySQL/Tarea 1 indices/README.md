@@ -49,7 +49,7 @@ Ya tendremos la base de datos preparada para realizar lo que se pide
 
 **Se pide:**
 
-**Elimine la tabla "alumno" si existe.**
+- **Elimine la tabla "alumno" si existe.**
 
 *Comando*
 
@@ -63,7 +63,7 @@ DROP TABLE IF EXISTS alumno;
 Query OK, 0 rows affected, 1 warning (0,00 sec)
 ```
 
-**Cree la tabla definiendo una clave primaria compuesta (año de inscripción y número de inscripción).**
+- **Cree la tabla definiendo una clave primaria compuesta (año de inscripción y número de inscripción).**
 
 *Comando*
 
@@ -85,40 +85,41 @@ CREATE TABLE alumno (
 Query OK, 0 rows affected (0,03 sec)
 ```
 
-**Define los siguientes indices:**
+- **Define los siguientes indices:**
 
-- **Un índice único por el campo "documento" y un índice común por ciudad y provincia.**
+    - **Un índice único por el campo "documento" y un índice común por ciudad y provincia.**
 
-Nota: Muestra el comando y la salida. Justifica el tipo de indice en un comentario.
+    Nota: Muestra el comando y la salida. Justifica el tipo de indice en un comentario.
 
-*Comando*
+    *Comando*
 
-- UNIQUE: Los valores duplicados no son permitidos.s
+        - UNIQUE: Los valores duplicados no son permitidos.s
 
-``` sql
-CREATE UNIQUE INDEX index_documento ON alumno (documento);
-```
-*Salida*
+    ``` sql
+    CREATE UNIQUE INDEX index_documento ON alumno (documento);
+    ```
 
-``` sql
-Query OK, 0 rows affected (0,03 sec)
-Records: 0  Duplicates: 0  Warnings: 0
-```
+    *Salida*
 
-- Sin UNIQUE: Admite valores duplicados.
+    ``` sql
+    Query OK, 0 rows affected (0,03 sec)
+    Records: 0  Duplicates: 0  Warnings: 0
+    ```
 
-*Comando*
+    *Comando*
 
-``` sql
-CREATE INDEX index_ciudad_provincia ON alumno (ciudad, provincia);
-```
+        - Sin UNIQUE: Admite valores duplicados.
 
-*Salida*
+    ``` sql
+    CREATE INDEX index_ciudad_provincia ON alumno (ciudad, provincia);
+    ```
 
-``` sql
-Query OK, 0 rows affected (0,02 sec)
-Records: 0  Duplicates: 0  Warnings: 0
-```
+    *Salida*
+
+    ``` sql
+    Query OK, 0 rows affected (0,02 sec)
+    Records: 0  Duplicates: 0  Warnings: 0
+    ```
 
 - **Vea los índices de la tabla.**
 
@@ -145,7 +146,7 @@ SHOW INDEX FROM alumno;
 
 ```
 
-**Intente ingresar un alumno con clave primaria repetida.**
+- **Intente ingresar un alumno con clave primaria repetida.**
 
 Nota: Muestra el comando y la salida.
 
@@ -163,7 +164,7 @@ VALUES (1, 2024, 'Juan Perez', '12345678', 'Calle 123', 'Ciudad A', 'Provincia X
 Query OK, 1 row affected (0,01 sec)
 ```
 
-**Intente ingresar un alumno con documento repetido.**
+- **Intente ingresar un alumno con documento repetido.**
 
 Nota: Muestra el comando y la salida.
 
@@ -180,7 +181,7 @@ VALUES (2, 2024, 'Maria Lopez', '12345678', 'Calle 456', 'Ciudad B', 'Provincia 
 ERROR 1062 (23000): Duplicate entry '12345678' for key 'alumno.idx_documento'
 ```
 
-**Ingrese varios alumnos de la misma ciudad y provincia.**
+- **Ingrese varios alumnos de la misma ciudad y provincia.**
 
 Nota: Muestra el comando y la salida.
 
@@ -198,7 +199,7 @@ Query OK, 2 rows affected (0,02 sec)
 Records: 2  Duplicates: 0  Warnings: 0
 ```
 
-**Elimina los indices creados, y muestra que ya no se encuentran.**
+- **Elimina los indices creados, y muestra que ya no se encuentran.**
 
 Nota: Muestra el comando y la salida.
 
