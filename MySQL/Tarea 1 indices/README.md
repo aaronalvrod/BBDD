@@ -84,7 +84,17 @@ CREATE TABLE alumno (
 *Salida*
 
 ``` sql
-Query OK, 0 rows affected (0,03 sec)
++--------------------+-------------+------+-----+---------+-------+
+| Field              | Type        | Null | Key | Default | Extra |
++--------------------+-------------+------+-----+---------+-------+
+| numero_inscripcion | int         | NO   | PRI | NULL    |       |
+| anio_inscripcion   | int         | NO   | PRI | NULL    |       |
+| nombre             | varchar(50) | YES  |     | NULL    |       |
+| documento          | varchar(20) | YES  |     | NULL    |       |
+| domicilio          | varchar(50) | YES  |     | NULL    |       |
+| ciudad             | varchar(50) | YES  |     | NULL    |       |
+| provincia          | varchar(50) | YES  |     | NULL    |       |
++--------------------+-------------+------+-----+---------+-------+
 ```
 
 ---
@@ -106,8 +116,17 @@ Query OK, 0 rows affected (0,03 sec)
     *Salida*
 
     ``` sql
-    Query OK, 0 rows affected (0,03 sec)
-    Records: 0  Duplicates: 0  Warnings: 0
+    +--------------------+-------------+------+-----+---------+-------+
+    | Field              | Type        | Null | Key | Default | Extra |
+    +--------------------+-------------+------+-----+---------+-------+
+    | numero_inscripcion | int         | NO   | PRI | NULL    |       |
+    | anio_inscripcion   | int         | NO   | PRI | NULL    |       |
+    | nombre             | varchar(50) | YES  |     | NULL    |       |
+    | documento          | varchar(20) | YES  | UNI | NULL    |       |
+    | domicilio          | varchar(50) | YES  |     | NULL    |       |
+    | ciudad             | varchar(50) | YES  |     | NULL    |       |
+    | provincia          | varchar(50) | YES  |     | NULL    |       |
+    +--------------------+-------------+------+-----+---------+-------+
     ```
 
     ---
@@ -123,10 +142,19 @@ Query OK, 0 rows affected (0,03 sec)
     *Salida*
 
     ``` sql
-    Query OK, 0 rows affected (0,02 sec)
-    Records: 0  Duplicates: 0  Warnings: 0
+    +--------------------+-------------+------+-----+---------+-------+
+    | Field              | Type        | Null | Key | Default | Extra |
+    +--------------------+-------------+------+-----+---------+-------+
+    | numero_inscripcion | int         | NO   | PRI | NULL    |       |
+    | anio_inscripcion   | int         | NO   | PRI | NULL    |       |
+    | nombre             | varchar(50) | YES  |     | NULL    |       |
+    | documento          | varchar(20) | YES  | UNI | NULL    |       |
+    | domicilio          | varchar(50) | YES  |     | NULL    |       |
+    | ciudad             | varchar(50) | YES  | MUL | NULL    |       |
+    | provincia          | varchar(50) | YES  |     | NULL    |       |
+    +--------------------+-------------+------+-----+---------+-------+
     ```
-    
+
     ---
 
     - **Vea los índices de la tabla.**
@@ -171,6 +199,17 @@ VALUES (1, 2024, 'Juan Perez', '12345678', 'Calle 123', 'Ciudad A', 'Provincia X
 
 ``` sql
 Query OK, 1 row affected (0,01 sec)
++--------------------+-------------+------+-----+---------+-------+
+| Field              | Type        | Null | Key | Default | Extra |
++--------------------+-------------+------+-----+---------+-------+
+| numero_inscripcion | int         | NO   | PRI | NULL    |       |
+| anio_inscripcion   | int         | NO   | PRI | NULL    |       |
+| nombre             | varchar(50) | YES  |     | NULL    |       |
+| documento          | varchar(20) | YES  | UNI | NULL    |       |
+| domicilio          | varchar(50) | YES  |     | NULL    |       |
+| ciudad             | varchar(50) | YES  | MUL | NULL    |       |
+| provincia          | varchar(50) | YES  |     | NULL    |       |
++--------------------+-------------+------+-----+---------+-------+
 ```
 
 ---
@@ -210,6 +249,17 @@ VALUES (3, 2024, 'Pedro Ramirez', '87654321', 'Calle 789', 'Ciudad A', 'Provinci
 ``` sql
 Query OK, 2 rows affected (0,02 sec)
 Records: 2  Duplicates: 0  Warnings: 0
++--------------------+-------------+------+-----+---------+-------+
+| Field              | Type        | Null | Key | Default | Extra |
++--------------------+-------------+------+-----+---------+-------+
+| numero_inscripcion | int         | NO   | PRI | NULL    |       |
+| anio_inscripcion   | int         | NO   | PRI | NULL    |       |
+| nombre             | varchar(50) | YES  |     | NULL    |       |
+| documento          | varchar(20) | YES  | UNI | NULL    |       |
+| domicilio          | varchar(50) | YES  |     | NULL    |       |
+| ciudad             | varchar(50) | YES  | MUL | NULL    |       |
+| provincia          | varchar(50) | YES  |     | NULL    |       |
++--------------------+-------------+------+-----+---------+-------+
 ```
 
 ---
@@ -221,7 +271,7 @@ Nota: Muestra el comando y la salida.
 *Comando*
 
 ``` sql
-DROP INDEX idx_documento ON alumno;
+DROP INDEX index_documento ON alumno;
 ```
 
 *Salida*
@@ -229,17 +279,39 @@ DROP INDEX idx_documento ON alumno;
 ``` sql
 Query OK, 0 rows affected (0,02 sec)
 Records: 0  Duplicates: 0  Warnings: 0
++--------------------+-------------+------+-----+---------+-------+
+| Field              | Type        | Null | Key | Default | Extra |
++--------------------+-------------+------+-----+---------+-------+
+| numero_inscripcion | int         | NO   | PRI | NULL    |       |
+| anio_inscripcion   | int         | NO   | PRI | NULL    |       |
+| nombre             | varchar(50) | YES  |     | NULL    |       |
+| documento          | varchar(20) | YES  |     | NULL    |       |
+| domicilio          | varchar(50) | YES  |     | NULL    |       |
+| ciudad             | varchar(50) | YES  | MUL | NULL    |       |
+| provincia          | varchar(50) | YES  |     | NULL    |       |
++--------------------+-------------+------+-----+---------+-------+
 ```
 *Comando*
 
 ``` sql
-DROP INDEX idx_ciudad_provincia ON alumno;
+DROP INDEX index_ciudad_provincia ON alumno;
 ```
 *Salida*
 
 ``` sql
 Query OK, 0 rows affected (0,02 sec)
 Records: 0  Duplicates: 0  Warnings: 0
++--------------------+-------------+------+-----+---------+-------+
+| Field              | Type        | Null | Key | Default | Extra |
++--------------------+-------------+------+-----+---------+-------+
+| numero_inscripcion | int         | NO   | PRI | NULL    |       |
+| anio_inscripcion   | int         | NO   | PRI | NULL    |       |
+| nombre             | varchar(50) | YES  |     | NULL    |       |
+| documento          | varchar(20) | YES  |     | NULL    |       |
+| domicilio          | varchar(50) | YES  |     | NULL    |       |
+| ciudad             | varchar(50) | YES  |     | NULL    |       |
+| provincia          | varchar(50) | YES  |     | NULL    |       |
++--------------------+-------------+------+-----+---------+-------+
 ```
 
 *Comando*
