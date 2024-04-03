@@ -93,24 +93,27 @@ Nota: Muestra el comando y la salida. Justifica el tipo de indice en un comentar
 
 *Comando*
 
-- UNIQUE: Los valores duplicados no son permitidos.
+- UNIQUE: Los valores duplicados no son permitidos.s
 
 ``` sql
 CREATE UNIQUE INDEX index_documento ON alumno (documento);
 ```
-
-- Sin UNIQUE: Admite valores duplicados.
-
-``` sql
-CREATE INDEX index_ciudad_provincia ON alumno (ciudad, provincia);
-```
-
 *Salida*
 
 ``` sql
 Query OK, 0 rows affected (0,03 sec)
 Records: 0  Duplicates: 0  Warnings: 0
 ```
+
+- Sin UNIQUE: Admite valores duplicados.
+
+*Comando*
+
+``` sql
+CREATE INDEX index_ciudad_provincia ON alumno (ciudad, provincia);
+```
+
+*Salida*
 
 ``` sql
 Query OK, 0 rows affected (0,02 sec)
