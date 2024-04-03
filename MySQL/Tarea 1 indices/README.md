@@ -5,6 +5,7 @@
 </div>
 <br>
 <div aling="justify">
+
 ### Un instituto de enseñanza guarda los siguientes datos de sus alumnos:
 
 - número de inscripción, comienza desde 1 cada año.
