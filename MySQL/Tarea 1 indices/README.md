@@ -110,6 +110,8 @@ Query OK, 0 rows affected (0,03 sec)
     Records: 0  Duplicates: 0  Warnings: 0
     ```
 
+    ---
+
     *Comando*
 
     `INDEX: No aplica ninguna restricción especial a los datos de la columna (o columnas) que componen el índice`
@@ -124,6 +126,8 @@ Query OK, 0 rows affected (0,03 sec)
     Query OK, 0 rows affected (0,02 sec)
     Records: 0  Duplicates: 0  Warnings: 0
     ```
+    
+    ---
 
     - **Vea los índices de la tabla.**
 
