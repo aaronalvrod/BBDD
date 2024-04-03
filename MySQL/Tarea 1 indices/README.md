@@ -63,6 +63,8 @@ DROP TABLE IF EXISTS alumno;
 Query OK, 0 rows affected, 1 warning (0,00 sec)
 ```
 
+---
+
 - **Cree la tabla definiendo una clave primaria compuesta (año de inscripción y número de inscripción).**
 
 *Comando*
@@ -84,6 +86,8 @@ CREATE TABLE alumno (
 ``` sql
 Query OK, 0 rows affected (0,03 sec)
 ```
+
+---
 
 - **Define los siguientes indices:**
 
@@ -145,6 +149,8 @@ Query OK, 0 rows affected (0,03 sec)
     +--------+------------+----------------------+--------------+--------------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
     ```
 
+---
+
 - **Intente ingresar un alumno con clave primaria repetida.**
 
 Nota: Muestra el comando y la salida.
@@ -163,6 +169,8 @@ VALUES (1, 2024, 'Juan Perez', '12345678', 'Calle 123', 'Ciudad A', 'Provincia X
 Query OK, 1 row affected (0,01 sec)
 ```
 
+---
+
 - **Intente ingresar un alumno con documento repetido.**
 
 Nota: Muestra el comando y la salida.
@@ -179,6 +187,8 @@ VALUES (2, 2024, 'Maria Lopez', '12345678', 'Calle 456', 'Ciudad B', 'Provincia 
 ``` sql
 ERROR 1062 (23000): Duplicate entry '12345678' for key 'alumno.idx_documento'
 ```
+
+---
 
 - **Ingrese varios alumnos de la misma ciudad y provincia.**
 
@@ -198,6 +208,8 @@ Query OK, 2 rows affected (0,02 sec)
 Records: 2  Duplicates: 0  Warnings: 0
 ```
 
+---
+
 - **Elimina los indices creados, y muestra que ya no se encuentran.**
 
 Nota: Muestra el comando y la salida.
@@ -207,12 +219,6 @@ Nota: Muestra el comando y la salida.
 ``` sql
 DROP INDEX idx_documento ON alumno;
 ```
-``` sql
-DROP INDEX idx_ciudad_provincia ON alumno;
-```
-``` sql
-SHOW INDEX FROM alumno;
-```
 
 *Salida*
 
@@ -220,10 +226,25 @@ SHOW INDEX FROM alumno;
 Query OK, 0 rows affected (0,02 sec)
 Records: 0  Duplicates: 0  Warnings: 0
 ```
+*Comando*
+
+``` sql
+DROP INDEX idx_ciudad_provincia ON alumno;
+```
+*Salida*
+
 ``` sql
 Query OK, 0 rows affected (0,02 sec)
 Records: 0  Duplicates: 0  Warnings: 0
 ```
+
+*Comando*
+
+``` sql
+SHOW INDEX FROM alumno;
+```
+*Salida*
+
 ``` sql
 +--------+------------+----------+--------------+--------------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
 | Table  | Non_unique | Key_name | Seq_in_index | Column_name        | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment | Visible | Expression |
