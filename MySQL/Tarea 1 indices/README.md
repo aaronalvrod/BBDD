@@ -228,7 +228,7 @@ VALUES (2, 2024, 'Maria Lopez', '12345678', 'Calle 456', 'Ciudad B', 'Provincia 
 *Salida*
 
 ``` sql
-ERROR 1062 (23000): Duplicate entry '12345678' for key 'alumno.idx_documento'
+ERROR 1062 (23000): Duplicate entry '12345678' for key 'alumno.index_documento'
 ```
 
 ---
