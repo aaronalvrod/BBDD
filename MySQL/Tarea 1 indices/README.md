@@ -4,7 +4,7 @@
 <img src="indices.jpeg"/>
 </div>
 <br>
-
+<div aling="justify">
 ### Un instituto de enseñanza guarda los siguientes datos de sus alumnos:
 
 - número de inscripción, comienza desde 1 cada año.
@@ -223,3 +223,4 @@ Records: 0  Duplicates: 0  Warnings: 0
 | alumno |          0 | PRIMARY  |            2 | numero_inscripcion | A         |           0 |     NULL |   NULL |      | BTREE      |         |               | YES     | NULL       |
 +--------+------------+----------+--------------+--------------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
 ```
+</div>
