@@ -192,24 +192,13 @@ Nota: Muestra el comando y la salida.
 
 ``` sql
 INSERT INTO alumno (numero_inscripcion, anio_inscripcion, nombre, documento, domicilio, ciudad, provincia)
-VALUES (1, 2024, 'Juan Perez', '12345678', 'Calle 123', 'Ciudad A', 'Provincia X');
+VALUES (1, 2024, 'Juan Perez', '12345678', 'Calle 123', 'Ciudad A', 'Provincia X'), (1, 2024, 'Pepe Rodriguez', '11233444', 'Calle 123', 'Ciudad A', 'Provincia X');
 ```
 
 *Salida*
 
 ``` sql
-Query OK, 1 row affected (0,01 sec)
-+--------------------+-------------+------+-----+---------+-------+
-| Field              | Type        | Null | Key | Default | Extra |
-+--------------------+-------------+------+-----+---------+-------+
-| numero_inscripcion | int         | NO   | PRI | NULL    |       |
-| anio_inscripcion   | int         | NO   | PRI | NULL    |       |
-| nombre             | varchar(50) | YES  |     | NULL    |       |
-| documento          | varchar(20) | YES  | UNI | NULL    |       |
-| domicilio          | varchar(50) | YES  |     | NULL    |       |
-| ciudad             | varchar(50) | YES  | MUL | NULL    |       |
-| provincia          | varchar(50) | YES  |     | NULL    |       |
-+--------------------+-------------+------+-----+---------+-------+
+ERROR 1062 (23000): Duplicate entry '2024-1' for key 'alumno.PRIMARY'
 ```
 
 ---
