@@ -1,6 +1,6 @@
 <div align="center">
 
-# Tarea 1: Trabajo con índices
+# *Tarea 1: Trabajo con índices*
 <img src="indices.jpeg"/>
 </div>
 <br>
