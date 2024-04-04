@@ -171,3 +171,211 @@ DESCRIBE MOVIMIENTO_BIS;
 | Cantidad      | int         | YES  |     | NULL    |       |
 +---------------+-------------+------+-----+---------+-------+
 ```
+
+- **Utilizando EXPLAIN observa el plan de ejecución de la consulta que devuelve toda la información de los movimientos con identificador=3. Tanto en la tabla MOVIMIENTOS como en la tabla MOVIMIENTOS_bis. Escribe tus conclusiones al respecto.**
+
+*Comando*
+
+``` sql
+EXPLAIN SELECT * FROM MOVIMIENTO WHERE identificador = 3;
+```
+
+*Salida*
+
+``` sql
++----+-------------+------------+------------+-------+---------------+---------+---------+-------+------+----------+-------+
+| id | select_type | table      | partitions | type  | possible_keys | key     | key_len | ref   | rows | filtered | Extra |
++----+-------------+------------+------------+-------+---------------+---------+---------+-------+------+----------+-------+
+|  1 | SIMPLE      | MOVIMIENTO | NULL       | const | PRIMARY       | PRIMARY | 4       | const |    1 |   100.00 | NULL  |
++----+-------------+------------+------------+-------+---------------+---------+---------+-------+------+----------+-------+
+```
+
+*Comando*
+
+``` sql
+EXPLAIN SELECT * FROM MOVIMIENTO_BIS WHERE identificador = 3;
+```
+
+*Salida*
+
+``` sql
++----+-------------+----------------+------------+------+---------------+------+---------+------+------+----------+-------------+
+| id | select_type | table          | partitions | type | possible_keys | key  | key_len | ref  | rows | filtered | Extra       |
++----+-------------+----------------+------------+------+---------------+------+---------+------+------+----------+-------------+
+|  1 | SIMPLE      | MOVIMIENTO_BIS | NULL       | ALL  | NULL          | NULL | NULL    | NULL | 3563 |    10.00 | Using where |
++----+-------------+----------------+------------+------+---------------+------+---------+------+------+----------+-------------+
+
+```
+
+- **Supongamos que las consultas de rango que se van a hacer en nuestra tabla son frecuentes y además no por el identificador, sino por la fecha. Este es motivo suficiente para que sea la fecha un índice de tabla y así mejorar el tiempo de respuesta de nuestras consultas. En la tabla MOVIMIENTO_BIS creamos un índice para la fecha (IX_FECHA_BIS) y otro índice para el identificador (IX_IDENTIFICADOR).**
+
+*Comando*
+
+``` sql
+CREATE INDEX IX_FECHA_BIS ON MOVIMIENTO_BIS (fecha);
+```
+
+*Salida*
+
+``` sql
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| Identificador | int         | NO   |     | 0       |       |
+| Articulo      | varchar(50) | YES  |     | NULL    |       |
+| Fecha         | date        | YES  | MUL | NULL    |       |
+| Cantidad      | int         | YES  |     | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+```
+
+*Comando*
+
+``` sql
+CREATE INDEX IX_IDENTIFICADOR ON MOVIMIENTO_BIS (identificador);
+```
+
+*Salida*
+
+``` sql
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| Identificador | int         | NO   | MUL | 0       |       |
+| Articulo      | varchar(50) | YES  |     | NULL    |       |
+| Fecha         | date        | YES  | MUL | NULL    |       |
+| Cantidad      | int         | YES  |     | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+```
+
+- **Analiza el plan de ejecución de las siguientes consultas y observa la diferencia: Consulta1**
+
+`Consulta 1`
+
+*Comando*
+
+``` sql
+SELECT * FROM MOVIMIENTO_BIS WHERE identificador=3;
+```
+
+*Salida*
+
+``` sql
++---------------+-----------+------------+----------+
+| Identificador | Articulo  | Fecha      | Cantidad |
++---------------+-----------+------------+----------+
+|             3 | Producto3 | 2012-02-07 |   123051 |
++---------------+-----------+------------+----------+
+```
+
+`Consulta 2`
+
+*Comando*
+
+``` sql
+SELECT identificador FROM MOVIMIENTO_BIS WHERE identificador=3;
+```
+
+*Salida*
+
+``` sql
++---------------+
+| identificador |
++---------------+
+|             3 |
++---------------+
+```
+
+- **Analiza el plan de ejecución de las siguientes consultas y observa la diferencia:**
+
+`Consulta 1`
+
+*Comando*
+
+``` sql
+EXPLAIN SELECT fecha FROM MOVIMIENTO WHERE fecha BETWEEN '01/01/2012' and '01/03/2012';
+```
+
+*Salida*
+
+``` sql
++----+-------------+------------+------------+------+---------------+------+---------+------+------+----------+-------------+
+| id | select_type | table      | partitions | type | possible_keys | key  | key_len | ref  | rows | filtered | Extra       |
++----+-------------+------------+------------+------+---------------+------+---------+------+------+----------+-------------+
+|  1 | SIMPLE      | MOVIMIENTO | NULL       | ALL  | NULL          | NULL | NULL    | NULL | 3563 |    11.11 | Using where |
++----+-------------+------------+------------+------+---------------+------+---------+------+------+----------+-------------+
+```
+
+`Consulta 2`
+
+*Comando*
+
+``` sql
+EXPLAIN SELECT * FROM MOVIMIENTO WHERE fecha BETWEEN '01/01/2012' and '01/03/2012';
+```
+
+*Salida*
+
+``` sql
++----+-------------+------------+------------+------+---------------+------+---------+------+------+----------+-------------+
+| id | select_type | table      | partitions | type | possible_keys | key  | key_len | ref  | rows | filtered | Extra       |
++----+-------------+------------+------------+------+---------------+------+---------+------+------+----------+-------------+
+|  1 | SIMPLE      | MOVIMIENTO | NULL       | ALL  | NULL          | NULL | NULL    | NULL | 3563 |    11.11 | Using where |
++----+-------------+------------+------------+------+---------------+------+---------+------+------+----------+-------------+
+```
+
+- **Vamos a crear un índice por fecha (IX_FECHA) en la tabla MOVIMIENTO, puesto que no lo tenía, en este caso la tabla ya tenía un indice, la clave primaria.**
+
+*Comando*
+
+``` sql
+CREATE INDEX IX_FECHA ON MOVIMIENTO (fecha);
+```
+
+*Salida*
+
+``` sql
++---------------+-------------+------+-----+---------+----------------+
+| Field         | Type        | Null | Key | Default | Extra          |
++---------------+-------------+------+-----+---------+----------------+
+| Identificador | int         | NO   | PRI | NULL    | auto_increment |
+| Articulo      | varchar(50) | YES  |     | NULL    |                |
+| Fecha         | date        | YES  | MUL | NULL    |                |
+| Cantidad      | int         | YES  |     | NULL    |                |
++---------------+-------------+------+-----+---------+----------------+
+```
+
+- **Visualiza los indices de las tablas MOVIMIENTO y MOVIMIENTO_BIS.**
+
+*Comando*
+
+``` sql
+SHOW INDEX FROM MOVIMIENTO;
+```
+
+*Salida*
+
+``` sql
++------------+------------+----------+--------------+---------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+| Table      | Non_unique | Key_name | Seq_in_index | Column_name   | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment | Visible | Expression |
++------------+------------+----------+--------------+---------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+| MOVIMIENTO |          0 | PRIMARY  |            1 | Identificador | A         |        3563 |     NULL |   NULL |      | BTREE      |         |               | YES     | NULL       |
+| MOVIMIENTO |          1 | IX_FECHA |            1 | Fecha         | A         |         120 |     NULL |   NULL | YES  | BTREE      |         |               | YES     | NULL       |
++------------+------------+----------+--------------+---------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+```
+
+*Comando*
+
+``` sql
+SHOW INDEX FROM MOVIMIENTO_BIS;
+```
+
+*Salida*
+
+``` sql
++----------------+------------+------------------+--------------+---------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+| Table          | Non_unique | Key_name         | Seq_in_index | Column_name   | Collation | Cardinality | Sub_part | Packed | Null | Index_type | Comment | Index_comment | Visible | Expression |
++----------------+------------+------------------+--------------+---------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+| MOVIMIENTO_BIS |          1 | IX_FECHA_BIS     |            1 | Fecha         | A         |         120 |     NULL |   NULL | YES  | BTREE      |         |               | YES     | NULL       |
+| MOVIMIENTO_BIS |          1 | IX_IDENTIFICADOR |            1 | Identificador | A         |        3563 |     NULL |   NULL |      | BTREE      |         |               | YES     | NULL       |
++----------------+------------+------------------+--------------+---------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+```
