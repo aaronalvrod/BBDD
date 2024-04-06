@@ -1,18 +1,5 @@
 # Tarea 3 Indices
 
-
-*Comando*
-
-``` sql
-
-```
-
-*Salida*
-
-``` sql
-
-```
-
 - **Crea una base de datos que tendrá por nombre Base_Indices.**
 
 *Comando*
@@ -378,4 +365,62 @@ SHOW INDEX FROM MOVIMIENTO_BIS;
 | MOVIMIENTO_BIS |          1 | IX_FECHA_BIS     |            1 | Fecha         | A         |         120 |     NULL |   NULL | YES  | BTREE      |         |               | YES     | NULL       |
 | MOVIMIENTO_BIS |          1 | IX_IDENTIFICADOR |            1 | Identificador | A         |        3563 |     NULL |   NULL |      | BTREE      |         |               | YES     | NULL       |
 +----------------+------------+------------------+--------------+---------------+-----------+-------------+----------+--------+------+------------+---------+---------------+---------+------------+
+```
+
+- **Analiza el plan de ejecución de las siguientes consultas y observa la diferencia:**
+
+`Consulta 1:`
+
+*Comando*
+
+``` sql
+SELECT fecha FROM MOVIMIENTO WHERE fecha BETWEEN 01/01/2012 AND 01/03/2012;
+```
+
+*Salida*
+
+``` sql
+
+```
+
+`Consulta 2`
+
+*Comando*
+
+``` sql
+SELECT * FROM MOVIMIENTO WHERE fecha BETWEEN 01/01/2012 AND 01/03/2012;
+```
+
+*Salida*
+
+``` sql
+
+```
+
+`Consulta 3`
+
+*Comando*
+
+``` sql
+SELECT fecha FROM MOVIMIENTO_BIS WHERE fecha BETWEEN 01/01/2012 AND 01/03/2012;
+```
+
+*Salida*
+
+``` sql
+
+```
+
+`Consulta 4`
+
+*Comando*
+
+``` sql
+SELECT * FROM MOVIMIENTO_BIS WHERE fecha BETWEEN 01/01/2012 AND 01/03/2012;
+```
+
+*Salida*
+
+``` sql
+
 ```
