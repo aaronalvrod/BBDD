@@ -61,7 +61,7 @@ EXPLAIN SELECT * FROM producto WHERE nombre = 'Evonimus Pulchellus';
 +----+-------------+----------+------------+------+---------------+------+---------+------+------+----------+-------------+
 ```
 
-`Como podemos observar en el primer explain, dicha cosulta `
+`Como podemos observar en el primer explain, dicha cosulta es mas eficiente. Esto se basa en el uso de indices, la columna codigo_producto tiene un indice`
 
 - **Suponga que estamos trabajando con la base de datos jardineria y queremos saber optimizar las siguientes consultas. ¿Cuál de las dos sería más eficiente?. Se recomienda hacer uso de EXPLAIN para obtener información sobre cómo se están realizando las consultas.**
 
