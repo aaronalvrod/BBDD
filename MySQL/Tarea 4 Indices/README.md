@@ -1359,7 +1359,7 @@ Se pide:
         *Comando*
 
         ``` sql
-        SELECT * FROM 
+        SELECT ci.* FROM city AS ci JOIN country AS co on ci.country_id = co.country_id WHERE co.country = "Spain"; 
         ```
 
         *Salida*
@@ -1367,12 +1367,14 @@ Se pide:
         ``` sql
 
         ```
+
     - **Mostrar el nombre de la película y el nombre de los actores.**
 
         *Comando*
 
         ``` sql
-        
+        SELECT fi.title, GROUP_CONCAT(act.first_name, ' ', act.last_name) AS actores FROM film AS fi JOIN fi_act ON fi.film_id = fi_act.film_id JOIN actor AS act ON fi_act.actor_id = acts.actor_id;
+
         ```
 
         *Salida*
@@ -1385,7 +1387,7 @@ Se pide:
         *Comando*
 
         ``` sql
-
+        SELECT fi.title, GROUP_CONCAT(cat.name) AS categorias FROM film AS fi JOIN film_category AS fi_cat ON fi.film_id = fi_cat.film_id JOIN category AS cat ON fi_cat.category_id = cat.category_id; 
         ```
 
         *Salida*
@@ -1398,7 +1400,7 @@ Se pide:
         *Comando*
 
         ``` sql
-
+        SELECT co.country, ci.city, staff.address FROM staff JOIN address ON staff.address_id = address.address_id JOIN city AS ci ON address.city_id = ci.city_id JOIN country AS co ON ci.country_id = co.country_id;
         ```
 
         *Salida*
@@ -1406,12 +1408,13 @@ Se pide:
         ``` sql
 
         ```
+
     - **Mostrar el country, la ciudad y dirección de cada customer.**
 
         *Comando*
 
         ``` sql
-
+        SELECT co.country, ci.city, cust.address FROM customer AS cust JOIN address ON customer.address_id = address.address_id JOIN city AS ci ON address.city_id = ci.city_id JOIN country AS co ON ci.country_id = co.country_id;
         ```
 
         *Salida*
@@ -1424,7 +1427,7 @@ Se pide:
         *Comando*
 
         ``` sql
-
+        SELECT rating, COUNT(*) AS cantidad FROM film;
         ```
 
         *Salida*
@@ -1432,12 +1435,13 @@ Se pide:
         ``` sql
 
         ```
+
     - **Cuantas películas ha realizado el actor ED CHASE.**
 
         *Comando*
 
         ``` sql
-
+        SELECT COUNT(*) AS cantidad_películas FROM film AS fi JOIN film_actor AS fi_act ON fi.film_id = fi_act.film_id JOIN actor AS act ON fi_act.actor_id = act.actor_id WHERE act.first_name = 'ED' AND act.last_name = 'CHASE';
         ```
 
         *Salida*
@@ -1445,12 +1449,13 @@ Se pide:
         ``` sql
 
         ```
+
     - **Media de duración de las películas cada categoría.**
 
         *Comando*
 
         ``` sql
-
+        SELECT cat.name, AVG(fi.length) AS duracion_media FROM film AS fi JOIN film_category AS fi_cat ON fi.film_id = fi_cat.film_id JOIN category AS cat ON fi_cat.category_id = cat.category_id;
         ```
 
         *Salida*
