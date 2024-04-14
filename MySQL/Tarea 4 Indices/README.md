@@ -1365,7 +1365,15 @@ Se pide:
         *Salida*
 
         ``` sql
-
+        +---------+-------------------------+------------+---------------------+
+        | city_id | city                    | country_id | last_update         |
+        +---------+-------------------------+------------+---------------------+
+        |       1 | A Coruña (La Coruña)    |         87 | 2006-02-15 04:45:25 |
+        |     146 | Donostia-San Sebastián  |         87 | 2006-02-15 04:45:25 |
+        |     181 | Gijón                   |         87 | 2006-02-15 04:45:25 |
+        |     388 | Ourense (Orense)        |         87 | 2006-02-15 04:45:25 |
+        |     459 | Santiago de Compostela  |         87 | 2006-02-15 04:45:25 |
+        +---------+-------------------------+------------+---------------------+
         ```
 
     - **Mostrar el nombre de la película y el nombre de los actores.**
@@ -1373,34 +1381,61 @@ Se pide:
         *Comando*
 
         ``` sql
-        SELECT fi.title, CONCAT(act.first_name, ' ', act.last_name) AS actores FROM film AS fi JOIN fi_act ON fi.film_id = fi_act.film_id JOIN actor AS act ON fi_act.actor_id = acts.actor_id;
-
+        SELECT fi.title, CONCAT(act.first_name, ' ', act.last_name) AS actores FROM film AS fi JOIN film_actor AS fi_act ON fi.film_id = fi_act.film_id JOIN actor AS act ON fi_act.actor_id = act.actor_id LIMIT 10;
         ```
 
         *Salida*
 
         ``` sql
-
+        +-----------------------+------------------+
+        | title                 | actores          |
+        +-----------------------+------------------+
+        | ACADEMY DINOSAUR      | PENELOPE GUINESS |
+        | ANACONDA CONFESSIONS  | PENELOPE GUINESS |
+        | ANGELS LIFE           | PENELOPE GUINESS |
+        | BULWORTH COMMANDMENTS | PENELOPE GUINESS |
+        | CHEAPER CLYDE         | PENELOPE GUINESS |
+        | COLOR PHILADELPHIA    | PENELOPE GUINESS |
+        | ELEPHANT TROJAN       | PENELOPE GUINESS |
+        | GLEAMING JAWBREAKER   | PENELOPE GUINESS |
+        | HUMAN GRAFFITI        | PENELOPE GUINESS |
+        | KING EVOLUTION        | PENELOPE GUINESS |
+        +-----------------------+------------------+
         ```
+
     - **Mostrar el nombre de la película y el de sus categorías.**
 
         *Comando*
 
         ``` sql
-        SELECT fi.title, cat.name AS categorias FROM film AS fi JOIN film_category AS fi_cat ON fi.film_id = fi_cat.film_id JOIN category AS cat ON fi_cat.category_id = cat.category_id; 
+        SELECT fi.title, cat.name AS categorias FROM film AS fi JOIN film_category AS fi_cat ON fi.film_id = fi_cat.film_id JOIN category AS cat ON fi_cat.category_id = cat.category_id LIMIT 10; 
         ```
 
         *Salida*
 
         ``` sql
-
+        +---------------------+------------+
+        | title               | categorias |
+        +---------------------+------------+
+        | AMADEUS HOLY        | Action     |
+        | AMERICAN CIRCUS     | Action     |
+        | ANTITRUST TOMATOES  | Action     |
+        | ARK RIDGEMONT       | Action     |
+        | BAREFOOT MANCHURIAN | Action     |
+        | BERETS AGENT        | Action     |
+        | BRIDE INTRIGUE      | Action     |
+        | BULL SHAWSHANK      | Action     |
+        | CADDYSHACK JEDI     | Action     |
+        | CAMPUS REMEMBER     | Action     |
+        +---------------------+------------+
         ```
+
     - **Mostrar el country, la ciudad y dirección de cada miembro del staff.**
 
         *Comando*
 
         ``` sql
-        SELECT co.country, ci.city, staff.address FROM staff JOIN address ON staff.address_id = address.address_id JOIN city AS ci ON address.city_id = ci.city_id JOIN country AS co ON ci.country_id = co.country_id;
+
         ```
 
         *Salida*
@@ -1427,13 +1462,21 @@ Se pide:
         *Comando*
 
         ``` sql
-        SELECT rating, COUNT(*) AS cantidad FROM film;
+        SELECT rating, COUNT(*) AS cantidad FROM film GROUP BY rating;
         ```
 
         *Salida*
 
         ``` sql
-
+        +--------+----------+
+        | rating | cantidad |
+        +--------+----------+
+        | PG     |      194 |
+        | G      |      178 |
+        | NC-17  |      210 |
+        | PG-13  |      223 |
+        | R      |      195 |
+        +--------+----------+
         ```
 
     - **Cuantas películas ha realizado el actor ED CHASE.**
@@ -1447,7 +1490,11 @@ Se pide:
         *Salida*
 
         ``` sql
-
+        +---------------------+
+        | cantidad_películas  |
+        +---------------------+
+        |                  22 |
+        +---------------------+
         ```
 
     - **Media de duración de las películas cada categoría.**
@@ -1455,13 +1502,32 @@ Se pide:
         *Comando*
 
         ``` sql
-        SELECT cat.name, AVG(fi.length) AS duracion_media FROM film AS fi JOIN film_category AS fi_cat ON fi.film_id = fi_cat.film_id JOIN category AS cat ON fi_cat.category_id = cat.category_id;
+        SELECT cat.name, AVG(fi.length) AS duracion_media FROM film AS fi JOIN film_category AS fi_cat ON fi.film_id = fi_cat.film_id JOIN category AS cat ON fi_cat.category_id = cat.category_id GROUP BY cat.name;
         ```
 
         *Salida*
 
         ``` sql
-
+        +-------------+----------------+
+        | name        | duracion_media |
+        +-------------+----------------+
+        | Action      |       111.6094 |
+        | Animation   |       111.0152 |
+        | Children    |       109.8000 |
+        | Classics    |       111.6667 |
+        | Comedy      |       115.8276 |
+        | Documentary |       108.7500 |
+        | Drama       |       120.8387 |
+        | Family      |       114.7826 |
+        | Foreign     |       121.6986 |
+        | Games       |       127.8361 |
+        | Horror      |       112.4821 |
+        | Music       |       113.6471 |
+        | New         |       111.1270 |
+        | Sci-Fi      |       108.1967 |
+        | Sports      |       128.2027 |
+        | Travel      |       113.3158 |
+        +-------------+----------------+
         ```
 
     - **A continuación se muestran algunas de las vistas que se han utilizado en la base de datos Sakila.**
