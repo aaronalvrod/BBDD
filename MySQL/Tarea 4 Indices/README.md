@@ -1373,7 +1373,7 @@ Se pide:
         *Comando*
 
         ``` sql
-        SELECT fi.title, GROUP_CONCAT(act.first_name, ' ', act.last_name) AS actores FROM film AS fi JOIN fi_act ON fi.film_id = fi_act.film_id JOIN actor AS act ON fi_act.actor_id = acts.actor_id;
+        SELECT fi.title, CONCAT(act.first_name, ' ', act.last_name) AS actores FROM film AS fi JOIN fi_act ON fi.film_id = fi_act.film_id JOIN actor AS act ON fi_act.actor_id = acts.actor_id;
 
         ```
 
@@ -1387,7 +1387,7 @@ Se pide:
         *Comando*
 
         ``` sql
-        SELECT fi.title, GROUP_CONCAT(cat.name) AS categorias FROM film AS fi JOIN film_category AS fi_cat ON fi.film_id = fi_cat.film_id JOIN category AS cat ON fi_cat.category_id = cat.category_id; 
+        SELECT fi.title, cat.name AS categorias FROM film AS fi JOIN film_category AS fi_cat ON fi.film_id = fi_cat.film_id JOIN category AS cat ON fi_cat.category_id = cat.category_id; 
         ```
 
         *Salida*
@@ -1464,6 +1464,153 @@ Se pide:
 
         ```
 
+    - **A continuación se muestran algunas de las vistas que se han utilizado en la base de datos Sakila.**
+
+    ``` sql
+        --
+    -- View structure for view `customer_list`
+    --
+
+    CREATE VIEW customer_list AS
+    SELECT 
+    cu.customer_id AS ID, 
+        CONCAT(cu.first_name, _utf8mb4' ', cu.last_name) AS name, 
+        a.address AS address, 
+        a.postal_code AS `zip code`,
+    a.phone AS phone, 
+        city.city AS city, 
+        country.country AS country, 
+        IF(cu.active, _utf8mb4'active',_utf8mb4'') AS notes, 
+        cu.store_id AS SID
+    FROM 
+    customer AS cu JOIN address AS a 
+        ON cu.address_id = a.address_id 
+        JOIN city 
+        ON a.city_id = city.city_id
+    JOIN country 
+        ON city.country_id = country.country_id;
+    --
+    -- View structure for view `film_list`
+    --
+
+    CREATE VIEW film_list AS
+    SELECT 
+    film.film_id AS FID, 
+        film.title AS title, 
+        film.description AS description, 
+        category.name AS category, 
+        film.rental_rate AS price,
+    film.length AS length, 
+        film.rating AS rating, 
+        GROUP_CONCAT(CONCAT(actor.first_name, _utf8mb4' ', actor.last_name) SEPARATOR ', ') AS actors
+    FROM 
+    category LEFT JOIN film_category 
+        ON category.category_id = film_category.category_id 
+        LEFT JOIN film 
+        ON film_category.film_id = film.film_id
+    JOIN film_actor 
+        ON film.film_id = film_actor.film_id
+    JOIN actor 
+        ON film_actor.actor_id = actor.actor_id
+    GROUP BY film.film_id, category.name;
+    ```
+
+    - **Muestra el resultado de la consulta de las vistas que se proporcionan**
+
+    - **Crea 5 vistas sobre la BBDD, y realiza la consulta, para mostrar los resultados. Las vistas deben tener 3 o más tablas de la BBDD**
+
+    *Comando*
+
+    ``` sql
+    CREATE VIEW customer_rental_info AS
+    SELECT c.first_name AS customer_first_name, c.last_name AS customer_last_name,
+        f.title AS film_title, r.rental_date AS rental_date, r.return_date AS return_date
+    FROM rental r
+    JOIN customer c ON r.customer_id = c.customer_id
+    JOIN inventory i ON r.inventory_id = i.inventory_id
+    JOIN film f ON i.film_id = f.film_id;
+    ```
+
+    *Salida*
+
+    ``` sql
+
+    ```
+
+    *Comando*
+
+    ``` sql
+    CREATE VIEW film_actor_category AS
+    SELECT f.title AS film_title, GROUP_CONCAT(CONCAT(a.first_name, ' ', a.last_name) SEPARATOR ', ') AS actors,
+        c.name AS category
+    FROM film f
+    JOIN film_actor fa ON f.film_id = fa.film_id
+    JOIN actor a ON fa.actor_id = a.actor_id
+    JOIN film_category fc ON f.film_id = fc.film_id
+    JOIN category c ON fc.category_id = c.category_id
+    GROUP BY f.film_id, c.name;
+    ```
+
+    *Salida*
+
+    ``` sql
+
+    ```
+    
+    *Comando*
+
+    ``` sql
+    CREATE VIEW staff_customer_address AS
+    SELECT s.first_name AS staff_first_name, s.last_name AS staff_last_name,
+        c.first_name AS customer_first_name, c.last_name AS customer_last_name,
+        a.address AS customer_address, a.district AS customer_district,
+        ci.city AS customer_city, co.country AS customer_country
+    FROM staff s
+    JOIN address a ON s.address_id = a.address_id
+    JOIN city ci ON a.city_id = ci.city_id
+    JOIN country co ON ci.country_id = co.country_id
+    JOIN customer c ON c.store_id = s.store_id;
+    ```
+
+    *Salida*
+
+    ``` sql
+
+    ```
+    
+    *Comando*
+
+    ``` sql
+    CREATE VIEW rental_film_category AS
+    SELECT r.rental_id, f.title AS film_title, c.name AS category
+    FROM rental r
+    JOIN inventory i ON r.inventory_id = i.inventory_id
+    JOIN film f ON i.film_id = f.film_id
+    JOIN film_category fc ON f.film_id = fc.film_id
+    JOIN category c ON fc.category_id = c.category_id;
+    ```
+
+    *Salida*
+
+    ``` sql
+
+    ```
+    
+    *Comando*
+
+    ``` sql
+    CREATE VIEW inventory_store AS
+    SELECT i.inventory_id, f.title AS film_title, s.store_id, s.manager_staff_id
+    FROM inventory i
+    JOIN film f ON i.film_id = f.film_id
+    JOIN store s ON i.store_id = s.store_id;
+    ```
+
+    *Salida*
+
+    ``` sql
+
+    ```
 
 
 
