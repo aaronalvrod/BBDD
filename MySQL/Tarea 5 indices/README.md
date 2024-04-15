@@ -61,7 +61,7 @@ EXPLAIN SELECT * FROM producto WHERE nombre = 'Evonimus Pulchellus';
 +----+-------------+----------+------------+------+---------------+------+---------+------+------+----------+-------------+
 ```
 
-`Como podemos observar en el primer explain, dicha cosulta es mas eficiente. Esto se basa en el uso de indices, la columna codigo_producto tiene un indice`
+`La primera consulta es más eficiente ya que solo necesita realizar una comparación utilizando el índice primario, en  cambio la segunda recorre toda la tabla`
 
 - **Suponga que estamos trabajando con la base de datos jardineria y queremos saber optimizar las siguientes consultas. ¿Cuál de las dos sería más eficiente?. Se recomienda hacer uso de EXPLAIN para obtener información sobre cómo se están realizando las consultas.**
 
@@ -97,12 +97,15 @@ EXPLAIN SELECT AVG(total) FROM pago WHERE fecha_pago >= '2008-01-01' AND fecha_p
 +----+-------------+-------+------------+------+---------------+------+---------+------+------+----------+-------------+
 ```
 
-`Explicacion`
+`Ninguna de las dos consultas utiliza indices, pero en este caso la segunda consulta seria más eficiente, ya que ante el filtrado de la primera de un 100%, la segunda tiene un filtrado del 11%`
 
 - **Optimiza la siguiente consulta creando índices cuando sea necesario. Se recomienda hacer uso de EXPLAIN para obtener información sobre cómo se están realizando las consultas.**
 
 *Comando*
 
+``` sql
+CREATE INDEX idx_nombre_cliente ON cliente(nombre_cliente);
+```
 ``` sql
 EXPLAIN SELECT * FROM cliente INNER JOIN pedido ON cliente.codigo_cliente = pedido.codigo_cliente WHERE cliente.nombre_cliente LIKE 'A%';
 ```
