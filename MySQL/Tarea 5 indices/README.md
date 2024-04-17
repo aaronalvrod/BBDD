@@ -855,12 +855,6 @@ SELECT Cliente, MAX(Total) AS Pedido_maximo, MIN(Total) AS Pedido_minimo FROM li
 ALTER VIEW listado_pagos_clientes RENAME TO listado_de_pagos;
 ```
 
-*Salida*
-
-``` sql
-
-```
-
 - **Elimine las vistas que ha creado en los pasos anteriores.**
 
 *Comando*
