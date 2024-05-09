@@ -105,7 +105,7 @@ BEGIN
     DECLARE emp_id INT;
     DECLARE emp_nombre VARCHAR(100);
     DECLARE emp_salario DECIMAL(10,2);
-    DECLARE cur CURSOR FOR SELECT id, nombre, salario FROM empleados WHERE nombre REGEXP ('a');
+    DECLARE cur CURSOR FOR SELECT id, nombre, salario FROM empleados WHERE nombre REGEXP ('a'|'A');
     DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
     OPEN cur;
     read_loop: LOOP
