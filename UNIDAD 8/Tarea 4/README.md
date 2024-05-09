@@ -1,5 +1,16 @@
 # Trabajo con cursores la BBDD Empleados
 
+## Especificación
+
+La base de datos de __"empleados"__ es un sistema diseñado para gestionar información relacionada con los empleados de una empresa. Esta base de datos está estructurada en torno a la entidad principal "empleados", que contiene información detallada sobre cada empleado. La estructura de la base de datos se compone de una única tabla principal llamada "empleados".
+
+La tabla "empleados" está diseñada con las siguientes columnas:
+
+- __id__: Esta columna sirve como identificador único para cada empleado. Es de tipo entero y se genera automáticamente utilizando la propiedad AUTO_INCREMENT.
+- __nombre__: Almacena el nombre completo de cada empleado. Es de tipo cadena de caracteres (VARCHAR) con una longitud máxima de 100 caracteres.
+- __salario__: Esta columna registra el salario de cada empleado. Se define como un número decimal (DECIMAL) con una precisión de 10 dígitos en total y 2 dígitos después del punto decimal.
+
+
 ``` sql
 CREATE DATABASE IF NOT EXISTS empresa;
 USE empresa;
@@ -27,7 +38,7 @@ mysql> select * from empleados;
 +----+--------+---------+
 ```
 
----
+# Consultas
 
 1. **Escribe un procedimiento almacenado que copie los nombres de todos los empleados cuyo salario sea superior a 3000 en una nueva tabla llamada 'empleados_destino'. Es necesario crear la tabla empleados_destiono.**
 
