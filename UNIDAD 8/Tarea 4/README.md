@@ -120,6 +120,10 @@ END //
 DELIMITER ;
 ```
 
+``` sql
+CALL empleados_a_10 ();
+```
+
 *Salida*
 
 ``` sql
@@ -157,6 +161,10 @@ BEGIN
     CLOSE cur;
 END //
 DELIMITER ;
+```
+
+``` sql
+CALL select_empleados (2, 3);
 ```
 
 *Salida*
@@ -202,6 +210,10 @@ END //
 DELIMITER ;
 ```
 
+``` sql
+CALL eliminar_empleados ();
+```
+
 *Salida*
 
 ``` sql
@@ -239,6 +251,10 @@ BEGIN
     CLOSE cur;
 END //
 DELIMITER ;
+```
+
+``` sql
+CALL aumentar_salario ('Juan');
 ```
 
 *Salida*
