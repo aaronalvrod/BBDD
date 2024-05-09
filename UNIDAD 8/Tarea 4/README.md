@@ -136,6 +136,8 @@ CALL empleados_a_10 ();
 +----+--------+---------+
 ```
 
+---
+
 3. **Escribe un procedimiento almacenado que seleccione empleados cuyos IDs estén en un rango específico, por ejemplo, entre 2 y 3.**
 
 *Entrada*
@@ -183,6 +185,8 @@ CALL select_empleados (2, 3);
 +----+--------+---------+
 ```
 
+---
+
 4.**Escribe un procedimiento almacenado que elimine todos los empleados cuyo salario esté entre 2000 y 2500.**
 
 *Entrada*
@@ -225,6 +229,8 @@ CALL eliminar_empleados ();
 |  3 | Pedro  | 3200.00 |
 +----+--------+---------+
 ```
+
+---
 
 5. **Escribe un procedimiento almacenado que aumente el salario de un empleado específico cuyo nombre se pasa como parámetro en un 20%.**
 
