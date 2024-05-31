@@ -2,90 +2,139 @@
 
 # Trabajo con la BBDD Alumnos
 
-Modifica el ejercicio anterior y añade un nuevo trigger que las siguientes características:
+Crea una base de datos llamada test que contenga una tabla llamada alumnos con las siguientes columnas:
 
-Trigger: __trigger_guardar_email_after_update__:
+- Tabla alumnos:
 
-  - Se ejecuta sobre la tabla alumnos.
-  - Se ejecuta después de una operación de actualización.
-  - Cada vez que un alumno modifique su dirección de email se deberá insertar un nuevo registro en una tabla llamada log_cambios_email.
-  - La tabla log_cambios_email contiene los siguientes campos:
-    - id: clave primaria (entero autonumérico)
-    - id_alumno: id del alumno (entero)
-    - fecha_hora: marca de tiempo con el instante del cambio (fecha y hora)
-    - old_email: valor anterior del email (cadena de caracteres)
-    - new_email: nuevo valor con el que se ha actualizado
+  - id (entero sin signo)
+  - nombre (cadena de caracteres)
+  - apellido1 (cadena de caracteres)
+  - apellido2 (cadena de caracteres)
+  - email (cadena de caracteres)
 
-*Tabla*
+  <details>
+    <summary>PULSA PARA VER LA SOLUCIÓN:</summary>
 
-``` sql
-CREATE TABLE log_cambios_email (
-    id PRIMARY KEY AUTO_INCREMENT,
-    id_alumno INT REFERENCES alumnos(id),
-    fecha_hora DATETIME,
-    old_email VARCHAR(50),
-    new_email VARCHAR(50)
-);
-```
+      ```sql
+      CREATE DATABASE IF NOT EXISTS test;
 
-*Trigger 1*
+      USE test;
 
-``` sql
-DELIMITER //
-DROP TRIGGER IF EXISTS guardar_email_after_update;
-CREATE TRIGGER guardar_email_after_update
-AFTER UPDATE ON alumnos FOR EACH ROW
-BEGIN
-  IF OLD.email <> NEW.email THEN
-    INSERT INTO log_cambios_email (id_alumno, fecha_hora, old_email, new_email) VALUES (
-      NEW.id, NOW(), OLD.email, NEW.email
-    );
-  END IF;
-END;//
-DELIMITER ;
-```
+      CREATE TABLE IF NOT EXISTS alumnos (
+          id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+          nombre VARCHAR(50),
+          apellido1 VARCHAR(50),
+          apellido2 VARCHAR(50),
+          email VARCHAR(100)
+      );
+      ```
 
-Añade un nuevo trigger que tenga las siguientes características:
+  </details>
 
-- Trigger: __trigger_guardar_alumnos_eliminados__:
 
-  - Se ejecuta sobre la tabla alumnos.
-  - Se ejecuta después de una operación de borrado.
-  - Cada vez que se elimine un alumno de la tabla alumnos se deberá insertar un nuevo registro en una tabla llamada log_alumnos_eliminados.
-  - La tabla log_alumnos_eliminados contiene los siguientes campos:
-    - id: clave primaria (entero autonumérico)
-    - id_alumno: id del alumno (entero)
-    - fecha_hora: marca de tiempo con el instante del cambio (fecha y hora)
-    - nombre: nombre del alumno eliminado (cadena de caracteres)
-    - apellido1: primer apellido del alumno eliminado (cadena de caracteres)
-    - apellido2: segundo apellido del alumno eliminado (cadena de caracteres)
-    - email: email del alumno eliminado (cadena de caracteres).
+1. Escribe una función llamado __crear_email__ que dados los parámetros de entrada: __nombre, apellido1, apellido2 y dominio__, cree una dirección de email y la devuelva como salida.
 
-*Tabla*
+- Función: crear_email
+  - Entrada:
+      - nombre (cadena de caracteres)
+      - apellido1 (cadena de caracteres)
+      - apellido2 (cadena de caracteres)
+      - dominio (cadena de caracteres)
+  - Salida:
+      - email (cadena de caracteres)
 
-``` sql
-CREATE TABLE log_alumnos_eliminados (
-  id INT PRIMARY KEY AUTO_INCREMENT,
-  id_alumno INT REFERENCES alumnos(id),
-  fecha_hora DATETIME,
-  nombre VARCHAR(50),
-  apellido1 VARCHAR(50),
-  apellido2 VARCHAR(50),
-  email VARCHAR(50)
-);
-```
+El email devuelve una dirección de correo electrónico con el siguiente formato:
 
-*Trigger 2*
+- El primer carácter del parámetro nombre.
+- Los tres primeros caracteres del parámetro apellido1.
+- Los tres primeros caracteres del parámetro apellido2.
+- El carácter @.
+- El dominio pasado como parámetro.
+- La dirección de email debe estar en minúsculas.
 
-``` sql
-DELIMITER //
-DROP TRIGGER IF EXISTS guardar_alumnos_eliminados;
-CREATE TRIGGER guardar_alumnos_eliminados
-AFTER DELETE ON alumnos FOR EACH ROW
-BEGIN
-  INSERT INTO log_alumnos_eliminados(id_alumno, fecha_hora, nombre, apellido1, apellido2, email) VALUES (
-    OLD.id, NOW(), OLD.nombre, OLD.apellido1, OLD.apellido2, OLD.email
-  );
-END;//
-DELIMITER ;
-```
+<details>
+  <summary>PULSA PARA VER LA SOLUCIÓN:</summary>
+    
+    ```sql
+    
+    DELIMITER $$
+    CREATE FUNCTION eliminar_acentos(cadena VARCHAR(255)) RETURNS VARCHAR(255)
+    BEGIN
+        SET cadena = REPLACE(cadena, 'á', 'a');
+        SET cadena = REPLACE(cadena, 'é', 'e');
+        SET cadena = REPLACE(cadena, 'í', 'i');
+        SET cadena = REPLACE(cadena, 'ó', 'o');
+        SET cadena = REPLACE(cadena, 'ú', 'u');
+        RETURN cadena;
+    END$$
+    DELIMITER ;
+
+    ```
+
+</details>
+
+
+- También crea una función llamada __eliminar_acentos__ que reciba una cadena de caracteres y devuelva la misma cadena sin acentos. La función tendrá que reemplazar todas las vocales que tengan acento por la misma vocal pero sin acento. Por ejemplo, si la función recibe como parámetro de entrada la cadena María la función debe devolver la cadena Maria.
+
+- Función: eliminar_acentos
+  - Entrada:
+    - cadena (cadena de caracteres)
+  - Salida:
+    - (cadena de caracteres)
+
+> ___La función crear_email deberá hacer uso de la función eliminar_acentos___.
+
+  <details>
+    <summary>PULSA PARA VER LA SOLUCIÓN:</summary>
+
+      ```sql
+      DELIMITER $$
+      CREATE FUNCTION eliminar_acentos(cadena VARCHAR(255)) RETURNS VARCHAR(255)
+      BEGIN
+          SET cadena = REPLACE(cadena, 'á', 'a');
+          SET cadena = REPLACE(cadena, 'é', 'e');
+          SET cadena = REPLACE(cadena, 'í', 'i');
+          SET cadena = REPLACE(cadena, 'ó', 'o');
+          SET cadena = REPLACE(cadena, 'ú', 'u');
+          RETURN cadena;
+      END$$
+      DELIMITER ;
+      ```    
+  </details>
+
+Una vez creada la tabla escriba un trigger con las siguientes características:
+
+- Trigger:
+  - __trigger_crear_email_before_insert__. Se ejecuta sobre la tabla alumnos. Se ejecuta antes de una operación de inserción.Si el nuevo valor del email que se quiere insertar es NULL, entonces se le creará automáticamente una dirección de email y se insertará en la tabla. Si el nuevo valor del email no es NULL se guardará en la tabla el valor del email.
+
+  <details>
+    <summary>PULSA PARA VER LA SOLUCIÓN:</summary>
+
+      ```sql
+
+      CREATE TRIGGER trigger_crear_email_before_insert 
+      BEFORE INSERT ON alumnos 
+      FOR EACH ROW 
+      BEGIN
+          IF NEW.email IS NULL THEN
+              SET NEW.email = crear_email(NEW.nombre, NEW.apellido1, NEW.apellido2, 'dominio.com');
+          END IF;
+      END;
+      ```
+
+  </details>
+
+>__Nota__: Para crear la nueva dirección de email se deberá hacer uso del procedimiento crear_email.
+
+- Verificación:
+  - Realiza inserciones en la tabla y verifica el correcto funcionamiento de las __funciones y triggers__.
+  - Realiza un procedimiento que realice la inserción de un número de elementos que se pasa como parámetro. Incluye la máxima aleatoridad posible.
+  
+## Referencias
+
+- [Apuntes sobre triggers](../../trigers.md).
+- [Apuntes sobre procedimientos y funciones](../../procedimientos.md).
+- [Mysql SubString](https://dev.mysql.com/doc/refman/8.0/en/string-functions.html).
+- [Mysql Replace](https://dev.mysql.com/doc/refman/8.0/en/replace.html).
+
+</div>
